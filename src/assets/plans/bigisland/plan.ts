@@ -119,6 +119,17 @@ export const BigIslandPlan: Plan = {
         filePath: 'assets/plans/bigisland/layers/test2019.json',
         parcels: [],
         setupFunction(planService: PlanService) {
+          const colors = {
+            '1': '#ff0000',  //Check the JSON file for values.
+            '2': '#ffdbdb',
+            '3': '#ff8080',
+            '4': '#ff4242',
+            '5': '#C0C0C0',
+            '6': '#3e2456',
+            '7': '#FF0000',
+            '8': '#808080',
+            '9': 'white',
+          }          
           this.parcels.forEach(parcel => {
             d3.select(parcel.path)
               .style('fill', this.fillColor)
@@ -128,18 +139,6 @@ export const BigIslandPlan: Plan = {
           });
         },
         updateFunction(planService: PlanService) {
-          const colors = {
-            '1': 'white',  //Check the JSON file for values.
-            '2': '#ffdbdb',
-            '3': '#ff8080',
-            '4': '#ff4242',
-            '5': '#ff0000',
-            '6': '',
-            '7': '',
-            '8': '',
-            '9': '',
-          }
-
           this.parcels.forEach(parcel => {
             d3.select(parcel.path)
               .style('opacity', this.active ? 0.85 : 0.0);
