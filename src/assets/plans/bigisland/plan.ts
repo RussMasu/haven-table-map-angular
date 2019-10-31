@@ -128,6 +128,18 @@ export const BigIslandPlan: Plan = {
           });
         },
         updateFunction(planService: PlanService) {
+          const colors = {
+            '1': 'white',  //Check the JSON file for values.
+            '2': '#ffdbdb',
+            '3': '#ff8080',
+            '4': '#ff4242',
+            '5': '#ff0000',
+            '6': '',
+            '7': '',
+            '8': '',
+            '9': '',
+          }
+
           this.parcels.forEach(parcel => {
             d3.select(parcel.path)
               .style('opacity', this.active ? 0.85 : 0.0);
