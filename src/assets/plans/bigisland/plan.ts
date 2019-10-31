@@ -2,6 +2,8 @@ import { Plan } from '@app/interfaces';
 import { mapLayerColors, chartColors } from '../defaultColors';
 import { PlanService } from '@app/services/plan.service';
 import * as d3 from 'd3';
+import { ENGINE_METHOD_DIGESTS } from 'constants';
+import { ParseSourceFile } from '@angular/compiler';
 
 export const BigIslandPlan: Plan = {
   name: 'bigisland',
@@ -118,18 +120,7 @@ export const BigIslandPlan: Plan = {
         legendColor: mapLayerColors.Test2019.border,
         filePath: 'assets/plans/bigisland/layers/test2019.json',
         parcels: [],
-        setupFunction(planService: PlanService) {
-          const colors = {
-            '1': '#ff0000',  //Check the JSON file for values.
-            '2': '#ffdbdb',
-            '3': '#ff8080',
-            '4': '#ff4242',
-            '5': '#C0C0C0',
-            '6': '#3e2456',
-            '7': '#FF0000',
-            '8': '#808080',
-            '9': 'white',
-          }          
+        setupFunction(planService: PlanService) {       
           this.parcels.forEach(parcel => {
             d3.select(parcel.path)
               .style('fill', this.fillColor)
@@ -140,10 +131,104 @@ export const BigIslandPlan: Plan = {
         },
         updateFunction(planService: PlanService) {
           this.parcels.forEach(parcel => {
+
+            let layerAttribute = parcel.properties.hzone;
+
+            const colors = {
+              '1': '#ff0000',  //Check the JSON file for values.
+              '2': '#ffdbdb',
+              '3': '#ff8080',
+              '4': '#ff4242',
+              '5': '#C0C0C0',
+              '6': '#3e2456',
+              '7': '#FF0000',
+              '8': '#808080',
+              '9': 'white',
+            } 
+
+            //I'm too lazy to find a way to switch from a string to an int.  May fix later.
+            
+            if(layerAttribute == '1')
+            {
             d3.select(parcel.path)
-              .style('opacity', this.active ? 0.85 : 0.0);
+              .style('fill', colors[parcel.properties.hzone])              
+              .style('opacity', this.active ? 0.85 : 0.0)
+              .style('stroke',this.borderColor)
+              .style('stroke-width',(this.borderWidth * parcel.properties.Voltage_kV + 'px'))
+            }
+            else if (layerAttribute == '2')
+            {
+             d3.select(parcel.path)
+             .style('fill', colors[parcel.properties.hzone])
+             .style('opacity', this.active ? 0.85 : 0.0)
+             .style('stroke',this.borderColor)
+             .style('stroke-width',(this.borderWidth * parcel.properties.Voltage_kV + 'px'))
+            }
+            else if (layerAttribute == '3')
+            {
+              d3.select(parcel.path)
+              .style('fill', colors[parcel.properties.hzone])
+              .style('opacity', this.active ? 0.85 : 0.0)
+              .style('stroke',this.borderColor)
+              .style('stroke-width',(this.borderWidth * parcel.properties.Voltage_kV + 'px'))
+            }
+            else if (layerAttribute == '4')
+            {
+              d3.select(parcel.path)
+              .style('fill', colors[parcel.properties.hzone])
+              .style('opacity', this.active ? 0.85 : 0.0)
+              .style('stroke',this.borderColor)
+              .style('stroke-width',(this.borderWidth * parcel.properties.Voltage_kV + 'px'))
+            }
+            else if (layerAttribute == '5')
+            {
+              d3.select(parcel.path)
+              .style('fill', colors[parcel.properties.hzone])
+              .style('opacity', this.active ? 0.85 : 0.0)
+              .style('stroke',this.borderColor)
+              .style('stroke-width',(this.borderWidth * parcel.properties.Voltage_kV + 'px'))
+            }
+            else if (layerAttribute == '6')
+            {
+              d3.select(parcel.path)
+              .style('fill', colors[parcel.properties.hzone])
+              .style('opacity', this.active ? 0.85 : 0.0)
+              .style('stroke',this.borderColor)
+              .style('stroke-width',(this.borderWidth * parcel.properties.Voltage_kV + 'px'))
+            }
+            else if (layerAttribute == '7')
+            {
+              d3.select(parcel.path)
+              .style('fill', colors[parcel.properties.hzone])
+              .style('opacity', this.active ? 0.85 : 0.0)
+              .style('stroke',this.borderColor)
+              .style('stroke-width',(this.borderWidth * parcel.properties.Voltage_kV + 'px'))
+            }
+            else if (layerAttribute == '8')
+            {
+              d3.select(parcel.path)
+              .style('fill', colors[parcel.properties.hzone])
+              .style('opacity', this.active ? 0.85 : 0.0)
+              .style('stroke',this.borderColor)
+              .style('stroke-width',(this.borderWidth * parcel.properties.Voltage_kV + 'px'))
+            }
+            else if (layerAttribute == '9')
+            {
+              d3.select(parcel.path)
+              .style('fill', colors[parcel.properties.hzone])
+              .style('opacity', this.active ? 0.85 : 0.0)
+              .style('stroke',this.borderColor)
+              .style('stroke-width',(this.borderWidth * parcel.properties.Voltage_kV + 'px'))
+            }
+            else
+            {
+              d3.select(parcel.path)
+              .style('fill','transparent')              
+              .style('opacity', this.active ? 0.85 : 0.0)
+              .style('stroke',this.borderColor)
+              .style('stroke-width',(this.borderWidth * parcel.properties.Voltage_kV + 'px'))
+            }
           });
-          //Add more functionality here.
         },
       },  //End Test Layer (2019)
       {  
