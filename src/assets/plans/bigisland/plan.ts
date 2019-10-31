@@ -132,6 +132,7 @@ export const BigIslandPlan: Plan = {
             d3.select(parcel.path)
               .style('opacity', this.active ? 0.85 : 0.0);
           });
+          //Add more functionality here.
         },
       },  //End Test Layer (2019)
       {  
