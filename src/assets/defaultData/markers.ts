@@ -41,7 +41,7 @@ export const markers: Marker[] = [{
 }, {
   markerId: 7,
   secondId: 7,
-  job: 'add',
+  job: 'chart',
   delay: 400, 
   minRotation: 10,
   rotateLeft(planService: PlanService) {
