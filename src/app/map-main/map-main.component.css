@@ -5,9 +5,9 @@ html {
 /* Contains styles for the left side of the main map display */
 
 .interaction-container {
-  width: 24.5vw;
+  width: 20.5vw;
   height: 100vh;
-  background-color: rgb(20,20,20);
+  background-color: rgb(40,40,40);
   display: inline-block;
   position: absolute;
   top: 0;
