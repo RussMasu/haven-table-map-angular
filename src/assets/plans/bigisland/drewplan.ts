@@ -58,8 +58,8 @@ export const BigIslandPlan: Plan = {
     },
     charts: {
       pie: {
-        left: '0vw',
-        top: '0vh'
+        left: '27vw',
+        top: '61vh'
       },
       line: {
         left: 'calc(100vw - 325px)',
@@ -870,10 +870,10 @@ export const BigIslandPlan: Plan = {
                   
                   const fireColors = {
                     "Low" : "#238d65",
-                    "Medium" : "#2a9ed9",
-                    "High" : "#fee71f",
-                    "Very High" : "#f6a553",
-                    "Extreme" : "#ef4246",
+                    "Medium" : "2a9ed9",
+                    "High" : "fee71f",
+                    "Very High" : "f6a553",
+                    "Extreme" : "ef4246",
                     "Critical" : "white"
                   }
                   let risk = parcel.properties.risk_ratin;
@@ -904,45 +904,81 @@ export const BigIslandPlan: Plan = {
                   }
                 });
               },
-            },//end fire layer
+            },//end placeholder layer
 
-            {//start Palila layer
-              name: 'Palila Critical Habitat', //display name
-              displayName: 'Palila Critical Habitat',//display name
-              active: false,
-              included: true,//enable-disable layer
-              iconPath: 'assets/plans/bigisland/images/icons/palila-icon.png',//controls icon image for layer
-              secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
-              secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
-              fillColor: '#ff0066',
-              borderColor: '#ffffff',
-              borderWidth: 0.5,
-              legendColor: mapLayerColors.Solar.fill,
-              filePath: 'assets/plans/bigisland/layers/palila.json',//set to shapefile link
-              parcels: [],
-              setupFunction(planService: PlanService) {
-                this.parcels.forEach(parcel => {
-                    d3.select(parcel.path)
-                      .style('fill', 'transparent')
-                      .style('opacity', (this.active) ? 0.85 : 0.0)
-                      .style('stroke', this.borderColor)
-                      .style('stroke-width', this.borderWidth + 'px');
-                });
-              },
-              updateFunction(planService: PlanService) {
-                this.parcels.forEach(parcel => {
-                 
-                  d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.45 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-                  
-      
-                });
-              },
-            },//end paalia layer
+        {//Start Volcano
+          //It sounds cool.
+          name: 'volcanohazard',
+          displayName: 'Volcano Lava Flow Hazard Zones',
+          active: false,
+          included: true,
+          iconPath: 'assets/plans/bigisland/images/icons/fire.png',
+          secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
+          secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+          fillColor: mapLayerColors.Dod.fill,
+          borderColor: mapLayerColors.Dod.border,
+          borderWidth: 1,
+          legendColor: mapLayerColors.Dod.fill,
+          filePath: 'assets/plans/bigisland/layers/Volcano_Lava_Flow_Hazard_Zones.json',
+          parcels: [],
+                setupFunction(planService: PlanService) {
+                  this.parcels.forEach(parcel => {
+                      d3.select(parcel.path)
+                        .style('fill', 'transparent')
+                        .style('opacity', (this.active) ? 0.85 : 0.0)
+                        .style('stroke', this.borderColor)
+                        .style('stroke-width', (this.borderWidth+2) + 'px');
+                  });
+                },
+                updateFunction(planService: PlanService) {
+                  this.parcels.forEach(parcel => {
+                    let layerattribute = parcel.properties.type;//divide based on layer attribute 
 
+                        d3.select(parcel.path)
+                          .style('fill', 'transparent')//set to Colors if fill wanted, otherwise transparent
+                          .style('opacity', this.active ? 0.85 : 0.0)
+                          .style('stroke','#FF0000' )//set to borderColors if borders wanted otherwise this.bordercolor
+                          .style('stroke-width', (this.borderWidth+ 2)  + 'px');
+                  });
+                },
+        },//end volcano layer
+    
+        {//Start Road
+          //It sounds cool.
+          name: 'majorroads',
+          displayName: 'Major Roads Hawaii County',
+          active: false,
+          included: true,
+          iconPath: 'assets/plans/bigisland/images/icons/fire.png',
+          secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
+          secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+          fillColor: mapLayerColors.Dod.fill,
+          borderColor: mapLayerColors.Dod.border,
+          borderWidth: 1,
+          legendColor: mapLayerColors.Dod.fill,
+          filePath: 'assets/plans/bigisland/layers/Major_Roads__Hawaii_County.json',
+          parcels: [],
+                setupFunction(planService: PlanService) {
+                  this.parcels.forEach(parcel => {
+                      d3.select(parcel.path)
+                        .style('fill', 'transparent')
+                        .style('opacity', (this.active) ? 0.85 : 0.0)
+                        .style('stroke', this.borderColor)
+                        .style('stroke-width', (this.borderWidth+5) + 'px');
+                  });
+                },
+                updateFunction(planService: PlanService) {
+                  this.parcels.forEach(parcel => {
+                    let layerattribute = parcel.properties.type;//divide based on layer attribute 
+
+                        d3.select(parcel.path)
+                          .style('fill', 'transparent')//set to Colors if fill wanted, otherwise transparent
+                          .style('opacity', this.active ? 1 : 0.0)
+                          .style('stroke','#FFFFFF' )//set to borderColors if borders wanted otherwise this.bordercolor
+                          .style('stroke-width', (this.borderWidth+5) + 'px');
+                  });
+                },
+        }//end Road layer
     ],
   }
 }
