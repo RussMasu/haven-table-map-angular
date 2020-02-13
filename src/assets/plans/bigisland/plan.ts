@@ -963,7 +963,7 @@ export const BigIslandPlan: Plan = {
               //Essentially OnInit().  Runs when the layer is initially activated.
               setupFunction(planService: PlanService) {
                 this.parcels.forEach(parcel => {
-                  const floodColors = {
+                  const floodColors = {  //TODO: Research the FEMA flood zone designations, add to list with appropiate colours.
                     "A"  : "blue",
                     "X"  : "blue",
                     "AE" : "red",
@@ -973,7 +973,7 @@ export const BigIslandPlan: Plan = {
 
                   let risk = parcel.properties.fld_zone;
 
-                  if(risk == "A" || risk == "AE" || risk == "AX")
+                  if(risk == "A" || risk == "AE" || risk == "AX")  //TODO: Add more cases for other flood zone designations.
                   {
                     d3.select(parcel.path)
                     .style('fill', floodColors["red"])
