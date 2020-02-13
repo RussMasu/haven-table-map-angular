@@ -957,7 +957,7 @@ export const BigIslandPlan: Plan = {
               borderColor: mapLayerColors.Dod.border,
               borderWidth: 1,
               legendColor: mapLayerColors.Dod.fill,
-              filePath: 'assets/plans/bigisland/layers/Flood_Hazard_Areas_DFIRM__Hawaii_County',
+              filePath: 'assets/plans/bigisland/layers/Flood Hazard Areas.json',
               parcels: [],
 
               //Essentially OnInit().  Runs when the layer is initially activated.
