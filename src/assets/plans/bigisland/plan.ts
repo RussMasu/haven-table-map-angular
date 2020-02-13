@@ -950,19 +950,21 @@ export const BigIslandPlan: Plan = {
               displayName: 'Flood Hazard Zones [FEMA]',
               active: false,
               included: true,
-              iconPath: 'assets/plans/bigisland/images/icons/fire.png',
+              iconPath: 'assets/plans/bigisland/images/icons/dod-icon.png',
               secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
               secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
               fillColor: mapLayerColors.Dod.fill,
               borderColor: mapLayerColors.Dod.border,
               borderWidth: 1,
               legendColor: mapLayerColors.Dod.fill,
-              filePath: 'assets/plans/bigisland/layers/Fire_Risk_Areas.json',
+              filePath: 'assets/plans/bigisland/layers/Flood_Hazard_Areas_DFIRM__Hawaii_County',
               parcels: [],
+
+              //Essentially OnInit().  Runs when the layer is initially activated.
               setupFunction(planService: PlanService) {
                 this.parcels.forEach(parcel => {
                   d3.select(parcel.path)
-                    .style('fill', 'transparent')//change from type to attribute name
+                    .style('fill', 'transparent')
                     .style('opacity', this.active ? 0.85 : 0.0)
                     .style('stroke', 'white')
                     .style('stroke-width', this.borderWidth + 'px');
@@ -973,43 +975,35 @@ export const BigIslandPlan: Plan = {
               updateFunction(planService: PlanService) {
                 this.parcels.forEach(parcel => {
                   
-                  const fireColors = {
-                    "Low" : "#238d65",
-                    "Medium" : "#2a9ed9",
-                    "High" : "#fee71f",
-                    "Very High" : "#f6a553",
-                    "Extreme" : "#ef4246",
-                    "Critical" : "white"
+                  const floodColors = {
+                    "A"  : "blue",
+                    "X"  : "blue",
+                    "AE" : "red",
+                    "V"  : "purple",
+                    "VE" : "purple"
                   }
-                  let risk = parcel.properties.risk_ratin;
 
-                  if(risk == "Low")
+                  let risk = parcel.properties.fld_zone;
+
+                  if(risk == "A" || risk == "AE" || risk == "AX")
                   {
                     d3.select(parcel.path)
-                    .style('fill', fireColors["Low"])
+                    .style('fill', floodColors["red"])
                     .style('opacity', this.active ? 0.85 : 0.0)
                     .style('stroke', this.borderColor)
                     .style('stroke-width', this.borderWidth + 'px');
                   }
-                  if(risk == "Medium")
+                  if(risk == "V" || risk == "VE")
                   {
                     d3.select(parcel.path)
-                    .style('fill', fireColors["Medium"])
+                    .style('fill', floodColors["purple"])
                     .style('opacity', this.active ? 0.85 : 0.0)
                     .style('stroke', this.borderColor)
-                    .style('stroke-width', this.borderWidth + 'px');
-                  }
-                  if(risk == "High")
-                  {
-                    d3.select(parcel.path)
-                    .style('fill', fireColors["High"])
-                    .style('opacity', this.active ? 0.85 : 0.0)
-                    .style('stroke', this.borderColor)
-                    .style('stroke-width', this.borderWidth + 'px');
+                    .style('stroke-width', this.borderWidth + 'px');                    
                   }
                 });
               },
-            },//end fire layer
+            },//end flood layer
 
     ],
   }
