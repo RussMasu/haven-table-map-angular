@@ -963,18 +963,6 @@ export const BigIslandPlan: Plan = {
               //Essentially OnInit().  Runs when the layer is initially activated.
               setupFunction(planService: PlanService) {
                 this.parcels.forEach(parcel => {
-                  d3.select(parcel.path)
-                    .style('fill', 'transparent')
-                    .style('opacity', this.active ? 0.85 : 0.0)
-                    .style('stroke', 'white')
-                    .style('stroke-width', this.borderWidth + 'px');
-                });
-              },
-
-              
-              updateFunction(planService: PlanService) {
-                this.parcels.forEach(parcel => {
-                  
                   const floodColors = {
                     "A"  : "blue",
                     "X"  : "blue",
@@ -1001,6 +989,45 @@ export const BigIslandPlan: Plan = {
                     .style('stroke', this.borderColor)
                     .style('stroke-width', this.borderWidth + 'px');                    
                   }
+                  else{
+                    d3.select(parcel.path)
+                    .style('fill', 'transparent')
+                    .style('opacity', this.active ? 0.85 : 0.0)
+                    .style('stroke', 'white')
+                    .style('stroke-width', this.borderWidth + 'px');
+                  }
+                });
+              },
+  
+              updateFunction(planService: PlanService) {
+                this.parcels.forEach(parcel => {
+                  
+                  // const floodColors = {
+                  //   "A"  : "blue",
+                  //   "X"  : "blue",
+                  //   "AE" : "red",
+                  //   "V"  : "purple",
+                  //   "VE" : "purple"
+                  // }
+
+                  // let risk = parcel.properties.fld_zone;
+
+                  // if(risk == "A" || risk == "AE" || risk == "AX")
+                  // {
+                  //   d3.select(parcel.path)
+                  //   .style('fill', floodColors["red"])
+                  //   .style('opacity', this.active ? 0.85 : 0.0)
+                  //   .style('stroke', this.borderColor)
+                  //   .style('stroke-width', this.borderWidth + 'px');
+                  // }
+                  // if(risk == "V" || risk == "VE")
+                  // {
+                  //   d3.select(parcel.path)
+                  //   .style('fill', floodColors["purple"])
+                  //   .style('opacity', this.active ? 0.85 : 0.0)
+                  //   .style('stroke', this.borderColor)
+                  //   .style('stroke-width', this.borderWidth + 'px');                    
+                  // }
                 });
               },
             },//end flood layer
