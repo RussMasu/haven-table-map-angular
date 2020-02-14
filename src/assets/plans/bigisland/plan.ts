@@ -942,7 +942,6 @@ export const BigIslandPlan: Plan = {
                 });
               },
             },//end paalia layer
-//end placeholder layer
 
             {//Start Flood Hazard Layer
               //M A G I K A R P 
@@ -964,11 +963,11 @@ export const BigIslandPlan: Plan = {
               setupFunction(planService: PlanService) {
                 this.parcels.forEach(parcel => {
                   const floodColors = {  //TODO: Research the FEMA flood zone designations, add to list with appropiate colours.
-                    "A"  : "blue",
-                    "X"  : "blue",
-                    "AE" : "red",
-                    "V"  : "purple",
-                    "VE" : "purple"
+                    "A"  : "#ff0000",
+                    "X"  : "#ffff00",
+                    "AE" : "#ff00ff",
+                    "V"  : "#00ff0",
+                    "VE" : "#0000ff"
                   }
 
                   let risk = parcel.properties.fld_zone;
@@ -976,7 +975,7 @@ export const BigIslandPlan: Plan = {
                   if(risk == "A" || risk == "AE" || risk == "AX")  //TODO: Add more cases for other flood zone designations.
                   {
                     d3.select(parcel.path)
-                    .style('fill', floodColors["red"])
+                    .style('fill', floodColors["A"])
                     .style('opacity', this.active ? 0.85 : 0.0)
                     .style('stroke', this.borderColor)
                     .style('stroke-width', this.borderWidth + 'px');
@@ -984,10 +983,18 @@ export const BigIslandPlan: Plan = {
                   if(risk == "V" || risk == "VE")
                   {
                     d3.select(parcel.path)
-                    .style('fill', floodColors["purple"])
+                    .style('fill', floodColors["V"])
                     .style('opacity', this.active ? 0.85 : 0.0)
                     .style('stroke', this.borderColor)
                     .style('stroke-width', this.borderWidth + 'px');                    
+                  }
+                  if(risk =="X")
+                  {
+                    d3.select(parcel.path)
+                    .style('fill', floodColors["X"])
+                    .style('opacity', this.active ? 0.85 : 0.0)
+                    .style('stroke', this.borderColor)
+                    .style('stroke-width', this.borderWidth + 'px');                            
                   }
                   else{
                     d3.select(parcel.path)
