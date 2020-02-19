@@ -1015,7 +1015,43 @@ export const BigIslandPlan: Plan = {
                           .style('stroke-width', (this.borderWidth+5) + 'px');
                   });
                 },
-        }//end Road layer
+        },//end Road layer
+          {//Start Hunting Area Layer.
+          //It doesn't sound as cool.
+          name: 'volcanohazard',
+          displayName: 'State Hunting Areas',
+          active: false,
+          included: true,
+          iconPath: 'assets/plans/bigisland/images/icons/pig.png',
+          secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
+          secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+          fillColor: mapLayerColors.Dod.fill,
+          borderColor: mapLayerColors.Dod.border,
+          borderWidth: 1,
+          legendColor: mapLayerColors.Dod.fill,
+          filePath: 'assets/plans/bigisland/layers/Public_Hunting_Areas.json',
+          parcels: [],
+                setupFunction(planService: PlanService) {
+                  this.parcels.forEach(parcel => {
+                      d3.select(parcel.path)
+                        .style('fill', 'transparent')
+                        .style('opacity', (this.active) ? 0.85 : 0.0)
+                        .style('stroke', this.borderColor)
+                        .style('stroke-width', (this.borderWidth+2) + 'px');
+                  });
+                },
+                updateFunction(planService: PlanService) {
+                  this.parcels.forEach(parcel => {
+                    let layerattribute = parcel.properties.type;//divide based on layer attribute 
+
+                        d3.select(parcel.path)
+                          .style('fill', '#e63900')//set to Colors if fill wanted, otherwise transparent
+                          .style('opacity', this.active ? 0.85 : 0.0)
+                          .style('stroke','white' )//set to borderColors if borders wanted otherwise this.bordercolor
+                          .style('stroke-width', (this.borderWidth+ 2)  + 'px');
+                  });
+                },
+        },//end volcano layer
     ],
   }
 }
