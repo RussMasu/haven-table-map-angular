@@ -1050,8 +1050,9 @@ export const BigIslandPlan: Plan = {
                           .style('stroke-width', (this.borderWidth+ 2)  + 'px');
                   });
                 },
-        },//end hunting layer
-        //end Road layer
+
+        },// ending hunting 
+        
           {//Start Hunting Area Layer.
           //It doesn't sound as cool.
           name: 'trails',
@@ -1066,6 +1067,7 @@ export const BigIslandPlan: Plan = {
           borderWidth: 1,
           legendColor: mapLayerColors.Dod.fill,
           filePath: 'assets/plans/bigisland/layers/Na_Ala_Hele_Trails.json',
+
           parcels: [],
                 setupFunction(planService: PlanService) {
                   this.parcels.forEach(parcel => {
@@ -1073,20 +1075,55 @@ export const BigIslandPlan: Plan = {
                         .style('fill', 'transparent')
                         .style('opacity', (this.active) ? 0.85 : 0.0)
                         .style('stroke', this.borderColor)
-                        .style('stroke-width', (this.borderWidth+2) + 'px');
-                  }); 
+
+                        .style('stroke-width', (this.borderWidth+5) + 'px');
+                  });
                 },
                 updateFunction(planService: PlanService) {
                   this.parcels.forEach(parcel => {
-
                         d3.select(parcel.path)
                           .style('fill', 'transparent')//set to Colors if fill wanted, otherwise transparent
-                          .style('opacity', this.active ? 0.85 : 0.0)
-                          .style('stroke', '#13bef7' )//set to borderColors if borders wanted otherwise this.bordercolor
-                          .style('stroke-width', (this.borderWidth+ 2)  + 'px');
+                          .style('opacity', this.active ? 1 : 0.0)
+                          .style('stroke','#FFFFFF' )//set to borderColors if borders wanted otherwise this.bordercolor
+                          .style('stroke-width', this.borderWidth + 'px');
+                  });
+                }, 
+        },
+        {//Elevation
+          //It sounds cool.
+          name: 'elevation100ft',
+          displayName: 'Elevation Contours 100ft',
+          active: false,
+          included: true,
+          iconPath: 'assets/plans/bigisland/images/icons/elevation-icon.png',
+          secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
+          secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+          fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
+          borderColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
+          borderWidth: 0.04,  //Border width, default is set here.
+          legendColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
+          filePath: 'assets/plans/bigisland/layers/Hawaii_Elevation_Contours_100ft.json',
+          parcels: [],
+                setupFunction(planService: PlanService) {
+                  this.parcels.forEach(parcel => {
+                      d3.select(parcel.path)
+                        .style('fill', 'transparent')
+                        .style('opacity', (this.active) ? 0.85 : 0.0)
+                        .style('stroke', this.borderColor)
+                        .style('stroke-width', (this.borderWidth+5) + 'px');
                   });
                 },
-              }
+                updateFunction(planService: PlanService) {
+                  this.parcels.forEach(parcel => {
+                        d3.select(parcel.path)
+                          .style('fill', 'transparent')//set to Colors if fill wanted, otherwise transparent
+                          .style('opacity', this.active ? 1 : 0.0)
+                          .style('stroke','#FFFFFF' )//set to borderColors if borders wanted otherwise this.bordercolor
+                          .style('stroke-width', this.borderWidth + 'px');
+                  });
+                },
+        },//end 100ft elevation 
+
     ],
   }
 }
