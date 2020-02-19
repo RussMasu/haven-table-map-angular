@@ -200,7 +200,7 @@ export class LandingHomeComponent implements OnInit {
       }
       case 5: {
         left = 'calc(18vw - 50px)';
-        top = 'calc(96% - 50px)';
+        top = 'calc(90% - 50px)';
         break;
       }
       default: { // When index hits 6, the function is finished

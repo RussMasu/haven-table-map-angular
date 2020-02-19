@@ -969,13 +969,94 @@ export const BigIslandPlan: Plan = {
                 },
                 updateFunction(planService: PlanService) {
                   this.parcels.forEach(parcel => {
-                    let layerattribute = parcel.properties.type;//divide based on layer attribute 
 
-                        d3.select(parcel.path)
-                          .style('fill', 'transparent')//set to Colors if fill wanted, otherwise transparent
-                          .style('opacity', this.active ? 0.85 : 0.0)
-                          .style('stroke','#FF0000' )//set to borderColors if borders wanted otherwise this.bordercolor
-                          .style('stroke-width', (this.borderWidth+ 2)  + 'px');
+                        const Risk_Colors = {
+                                "1":"#EC0400" ,
+                                "2": "#F85E5B",
+                                "3": "#FFBDBC",
+                                "4": "#EEAE04",
+                                "5": "#EEE287",
+                                "6": "#fff8c0",
+                                "7": "#49fa77" ,
+                                "8": "#c9ffed",
+                                "9": "#FFFFFF"
+                        }
+                        
+                        let zone = parcel.properties.objectid;
+                        
+                        if(zone == "10" || zone == "11")
+                        {
+                          d3.select(parcel.path)
+                          .style('fill', Risk_Colors["1"])
+                          .style('opacity', this.active ? 0.4 : 0.0)
+                          .style('stroke', this.borderColor)
+                          .style('stroke-width', this.borderWidth + 'px');
+                        }
+                        if(zone == "14" || zone == "7" || zone == "12"|| zone == "9")
+                        {
+                          d3.select(parcel.path)
+                          .style('fill', Risk_Colors["2"])
+                          .style('opacity', this.active ? 0.4 : 0.0)
+                          .style('stroke', this.borderColor)
+                          .style('stroke-width', this.borderWidth + 'px');
+                        }
+                        if(zone == "17" || zone == "8" || zone == "6" || zone == "15" || zone =="3")
+                        {
+                          d3.select(parcel.path)
+                          .style('fill', Risk_Colors["3"])
+                          .style('opacity', this.active ? 0.4 : 0.0)
+                          .style('stroke', this.borderColor)
+                          .style('stroke-width', this.borderWidth + 'px');
+                        }
+                        if(zone == "5")
+                        {
+                          d3.select(parcel.path)
+                          .style('fill', Risk_Colors["4"])
+                          .style('opacity', this.active ? 0.4 : 0.0)
+                          .style('stroke', this.borderColor)
+                          .style('stroke-width', this.borderWidth + 'px');
+                        }
+                        if(zone == "16")
+                        {
+                          d3.select(parcel.path)
+                          .style('fill', Risk_Colors["5"])
+                          .style('opacity', this.active ? 0.4 : 0.0)
+                          .style('stroke', this.borderColor)
+                          .style('stroke-width', this.borderWidth + 'px');
+                        }
+                        if(zone == "13" || zone == "18")
+                        {
+                          d3.select(parcel.path)
+                          .style('fill', Risk_Colors["6"])
+                          .style('opacity', this.active ? 0.4 : 0.0)
+                          .style('stroke', this.borderColor)
+                          .style('stroke-width', this.borderWidth + 'px');
+                        }
+                        if(zone == "4")
+                        {
+                          d3.select(parcel.path)
+                          .style('fill', Risk_Colors["7"])
+                          .style('opacity', this.active ? 0.4 : 0.0)
+                          .style('stroke', this.borderColor)
+                          .style('stroke-width', this.borderWidth + 'px');
+                        }
+                        if(zone == "2")
+                        {
+                          d3.select(parcel.path)
+                          .style('fill', Risk_Colors["8"])
+                          .style('opacity', this.active ? 0.4 : 0.0)
+                          .style('stroke', this.borderColor)
+                          .style('stroke-width', this.borderWidth + 'px');
+                        }
+                        if(zone == "1")
+                        {
+                          d3.select(parcel.path)
+                          .style('fill', Risk_Colors["9"])
+                          .style('opacity', this.active ? 0.4 : 0.0)
+                          .style('stroke', this.borderColor)
+                          .style('stroke-width', this.borderWidth + 'px');
+                        }
+
                   });
                 },
         },//end volcano layer
@@ -983,7 +1064,7 @@ export const BigIslandPlan: Plan = {
         {//Start Road
           //It sounds cool.
           name: 'majorroads',
-          displayName: 'Major Roads Hawaii County',
+          displayName: 'Major Roads',
           active: false,
           included: true,
           iconPath: 'assets/plans/bigisland/images/icons/fire.png',
@@ -1006,8 +1087,6 @@ export const BigIslandPlan: Plan = {
                 },
                 updateFunction(planService: PlanService) {
                   this.parcels.forEach(parcel => {
-                    let layerattribute = parcel.properties.type;//divide based on layer attribute 
-
                         d3.select(parcel.path)
                           .style('fill', 'transparent')//set to Colors if fill wanted, otherwise transparent
                           .style('opacity', this.active ? 1 : 0.0)
@@ -1015,7 +1094,41 @@ export const BigIslandPlan: Plan = {
                           .style('stroke-width', (this.borderWidth+5) + 'px');
                   });
                 },
-        }//end Road layer
+        },//end Road layer
+        {//Elevation
+          //It sounds cool.
+          name: 'elevation100ft',
+          displayName: 'Elevation Contours 100ft',
+          active: false,
+          included: true,
+          iconPath: 'assets/plans/bigisland/images/icons/elevation-icon.png',
+          secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
+          secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+          fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
+          borderColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
+          borderWidth: 0.04,  //Border width, default is set here.
+          legendColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
+          filePath: 'assets/plans/bigisland/layers/Hawaii_Elevation_Contours_100ft.json',
+          parcels: [],
+                setupFunction(planService: PlanService) {
+                  this.parcels.forEach(parcel => {
+                      d3.select(parcel.path)
+                        .style('fill', 'transparent')
+                        .style('opacity', (this.active) ? 0.85 : 0.0)
+                        .style('stroke', this.borderColor)
+                        .style('stroke-width', (this.borderWidth+5) + 'px');
+                  });
+                },
+                updateFunction(planService: PlanService) {
+                  this.parcels.forEach(parcel => {
+                        d3.select(parcel.path)
+                          .style('fill', 'transparent')//set to Colors if fill wanted, otherwise transparent
+                          .style('opacity', this.active ? 1 : 0.0)
+                          .style('stroke','#FFFFFF' )//set to borderColors if borders wanted otherwise this.bordercolor
+                          .style('stroke-width', this.borderWidth + 'px');
+                  });
+                },
+        },//end Road layer
     ],
   }
 }
