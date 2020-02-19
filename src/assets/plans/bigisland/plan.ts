@@ -79,7 +79,7 @@ export const BigIslandPlan: Plan = {
         name: 'transmission',
         displayName: 'Transmission Lines',
         active: false,
-        included: true,
+        included: false,
         iconPath: 'assets/plans/bigisland/images/icons/transmission-icon.png',
         secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/transmission.jpg',
         secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
@@ -105,156 +105,7 @@ export const BigIslandPlan: Plan = {
           });
         },
       },
-      {  //Begin Test Layer 1 (2019)
-        name: 'testlayer',  //Internal layer name
-        displayName: 'Test Layer 2019[Rain Gauge Status]',  //Display name (on the table.)
-        active: false,  //Default for active (visible) status
-        included: false,   //Default for inclusion in the layer list
-        iconPath: 'assets/plans/bigisland/images/icons/hourglass.png',  //Icon path for table.
-        secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',    //Background image for second screen, image path.
-        secondScreenText: 'Slide the Layer Puck to add or remove this layer',  //Instructional/information text on second screen.
-        fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
-        borderColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
-        borderWidth: 0.04,  //Border width, default is set here.
-        legendColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
-        filePath: 'assets/plans/bigisland/layers/test2019.json',
-        parcels: [],  //Empty list of parcels, gets populated by setupFunction()
-        setupFunction(planService: PlanService) {
-          this.parcels.forEach(parcel => {
-            d3.select(parcel.path)
-              .style('fill', this.fillColor)
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', this.borderColor)
-              .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-          });
-        },
-        updateFunction(planService: PlanService) {
-
-          let year = planService.getCurrentYear();
-
-          this.parcels.forEach(parcel => 
-          {
-          let layerattribute = parcel.properties.stationsta;
-
-          const colors = {
-            'Discontinued' : '#ff0000',
-            'Current'       : '#00ff00'
-          }
-
-          if(year >= Number(parcel.properties.maxYear + 100) && layerattribute == 'Current')
-          {
-            d3.select(parcel.path)
-            .style('fill', colors[parcel.properties.stationsta])
-            .style('opacity', this.active ? 0.85 : 0.0)
-            .style('stroke', 'black')
-            .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');            
-          }
-          else
-          {
-            d3.select(parcel.path)
-            .style('fill', colors[parcel.properties.stationsta])
-            .style('opacity', this.active ? 0.85 : 0.0)
-            .style('stroke', 'black')
-            .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');   
-          }
-
-          });
-        },
-      },  //End Test Layer 1 (2019)
- //Test Layer 3  Dynamic datalayer using lines -using merged shapefiles
-      {  
-        name: 'testlayer3', 
-        displayName: 'voting precincts 02,06,10,14,16', 
-        active: false,  
-        included: false,   
-        iconPath: 'assets/plans/bigisland/images/icons/hourglass.png',  
-        secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',  
-        secondScreenText: 'Slide the Layer Puck to add or remove this layer',
-        fillColor: mapLayerColors.Test1992.fill,
-        borderColor: mapLayerColors.Test1992.border,
-        borderWidth: 0.04,
-        legendColor: mapLayerColors.Test1992.border,
-        filePath: 'assets/plans/bigisland/layers/voting2.json',
-        parcels: [],
-        setupFunction(planService: PlanService) {
-        
-          this.parcels.forEach(parcel => {
-            d3.select(parcel.path)
-            .style('fill', 'transparent')//set to transparent
-            .style('opacity', this.active ? 0.85 : 0.0)
-            .style('stroke', 'transparent')//change to color if want default layer to be shown, otherwise transparent
-            .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-          });
-        },
-
-        updateFunction(planService: PlanService) {
-          let year = planService.getCurrentYear();
-
-          
-          this.parcels.forEach(parcel => {
-
-            let layerattribute = parcel.properties.layer;//divide based on layer attribute 
-
-            const borderColors = {
-              'Historical_Voting_Precincts__2002': '#33fff3',//look at json file for names
-              'Historical_Voting_Precincts__2006': '#33fff3',
-              'Historical_Voting_Precincts__2010': '#33fff3',
-              'Historical_Voting_Precincts__2014': '#33fff3',
-              'Historical_Voting_Precincts__2016': '#33fff3',
-            }
-
-            if((year <= 2019) && (layerattribute == 'Historical_Voting_Precincts__2002'))
-            {
-            d3.select(parcel.path)
-              .style('fill', 'transparent')//set to Colors if fill wanted, otherwise transparent
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', borderColors[parcel.properties.layer])//set to borderColors if borders wanted otherwise this.bordercolor
-              .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-            }
-            else if((year > 2019) && (year <= 2023) && (layerattribute == 'Historical_Voting_Precincts__2006'))
-            {
-            d3.select(parcel.path)
-              .style('fill', 'transparent')
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', borderColors[parcel.properties.layer])
-              .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-            }
-            else if((year > 2023) && (year <= 2027) && (layerattribute == 'Historical_Voting_Precincts__2010'))
-            {
-            d3.select(parcel.path)
-              .style('fill', 'transparent')
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', borderColors[parcel.properties.layer])
-              .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-            }
-            else if((year > 2027) && (year <= 2031) && (layerattribute == 'Historical_Voting_Precincts__2014'))
-            {
-            d3.select(parcel.path)
-              .style('fill', 'transparent')
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', borderColors[parcel.properties.layer])
-              .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-            }
-            else if((year > 2031) && (layerattribute == 'Historical_Voting_Precincts__2016'))
-            {
-            d3.select(parcel.path)
-              .style('fill', 'transparent')
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', borderColors[parcel.properties.layer])
-              .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-            }
-            else{
-              d3.select(parcel.path)
-                .style('fill', 'transparent')
-                .style('opacity', this.active ? 0.85 : 0.0)
-                .style('stroke', 'transparent')
-                .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-            }
-
-          });
-
-        },
-      },  //End Test Layer 3 (2019)
+    
       {  
         name: 'Elevation',  //Internal layer name
         displayName: 'Elevation Contours 500ft',  //Display name (on the table.)
@@ -630,7 +481,7 @@ export const BigIslandPlan: Plan = {
         name: 'dod',
         displayName: 'Government Lands',
         active: false,
-        included: true,
+        included: false,
         iconPath: 'assets/plans/bigisland/images/icons/dod-icon.png',
         secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
         secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
@@ -666,7 +517,7 @@ export const BigIslandPlan: Plan = {
         name: 'solar', //layer noted to break in firefox
         displayName: 'Solar',
         active: false,
-        included: true,
+        included: false,
         iconPath: 'assets/plans/bigisland/images/icons/solar-icon.png',
         secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
         secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
@@ -717,7 +568,7 @@ export const BigIslandPlan: Plan = {
         name: 'wind',
         displayName: 'Wind Energy',
         active: false,
-        included: true,
+        included: false,
         iconPath: 'assets/plans/bigisland/images/icons/wind-icon.png',
         secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/wind.jpg',
         secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
@@ -767,7 +618,7 @@ export const BigIslandPlan: Plan = {
         name: 'agriculture',
         displayName: 'Ag Lands',
         active: false,
-        included: true,
+        included: false,
         iconPath: 'assets/plans/bigisland/images/icons/agriculture-icon.png',
         secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/agriculture.jpg',
         secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
