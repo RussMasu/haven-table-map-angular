@@ -1,8 +1,8 @@
 .layer-puck-container {
   position: absolute;
-  width: 110px;
+  width: 220px;
   height: 110px;
-  right: 6px;
+  right: -70px;
   top: 5px;
 }
 
@@ -44,10 +44,10 @@
 
 .center-container p {
   position: absolute;
-  top: 8%;
+  top: 130%;
   color: white;
   text-align: center;
-  font-size: 9px;
+  font-size: 15px;
   width: 100%;
 }
 
@@ -105,7 +105,7 @@
     position: absolute;
     text-align: center;
     width: 100%;
-    top: -42%;
-    font-size: 9px;
+    top: -50%;
+    font-size: 16px;
     color: white;
 }
