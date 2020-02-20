@@ -115,8 +115,8 @@ export const BigIslandPlan: Plan = {
         secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',    //Background image for second screen, image path.
         secondScreenText: 'Slide the Layer Puck to add or remove this layer',  //Instructional/information text on second screen.
         fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
-        borderColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
-        borderWidth: 0.04,  //Border width, default is set here.
+        borderColor: 'white', //See defaultColors.ts.
+        borderWidth: 1,  //Border width, default is set here.
         legendColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
         filePath: 'assets/plans/bigisland/layers/Elevation_Ranges.json',
         parcels: [],  //Empty list of parcels, gets populated by setupFunction()
@@ -125,306 +125,21 @@ export const BigIslandPlan: Plan = {
           this.parcels.forEach(parcel => {
             d3.select(parcel.path)
                   .style('fill','transparent')
-                  .style('opacity', this.active ? 0.85 : 0.0)
-                  .style('stroke','white')
+                  .style('opacity', this.active ? 1 : 0.0)
+                  .style('stroke',this.borderColor)
                   .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
           });
         },
         updateFunction(planService: PlanService) {
-
-          let year = planService.getCurrentYear();
-
-          this.parcels.forEach(parcel => 
-          {
-            let high_elev = parcel.properties.highelev;
-            let low_elev = parcel.properties.lowelev;
-  
-            const colours = {  //Colours, constant.  Gradient from blue(low) to red(high)
-              '0-500'       : '#0500fa',  
-              '500-1000'    : '#0e00f0',
-              '1000-1500'   : '#1800e6',
-              '1500-2000'   : '#2100dd',
-              '2000-2500'   : '#2b00d3',
-              '2500-3000'   : '#3400c9',
-              '3000-3500'   : '#3e00c0',
-              '3500-4000'   : '#4800b6',
-              '4000-4500'   : '#5100ad',
-              '4500-5000'   : '#5b00a3',
-              '5000-5500'   : '#640099',
-              '5500-6000'   : '#6e0090',
-              '6000-6500'   : '#770086',
-              '6500-7000'   : '#81007d',
-              '7000-7500'   : '#8b0073',
-              '7500-8000'   : '#940069',
-              '8000-8500'   : '#9e0060',
-              '8500-9000'   : '#a70056',
-              '9000-9500'   : '#b1004c',
-              '9500-10000'  : '#ba0043',
-              '10000-10500' : '#c31438',
-              '10500-11000' : '#cc152e',
-              '11000-11500' : '#ba1341',
-              '11500-12000' : '#c31438',
-              '12000-12500' : '#cc152e',
-              '12500-13000' : '#d51625',
-              '13000-13500' : '#de171c',
-              '13500-14000' : '#e71813',
-              '14000-14500' : '#f1190a'
-            }
-  
-              if(low_elev == 0 && high_elev == 500)  //0-500ft
-              {
-                  d3.select(parcel.path)
-                  .style('fill', 'transparent')//change to ('fill, colors['0-500']) to reenable colors
-                  .style('opacity', this.active ? 0.85 : 0.0)
-                  .style('stroke','white')
-                  .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-         
-              else if(low_elev == 500 && high_elev == 1000)
-              {
+          this.parcels.forEach(parcel => {
                 d3.select(parcel.path)
-                .style('fill', 'transparent')
-                .style('opacity', this.active ? 0.85 : 0.0)
-                .style('stroke', 'white')
-                .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-              
-              else if(low_elev == 1000 && high_elev == 1500)
-              {
-                d3.select(parcel.path)
-                .style('fill', 'transparent')
-                .style('opacity', this.active ? 0.85 : 0.0)
-                .style('stroke', 'white')
-                .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-
-              else if(low_elev == 1500 && high_elev == 2000)
-              {
-                d3.select(parcel.path)
-                .style('fill', 'transparent')
-                .style('opacity', this.active ? 0.85 : 0.0)
-                .style('stroke', 'white')
-                .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-           
-              else if(low_elev == 2000 && high_elev == 2500)
-              {
-                d3.select(parcel.path)
-                .style('fill', 'transparent')
-                .style('opacity', this.active ? 0.85 : 0.0)
-                .style('stroke', 'white')
-                .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-    
-              else if(low_elev == 2500 && high_elev == 3000)
-              {
-                d3.select(parcel.path)
-                .style('fill', 'transparent')
-                .style('opacity', this.active ? 0.85 : 0.0)
-                .style('stroke', 'white')
-                .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-         
-              else if(low_elev == 3000 && high_elev == 3500)
-              {
-                d3.select(parcel.path)
-                .style('fill', 'transparent')
-                .style('opacity', this.active ? 0.85 : 0.0)
-                .style('stroke', 'white')
-                .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-
-              else if(low_elev == 3500 && high_elev == 4000)
-              {
-                d3.select(parcel.path)
-                .style('fill', 'transparent')
-                .style('opacity', this.active ? 0.85 : 0.0)
-                .style('stroke', 'white')
-                .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-       
-              else if(low_elev == 4000 && high_elev == 4500)
-              {
-                d3.select(parcel.path)
-                .style('fill', 'transparent')
-                .style('opacity', this.active ? 0.85 : 0.0)
-                .style('stroke', 'white')
-                .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-       
-              else if(low_elev == 4500 && high_elev == 5000)
-              {
-              d3.select(parcel.path)
-              .style('fill', 'transparent')
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', 'white')
-              .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-         
-              else if(low_elev == 5000 && high_elev == 5500)
-              {
-                d3.select(parcel.path)
-                .style('fill', 'transparent')
-                .style('opacity', this.active ? 0.85 : 0.0)
-                .style('stroke', 'white')
-                .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-        
-              else if(low_elev == 5500 && high_elev == 6000)
-              {
-                d3.select(parcel.path)
-                .style('fill', 'transparent')
-                .style('opacity', this.active ? 0.85 : 0.0)
-                .style('stroke', 'white')
-                .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-    
-              else if(low_elev == 6000 && high_elev == 6500)
-              {
-                d3.select(parcel.path)
-                .style('fill', 'transparent')
-                .style('opacity', this.active ? 0.85 : 0.0)
-                .style('stroke', 'white')
-                .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-           
-              else if(low_elev == 6500 && high_elev == 7000)
-              {
-              d3.select(parcel.path)
-              .style('fill', 'transparent')
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', 'white')
-              .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-          
-              else if(low_elev == 7000 && high_elev == 7500)
-              {
-                d3.select(parcel.path)
-                .style('fill', 'transparent')
-                .style('opacity', this.active ? 0.85 : 0.0)
-                .style('stroke', 'white')
-                .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-          
-              else if(low_elev == 7500 && high_elev == 8000)
-              {
-                d3.select(parcel.path)
-                .style('fill', 'transparent')
-                .style('opacity', this.active ? 0.85 : 0.0)
-                .style('stroke', 'white')
-                .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-          
-              else if(low_elev == 8000 && high_elev == 8500)
-              {
-                d3.select(parcel.path)
-                .style('fill', 'transparent')
-                .style('opacity', this.active ? 0.85 : 0.0)
-                .style('stroke', 'white')
-                .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-          
-              else if(low_elev == 8500 && high_elev == 9000)
-              {
-                d3.select(parcel.path)
-                .style('fill', 'transparent')
-                .style('opacity', this.active ? 0.85 : 0.0)
-                .style('stroke', 'white')
-                .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-   
-              else if(low_elev == 9000 && high_elev == 9500)
-              {
-                d3.select(parcel.path)
-                .style('fill', 'transparent')
-                .style('opacity', this.active ? 0.85 : 0.0)
-                .style('stroke', 'white')
-                .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-        
-              else if(low_elev == 9500 && high_elev == 10000)
-              {
-              d3.select(parcel.path)
-              .style('fill', 'transparent')
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', 'white')
-              .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-          
-              else if(low_elev == 10000 && high_elev == 10500)
-              {
-              d3.select(parcel.path)
-              .style('fill', 'transparent')
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', 'white')
-              .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-          
-              else if(low_elev == 10500 && high_elev == 11000)
-              {
-              d3.select(parcel.path)
-              .style('fill', 'transparent')
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', 'white')
-              .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-        
-              else if(low_elev == 11000 && high_elev == 11500)
-              {
-              d3.select(parcel.path)
-              .style('fill', 'transparent')
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', 'white')
-              .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-           
-              else if(low_elev == 11500 && high_elev == 12000)
-              {
-              d3.select(parcel.path)
-              .style('fill', 'transparent')
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', 'white')
-              .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-            
-              else if(low_elev == 12000 && high_elev == 12500)
-              {
-              d3.select(parcel.path)
-              .style('fill', 'transparent')
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', 'white')
-              .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-           
-              else if(low_elev == 12500 && high_elev == 13000)
-              {
-              d3.select(parcel.path)
-              .style('fill', 'transparent')
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', 'white')
-              .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-          
-              else if(low_elev == 13000 && high_elev == 13500)
-              {
-              d3.select(parcel.path)
-              .style('fill', 'transparent')
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', 'white')
-              .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }
-        
-              else if(low_elev == 13500 && high_elev == 14000)
-              {
-              d3.select(parcel.path)
-              .style('fill','transparent')
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', 'white')
-              .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              }//
+                  .style('fill', 'transparent')//set to Colors if fill wanted, otherwise transparent
+                  .style('opacity', this.active ? 1 : 0.0)
+                  .style('stroke',this.borderColor)//set to borderColors if borders wanted otherwise this.bordercolor
+                  .style('stroke-width', this.borderWidth + 'px');
           });
         },
-      },
+      },//end elevation layer
       {
         name: 'streams', //start stream layer
         displayName: 'Streams',
@@ -477,219 +192,8 @@ export const BigIslandPlan: Plan = {
           });
         },
       },//end stream layer
-      {
-        name: 'dod',
-        displayName: 'Government Lands',
-        active: false,
-        included: false,
-        iconPath: 'assets/plans/bigisland/images/icons/dod-icon.png',
-        secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
-        secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
-        fillColor: mapLayerColors.Dod.fill,
-        borderColor: mapLayerColors.Dod.border,
-        borderWidth: 1,
-        legendColor: mapLayerColors.Dod.fill,
-        filePath: 'assets/plans/bigisland/layers/government.json',
-        parcels: [],
-        setupFunction(planService: PlanService) {
-          const colors = {
-            'Public-Federal': '#e60000',
-            'Public-State': '#ff7f7f',
-            'Public-State DHHL': '#895a44',
-            'Public-County': '#00c5ff',
-          }
-          this.parcels.forEach(parcel => {
-            d3.select(parcel.path)
-              .style('fill', colors[parcel.properties.type])
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', this.borderColor)
-              .style('stroke-width', this.borderWidth + 'px');
-          });
-        },
-        updateFunction(planService: PlanService) {
-          this.parcels.forEach(parcel => {
-            d3.select(parcel.path)
-              .style('opacity', this.active ? 0.85 : 0.0);
-          });
-        },
-      },
-      {
-        name: 'solar', //layer noted to break in firefox
-        displayName: 'Solar',
-        active: false,
-        included: false,
-        iconPath: 'assets/plans/bigisland/images/icons/solar-icon.png',
-        secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
-        secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
-        fillColor: mapLayerColors.Solar.fill,
-        borderColor: mapLayerColors.Solar.border,
-        borderWidth: 0.5,
-        legendColor: mapLayerColors.Solar.fill,
-        filePath: 'assets/plans/bigisland/layers/solar.json',
-        parcels: [],
-        setupFunction(planService: PlanService) {
-          let solarTotal = planService.getGenerationTotalForCurrentYear(['PV']);
-          this.parcels.sort((a, b) => parseFloat(b.properties.cf_1) - parseFloat(a.properties.cf_1));
-          this.parcels.forEach(parcel => {
-            if (solarTotal > 0) {
-              d3.select(parcel.path)
-                .style('fill', this.fillColor)
-                .style('opacity', (this.active) ? 0.85 : 0.0)
-                .style('stroke', this.borderColor)
-                .style('stroke-width', this.borderWidth + 'px');
-              solarTotal -= (parcel.properties.cf_1 * parcel.properties.capacity * 8760);
-            } else {
-              d3.select(parcel.path)
-                .style('fill', 'transparent')
-                .style('opacity', (this.active) ? 0.85 : 0.0)
-                .style('stroke', this.borderColor)
-                .style('stroke-width', this.borderWidth + 'px');
-            }
-          });
-        },
-        updateFunction(planService: PlanService) {
-          let solarTotal = planService.getGenerationTotalForCurrentYear(['PV']);
-          console.log(solarTotal);
-          this.parcels.forEach(parcel => {
-            if (solarTotal > 0) {
-              d3.select(parcel.path)
-                .style('fill', this.fillColor)
-                .style('opacity', (this.active) ? 0.85 : 0.0);
-              solarTotal -= (parcel.properties.cf_1 * parcel.properties.capacity * 8760);
-            } else {
-              d3.select(parcel.path)
-                .style('fill', 'transparent')
-                .style('opacity', (this.active) ? 0.85 : 0.0);
-            }
-          });
-        },
-      },
-      {
-        name: 'wind',
-        displayName: 'Wind Energy',
-        active: false,
-        included: false,
-        iconPath: 'assets/plans/bigisland/images/icons/wind-icon.png',
-        secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/wind.jpg',
-        secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
-        fillColor: mapLayerColors.Wind.fill,
-        borderColor: mapLayerColors.Wind.border,
-        borderWidth: 0.1,//.05
-        legendColor: mapLayerColors.Wind.fill,
-        filePath: 'assets/plans/bigisland/layers/wind.json',
-        parcels: [],
-        setupFunction(planService: PlanService) {
-          let windTotal = planService.getCapacityTotalForCurrentYear(['Wind']);
-          this.parcels.sort((a, b) => parseFloat(b.properties.MWac) - parseFloat(a.properties.MWac));
-          this.parcels.forEach(parcel => {
-            if (windTotal > 0) {
-              d3.select(parcel.path)
-                .style('fill', this.fillColor)
-                .style('opacity', (this.active) ? 0.85 : 0.0)
-                .style('stroke', this.borderColor)
-                .style('stroke-width', this.borderWidth + 'px');
-              windTotal -= (parcel.properties.MWac * 0.2283 * 8760);
-            } else {
-              d3.select(parcel.path)
-                .style('fill', 'transparent')
-                .style('opacity', (this.active) ? 0.85 : 0.0)
-                .style('stroke', this.borderColor)
-                .style('stroke-width', this.borderWidth + 'px');
-            }
-          });
-        },
-        updateFunction(planService: PlanService) {
-          let windTotal = planService.getGenerationTotalForCurrentYear(['Wind']);
-          this.parcels.forEach(parcel => {
-            if (windTotal > 0) {
-              d3.select(parcel.path)
-                .style('fill', this.fillColor)
-                .style('opacity', (this.active) ? 0.85 : 0.0);
-              windTotal -= (parcel.properties.MWac * 0.2283 * 8760);
-            } else {
-              d3.select(parcel.path)
-                .style('fill', 'transparent')
-                .style('opacity', (this.active) ? 0.85 : 0.0);
-            }
-          });
-        },
-      },
-      {
-        name: 'agriculture',
-        displayName: 'Ag Lands',
-        active: false,
-        included: false,
-        iconPath: 'assets/plans/bigisland/images/icons/agriculture-icon.png',
-        secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/agriculture.jpg',
-        secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
-        fillColor: mapLayerColors.Agriculture.fill,
-        borderColor: mapLayerColors.Agriculture.border,
-        borderWidth: 1,
-        legendColor: mapLayerColors.Agriculture.fill,
-        filePath: 'assets/plans/bigisland/layers/agriculture.json',
-        parcels: [],
-        setupFunction(planService: PlanService) {
-          const colors = {
-            A: '#267300' + 'aa',
-            B: '#4ce600' + 'aa',
-            C: '#ffaa00' + 'aa',
-            D: '#a87000' + 'aa',
-            E: '#895a44' + 'aa',
-          }
-          this.parcels.forEach(parcel => {
-            d3.select(parcel.path)
-              .style('fill', colors[parcel.properties.type])
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', this.borderColor)
-              .style('stroke-width', this.borderWidth + 'px');
-          });
-        },
-        updateFunction(planService: PlanService) {
-          this.parcels.forEach(parcel => {
-            d3.select(parcel.path)
-              .style('opacity', this.active ? 0.85 : 0.0);
-          });
-        },
-      },
-      {//start placeholder layer
-        name: 'Moisture Zones',
-        displayName: 'Moisture Zones',
-        active: false,
-        included: false,
-        iconPath: 'assets/plans/bigisland/images/icons/dod-icon.png',
-        secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
-        secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
-        fillColor: mapLayerColors.Dod.fill,
-        borderColor: mapLayerColors.Dod.border,
-        borderWidth: 1,
-        legendColor: mapLayerColors.Dod.fill,
-        filePath: 'assets/plans/bigisland/layers/moisture.json',
-        parcels: [],
-        setupFunction(planService: PlanService) {
-          const colors = {
-            '1': '#e60000',
-            '2': '#ff7f7f',
-            '3': '#895a44',
-            '4': '#00c5ff',
-            '5': '#037ffc',
-            '6': '#031cfc',
-            '7': '#1302d1',
-          }
-          this.parcels.forEach(parcel => {
-            d3.select(parcel.path)
-              .style('fill', colors[parcel.properties.zone])//change from type to attribute name
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', this.borderColor)
-              .style('stroke-width', this.borderWidth + 'px');
-          });
-        },
-        updateFunction(planService: PlanService) {
-          this.parcels.forEach(parcel => {
-            d3.select(parcel.path)
-              .style('opacity', this.active ? 0.85 : 0.0);
-          });
-        },
-      },//end placeholder layer
+      
+
             {//Start FIRE LAYER
               //It sounds cool.
               name: 'firerisk',
@@ -785,7 +289,7 @@ export const BigIslandPlan: Plan = {
                  
                   d3.select(parcel.path)
                     .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.45 : 0.0)//controls opacity of layer
+                    .style('opacity', this.active ? 0.85 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
                   
@@ -804,8 +308,8 @@ export const BigIslandPlan: Plan = {
           secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
           secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
           fillColor: mapLayerColors.Dod.fill,
-          borderColor: mapLayerColors.Dod.border,
-          borderWidth: 1,
+          borderColor: '#FFFFFF',
+          borderWidth: 2,
           legendColor: mapLayerColors.Dod.fill,
           filePath: 'assets/plans/bigisland/layers/Volcano_Lava_Flow_Hazard_Zones.json',
           parcels: [],
@@ -813,20 +317,141 @@ export const BigIslandPlan: Plan = {
                   this.parcels.forEach(parcel => {
                       d3.select(parcel.path)
                         .style('fill', 'transparent')
-                        .style('opacity', (this.active) ? 0.85 : 0.0)
+                        .style('opacity', (this.active) ? 0.45 : 0.0)
                         .style('stroke', this.borderColor)
-                        .style('stroke-width', (this.borderWidth+2) + 'px');
+                        .style('stroke-width', (this.borderWidth) + 'px');
                   });
                 },
                 updateFunction(planService: PlanService) {
                   this.parcels.forEach(parcel => {
-                    let layerattribute = parcel.properties.type;//divide based on layer attribute 
+                    let vhzone = parcel.properties.vhzones_id;//divide based on layer attribute 
 
-                        d3.select(parcel.path)
-                          .style('fill', 'transparent')//set to Colors if fill wanted, otherwise transparent
-                          .style('opacity', this.active ? 0.85 : 0.0)
-                          .style('stroke','#FF0000' )//set to borderColors if borders wanted otherwise this.bordercolor
-                          .style('stroke-width', (this.borderWidth+ 2)  + 'px');
+                        if(vhzone == 1){
+                          d3.select(parcel.path)
+                            .style('fill', '#FFFFFF')//set to Colors if fill wanted, otherwise transparent
+                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
+                            .style('stroke-width', (this.borderWidth)  + 'px');
+                        }
+                        if(vhzone == 2){
+                          d3.select(parcel.path)
+                            .style('fill', '#B6F2B3')//set to Colors if fill wanted, otherwise transparent
+                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
+                            .style('stroke-width', (this.borderWidth)  + 'px');
+                        }
+                        if(vhzone == 3){
+                          d3.select(parcel.path)
+                            .style('fill', '#30EC26')//set to Colors if fill wanted, otherwise transparent
+                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
+                            .style('stroke-width', (this.borderWidth)  + 'px');
+                        }
+                        if(vhzone == 4){
+                          d3.select(parcel.path)
+                            .style('fill', '#FFC300')//set to Colors if fill wanted, otherwise transparent
+                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
+                            .style('stroke-width', (this.borderWidth)  + 'px');
+                        }
+                        if(vhzone == 5){
+                          d3.select(parcel.path)
+                            .style('fill', '#F7BDA9')//set to Colors if fill wanted, otherwise transparent
+                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
+                            .style('stroke-width', (this.borderWidth)  + 'px');
+                        }
+                        if(vhzone == 6){
+                          d3.select(parcel.path)
+                            .style('fill', '#F56D3E')//set to Colors if fill wanted, otherwise transparent
+                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
+                            .style('stroke-width', (this.borderWidth)  + 'px');
+                        }
+                        if(vhzone == 7){
+                          d3.select(parcel.path)
+                            .style('fill', '#F7BDA9')//light pink
+                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
+                            .style('stroke-width', (this.borderWidth)  + 'px');
+                        }
+                        if(vhzone == 8){
+                          d3.select(parcel.path)
+                            .style('fill', '#F7BDA9')//light pink
+                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
+                            .style('stroke-width', (this.borderWidth)  + 'px');
+                        }
+                        if(vhzone == 9){
+                          d3.select(parcel.path)
+                            .style('fill', '#F56D3E')//salmon
+                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('stroke',this.borderColor )
+                            .style('stroke-width', (this.borderWidth)  + 'px');
+                        }
+                        if(vhzone == 10){
+                          d3.select(parcel.path)
+                            .style('fill', '#FF0000')//red
+                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('stroke',this.borderColor )
+                            .style('stroke-width', (this.borderWidth)  + 'px');
+                        }
+                        if(vhzone == 11){
+                          d3.select(parcel.path)
+                            .style('fill', '#F5FF7F')//light yellow
+                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('stroke',this.borderColor )
+                            .style('stroke-width', (this.borderWidth)  + 'px');
+                        }
+                        if(vhzone == 12){
+                          d3.select(parcel.path)
+                            .style('fill', '#F56D3E')//salmon
+                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('stroke',this.borderColor )
+                            .style('stroke-width', (this.borderWidth)  + 'px');
+                        }
+                        if(vhzone == 13){
+                          d3.select(parcel.path)
+                            .style('fill', '#FF0000')//red
+                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('stroke',this.borderColor )
+                            .style('stroke-width', (this.borderWidth)  + 'px');
+                        }
+                        if(vhzone == 14){
+                          d3.select(parcel.path)
+                            .style('fill', '#F56D3E')//salmon
+                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('stroke',this.borderColor )
+                            .style('stroke-width', (this.borderWidth)  + 'px');
+                        }
+                        if(vhzone == 15){
+                          d3.select(parcel.path)
+                            .style('fill', '#E8FA0C')//yellow
+                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('stroke',this.borderColor )
+                            .style('stroke-width', (this.borderWidth)  + 'px');
+                        }
+                        if(vhzone == 16){
+                          d3.select(parcel.path)
+                            .style('fill', '#F7BDA9')//light pink
+                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
+                            .style('stroke-width', (this.borderWidth)  + 'px');
+                        }
+                        if(vhzone == 17){
+                          d3.select(parcel.path)
+                            .style('fill', '#F7BDA9')//light pink
+                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
+                            .style('stroke-width', (this.borderWidth)  + 'px');
+                        }
+                        if(vhzone == 18){
+                          d3.select(parcel.path)
+                            .style('fill', '#F5FF7F')//light yellow
+                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('stroke',this.borderColor )
+                            .style('stroke-width', (this.borderWidth)  + 'px');
+                        }
                   });
                 },
         },//end volcano layer
@@ -841,7 +466,7 @@ export const BigIslandPlan: Plan = {
           secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
           secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
           fillColor: mapLayerColors.Dod.fill,
-          borderColor: mapLayerColors.Dod.border,
+          borderColor: '#B53CFF',
           borderWidth: 1,
           legendColor: mapLayerColors.Dod.fill,
           filePath: 'assets/plans/bigisland/layers/Major_Roads__Hawaii_County.json',
@@ -862,7 +487,7 @@ export const BigIslandPlan: Plan = {
                         d3.select(parcel.path)
                           .style('fill', 'transparent')//set to Colors if fill wanted, otherwise transparent
                           .style('opacity', this.active ? 1 : 0.0)
-                          .style('stroke','#FFFFFF' )//set to borderColors if borders wanted otherwise this.bordercolor
+                          .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                           .style('stroke-width', (this.borderWidth+5) + 'px');
                   });
                 },
@@ -888,7 +513,7 @@ export const BigIslandPlan: Plan = {
                         .style('fill', 'transparent')
                         .style('opacity', (this.active) ? 0.85 : 0.0)
                         .style('stroke', this.borderColor)
-                        .style('stroke-width', (this.borderWidth+2) + 'px');
+                        .style('stroke-width', (this.borderWidth) + 'px');
                   }); 
                 },
                 updateFunction(planService: PlanService) {
@@ -898,7 +523,7 @@ export const BigIslandPlan: Plan = {
                           .style('fill', '#e63900')//set to Colors if fill wanted, otherwise transparent
                           .style('opacity', this.active ? 0.85 : 0.0)
                           .style('stroke','white' )//set to borderColors if borders wanted otherwise this.bordercolor
-                          .style('stroke-width', (this.borderWidth+ 2)  + 'px');
+                          .style('stroke-width', (this.borderWidth)  + 'px');
                   });
                 },
 
@@ -914,8 +539,8 @@ export const BigIslandPlan: Plan = {
           secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
           secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
           fillColor: mapLayerColors.Dod.fill,
-          borderColor: mapLayerColors.Dod.border,
-          borderWidth: 1,
+          borderColor: '#F79F19',
+          borderWidth: 3,
           legendColor: mapLayerColors.Dod.fill,
           filePath: 'assets/plans/bigisland/layers/Na_Ala_Hele_Trails.json',
 
@@ -927,7 +552,7 @@ export const BigIslandPlan: Plan = {
                         .style('opacity', (this.active) ? 0.85 : 0.0)
                         .style('stroke', this.borderColor)
 
-                        .style('stroke-width', (this.borderWidth+5) + 'px');
+                        .style('stroke-width', (this.borderWidth) + 'px');
                   });
                 },
                 updateFunction(planService: PlanService) {
@@ -935,7 +560,7 @@ export const BigIslandPlan: Plan = {
                         d3.select(parcel.path)
                           .style('fill', 'transparent')//set to Colors if fill wanted, otherwise transparent
                           .style('opacity', this.active ? 1 : 0.0)
-                          .style('stroke','#FFFFFF' )//set to borderColors if borders wanted otherwise this.bordercolor
+                          .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                           .style('stroke-width', this.borderWidth + 'px');
                   });
                 }, 
@@ -945,7 +570,7 @@ export const BigIslandPlan: Plan = {
           name: 'elevation100ft',
           displayName: 'Elevation Contours 100ft',
           active: false,
-          included: true,
+          included: false,
           iconPath: 'assets/plans/bigisland/images/icons/elevation-icon.png',
           secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
           secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
@@ -953,7 +578,7 @@ export const BigIslandPlan: Plan = {
           borderColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
           borderWidth: 0.04,  //Border width, default is set here.
           legendColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
-          filePath: 'assets/plans/bigisland/layers/Hawaii_Elevation_Contours_100ft.json',
+          filePath: 'assets/plans/bigisland/layers/elevation100.json',
           parcels: [],
                 setupFunction(planService: PlanService) {
                   this.parcels.forEach(parcel => {
