@@ -1,7 +1,7 @@
 .add-puck-wrapper {
     color: white;
     font-size: 9px;
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 
 .icon {
@@ -20,11 +20,12 @@
 
 .text {
     color: white;
-    font-size: 10px;
-    width: 100%;
+    font-size: 15px;
+    left: -60px;
+    width: 200%;
     text-align: center;
     position: absolute;
-    bottom: -10px;
+    bottom: -60px;
 }
 
 .title {
