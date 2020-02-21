@@ -19,10 +19,10 @@ import { Plan } from '@app/interfaces';
  */
 export class SecondScreenComponent implements OnInit {
 
-  private currentYear: number;  //Holds current year.
-  private displayName: string;  //Holds display name for that plan.
-  private secondScreenImagePath: string;   //File path to an image to use as a background.
-  private nextLayer: string;  //
+  private currentYear: number;  
+  private displayName: string;  
+  private secondScreenImagePath: string;   
+  private nextLayer: string;  
   private plan: Plan;
   private mapLayers: {text: string, color: string, active: boolean}[] = [];
 

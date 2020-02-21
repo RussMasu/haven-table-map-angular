@@ -1,11 +1,6 @@
 <div class="second-screen-container" [style.backgroundColor]="plan ? 'transparent' : 'black'">
-  <div *ngIf="plan; else elseBlock">
+  <div *ngIf="plan; else elseBlock"></div> <!--  Breaks the main menu if you remove this line. -->
     <img class="background-image" src="{{ plan.secondScreenImagePath }}" />
-    <div *ngFor="let layer of plan.map.mapLayers" class="left-card" [style.opacity]="layer.name === nextLayer ? 1 : 0">
-      <h2>{{ layer.displayName }}</h2>
-      <img src="{{ layer.secondScreenImagePath }}" />
-      <p>{{ layer.secondScreenText }}</p>
-    </div>
   </div>
 
   <!-- loader called until plan is set-->
