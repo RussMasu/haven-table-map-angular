@@ -32,14 +32,7 @@ export class SecondScreenComponent implements OnInit {
 
   ngOnInit() {
     this.multiWindowService.onMessage().subscribe((value: Message) => {
-      const data = JSON.parse(value.data);
-      if (data.type === 'setup') {
-        this.setupSecondScreen(data);
-      } else if (data.type === 'year') {
-        this.currentYear = data.year;
-      } else if (data.type === 'layer') {
-        this.nextLayer = data.name;
-      }
+        //TODO: Add what to do on initialization here.
     });
   }
 
