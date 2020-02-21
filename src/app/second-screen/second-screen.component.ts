@@ -63,7 +63,7 @@ export class SecondScreenComponent implements OnInit {
         this.plan = BigIslandPlan;
         break;
       default:
-        this.plan = OahuPlan;
+        this.plan = BigIslandPlan;
         break;
     }
     this.nextLayer = this.plan.map.mapLayers[0].name;
