@@ -2,7 +2,8 @@
   <div *ngIf="plan; else elseBlock"></div> <!--  Breaks the main menu if you remove this line. -->
     <img class="background-image" src="{{ plan.secondScreenImagePath }}" />
   </div>
-
+  
+<div>
   <!-- loader called until plan is set-->
   <ng-template #elseBlock>
     <div class="loading">
