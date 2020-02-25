@@ -1,10 +1,10 @@
 <div class="second-screen-container" [style.backgroundColor]="plan ? 'transparent' : 'black'">
-  <div *ngIf="plan; else elseBlock"></div> <!--  Breaks the main menu if you remove this line. -->
-    <img class="background-image" src="{{ plan.secondScreenImagePath }}" />
-  </div>
-  
+  <div *ngIf="plan; else elseBlock">  <!-- Evauluates to true if a plane exists, otherwise it'll show a loading screen.-->
+    <img class="background-image" src="{{ plan.secondScreenImagePath }}" alt="Background Image"/>  
+</div>
+
 <div>
-  <!-- loader called until plan is set-->
+  <!-- Else block; shows a loading screen.-->
   <ng-template #elseBlock>
     <div class="loading">
       <div class="lds-facebook">
