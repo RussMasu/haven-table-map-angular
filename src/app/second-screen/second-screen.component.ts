@@ -56,8 +56,16 @@ export class SecondScreenComponent implements OnInit {
     clearDiv();
   }
 
-
-  public secondScreenUpdate(){
+  /**
+   * Clears the second monitor
+   * and loads appropiate HTML data using the 
+   * most recently activated layer's internal name as an ID.
+   * 
+   * For the record, the variable we're taking from the mapLayer
+   * plan.ts is the mapyLayer's (name) variable.  
+  * @param layerName
+  */
+  public secondScreenUpdate(layerName:string){
     //TODO: Flesh out idea.
 
     //The idea is to run this check every time a layer's active variable changes from 
@@ -67,10 +75,19 @@ export class SecondScreenComponent implements OnInit {
     //Clear the screen.
     clearDiv();
 
-    //Test forEach loop. Testing syntax, mainly.  
-    this.plan.map.mapLayers.forEach(planLayer=> {
-      console.log(planLayer.active);
-    });
+    //Updates htmlFilePath variable and takes care of loading data onto the second monitor.
+    switch(layerName)
+    {
+      case 'elevation':
+        this.htmlFilePath="Placeholder.html";  
+        console.log("Loading elevation data for second monitor...");
+        break;
+    }
+
+    // //Test forEach loop. Testing syntax, mainly.  
+    // this.plan.map.mapLayers.forEach(planLayer=> {
+    //   console.log(planLayer.active);
+    // });
 
 
 

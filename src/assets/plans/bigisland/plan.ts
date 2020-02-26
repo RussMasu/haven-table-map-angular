@@ -113,7 +113,7 @@ export const BigIslandPlan: Plan = {
       },
     
       {  
-        name: 'Elevation',  //Internal layer name
+        name: 'elevation',  //Internal layer name
         displayName: 'Elevation Contours 500ft',  //Display name (on the table.)
         active: false,  //Default for active (visible) status
         included: true,   //Default for inclusion in the layer list
@@ -197,11 +197,8 @@ export const BigIslandPlan: Plan = {
 
           });
         },
-      },//end stream layer
-      
-
-            {//Start FIRE LAYER
-              //It sounds cool.
+      },
+            {
               name: 'firerisk',
               displayName: 'Fire Risk Zones',
               active: false,
@@ -268,7 +265,7 @@ export const BigIslandPlan: Plan = {
             },//end fire layer
 
             {//start Palila layer
-              name: 'Palila Critical Habitat', //display name
+              name: 'pailia', //display name
               displayName: 'Palila Critical Habitat',//display name
               active: false,
               included: true,//enable-disable layer
@@ -571,8 +568,7 @@ export const BigIslandPlan: Plan = {
                   });
                 }, 
         },
-        {//Elevation
-          //It sounds cool.
+        {
           name: 'elevation100ft',
           displayName: 'Elevation Contours 100ft',
           active: false,
