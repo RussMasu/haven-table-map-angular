@@ -65,7 +65,7 @@ export class SecondScreenComponent implements OnInit {
    * plan.ts is the mapyLayer's (name) variable.  
   * @param layerName
   */
-  public secondScreenUpdate(layerName:string){
+  public secondScreenUpdate(layerName: string){
     //TODO: Flesh out idea.
 
     //The idea is to run this check every time a layer's active variable changes from 
