@@ -3,6 +3,7 @@ import { mapLayerColors, chartColors } from '../defaultColors';
 import { PlanService } from '@app/services/plan.service';
 import * as d3 from 'd3';
 import { ParseSourceFile } from '@angular/compiler';
+import { SecondScreenComponent } from '@app/second-screen/second-screen.component';
 
 export const BigIslandPlan: Plan = {
   name: 'bigisland',
@@ -99,6 +100,11 @@ export const BigIslandPlan: Plan = {
           });
         },
         updateFunction(planService: PlanService) {
+          //TODO: Potentially add to every mapLayer in the list.
+          //We want to let  the second screen know we've activated a later by 
+          //throwing the name of the layer at it.
+          //SecondScreenComponent.
+
           this.parcels.forEach(parcel => {
             d3.select(parcel.path)
               .style('opacity', this.active ? 0.85 : 0.0);
