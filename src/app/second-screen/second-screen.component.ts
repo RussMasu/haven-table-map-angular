@@ -57,7 +57,7 @@ export class SecondScreenComponent implements OnInit {
   }
 
 
-  public secondScreenDisplay(){
+  public secondScreenUpdate(){
     //TODO: Flesh out idea.
 
     //The idea is to run this check every time a layer's active variable changes from 
