@@ -19,9 +19,8 @@ export class SecondScreenComponent implements OnInit {
   private secondScreenImagePath: string;   
   private plan: Plan;
 
-
   /**
-   * 
+   * Creates a multiWindowService object, name parameter is set to 'secondScreen'.
    * @param multiWindowService 
    */
   constructor(private multiWindowService: MultiWindowService) {
