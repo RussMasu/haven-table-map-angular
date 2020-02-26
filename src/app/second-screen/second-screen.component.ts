@@ -71,7 +71,6 @@ export class SecondScreenComponent implements OnInit {
     //The idea is to run this check every time a layer's active variable changes from 
     //false to true. 
 
-    //Grab the name of the recently activated layer, load appropiate data onto second monitor.
     //Clear the screen.
     clearDiv();
 
@@ -81,6 +80,7 @@ export class SecondScreenComponent implements OnInit {
       case 'elevation':
         this.htmlFilePath="Placeholder.html";  
         console.log("Loading elevation data for second monitor...");
+        //Insert HTML loading code/function here.
         break;
     }
 

@@ -103,7 +103,9 @@ export const BigIslandPlan: Plan = {
           //TODO: Potentially add to every mapLayer in the list.
           //We want to let  the second screen know we've activated a later by 
           //throwing the name of the layer at it.
-          //SecondScreenComponent.
+
+          //TODO: Code below needs a service to be implemented. 
+          //SecondScreenComponent.secondScreenUpdate('transmission');
 
           this.parcels.forEach(parcel => {
             d3.select(parcel.path)
