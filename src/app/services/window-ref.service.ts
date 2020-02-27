@@ -112,7 +112,7 @@ export class WindowRefService {
         }
       },
       () => {
-        //console.log('Message successfully delivered');
+        console.log('Message successfully delivered');
       });
   }
 

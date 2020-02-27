@@ -15,7 +15,6 @@ declare function clearDiv(): any;  //From secondScreen.js.
  * on this page because the main application cannot communicate with it in the same way that it
  * communicates with other components.
  */
-
 export class SecondScreenComponent implements OnInit {
   private secondScreenImagePath: string;   
   private plan: Plan;

@@ -1,6 +1,7 @@
 import { Plan } from '@app/interfaces';
 import { mapLayerColors, chartColors } from '../defaultColors';
 import { PlanService } from '@app/services/plan.service';
+import { WindowRefService } from '@app/services/window-ref.service'
 import * as d3 from 'd3';
 import { ParseSourceFile } from '@angular/compiler';
 import { SecondScreenComponent } from '@app/second-screen/second-screen.component';
@@ -100,12 +101,12 @@ export const BigIslandPlan: Plan = {
           });
         },
         updateFunction(planService: PlanService) {
-          //TODO: Potentially add to every mapLayer in the list.
-          //We want to let  the second screen know we've activated a later by 
-          //throwing the name of the layer at it.
+          //TODO: Test this and make sure it works.
+          if (this.secondScreenExists())
+          {
+            this.notifySecondScreen('transmission');
+          }
 
-          //TODO: Code below needs a service to be implemented. 
-          //SecondScreenComponent.secondScreenUpdate('transmission');
 
           this.parcels.forEach(parcel => {
             d3.select(parcel.path)
