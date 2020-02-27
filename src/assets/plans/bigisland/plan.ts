@@ -101,13 +101,6 @@ export const BigIslandPlan: Plan = {
           });
         },
         updateFunction(planService: PlanService) {
-          //TODO: Test this and make sure it works.
-          if (this.secondScreenExists())
-          {
-            this.notifySecondScreen('transmission');
-          }
-
-
           this.parcels.forEach(parcel => {
             d3.select(parcel.path)
               .style('opacity', this.active ? 0.85 : 0.0);
@@ -163,7 +156,15 @@ export const BigIslandPlan: Plan = {
         legendColor: mapLayerColors.Solar.fill,
         filePath: 'assets/plans/bigisland/layers/streams.json',
         parcels: [],
+
         setupFunction(planService: PlanService) {
+          console.log(this.secondScreenExists())
+          
+          if (this.secondScreenExists())
+          {
+            this.notifySecondScreen('transmission');
+          }
+
           this.parcels.forEach(parcel => {
               d3.select(parcel.path)
                 .style('fill', 'transparent')
