@@ -8,13 +8,16 @@
     <div class="legend-card-left">
       <img src="{{ layer.iconPath }}" />
     </div>
+    <!-- disabled legend card right
     <div class="legend-card-right" [ngStyle]="getStyle(layer.active)"
-      [style.background-color]="getBackgroundColor(layer) + '77'"
+     [style.background-color]="getBackgroundColor(layer) + '77'""
       [style.border]="layer.active ? '2px solid WHITE' : '2px solid black'" id="legend-card-right-{{layer.name}}"
       appLegend>
       <p></p>
     </div>
-    <div class="legend-card-text">
+    -->
+    <div class="legend-card-text"
+      [style.color]="(layer.active) ? 'limegreen' : 'white'">
       <p>{{ layer.displayName }}</p>
     </div>
   </div>
