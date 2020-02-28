@@ -199,7 +199,7 @@ export class ArService {
     // The offsets are the x and y adjustments to the tracking that allow for more precise tracking.
     this.xOffset = defaultTrackingPoints.offsets.xOffset;
     this.yOffset = defaultTrackingPoints.offsets.yOffset;
-    this.xOffset2 = defaultTrackingPoints.offsets.xOffset2;
+    this.xOffset2 = defaultTrackingPoints.offsets.xOffset2+240;
     this.yOffset2 = defaultTrackingPoints.offsets.yOffset2;
   }
 

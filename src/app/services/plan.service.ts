@@ -373,6 +373,16 @@ export class PlanService {
     this.selectedLayer.active ? this.removeLayer() : this.addLayer();
   }
 
+  public removeAllLayers(): void{
+    //for all layers
+    for (var i in this.layers){
+      if(this.layers[i].active){
+        this.layers[i].active=false;
+        this.toggleLayerSubject.next(this.layers[i]);
+      }
+    }
+  }
+
   /** Adds a layer to the map
    * @return true if successful, false if not.
    */
