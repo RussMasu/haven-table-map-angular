@@ -159,14 +159,12 @@ export const BigIslandPlan: Plan = {
         parcels: [],
 
         setupFunction(planService: PlanService) {
-          console.log(this.secondScreenExists())
+          //console.log("Screen status:" + this.secondScreenExists())
           
-          this.secondScreenUpdate(this.name);
-          
-          if (this.secondScreenExists())
+          //if (this.secondScreenExists())
           {
-            this.notifySecondScreen('transmission');
-            //this.send
+            //If secondScreen exists, send a message via WindowRefService to the second screen component.
+            //Second screen component handles updating as needed with respeoct to the second monitor.
           }
 
           this.parcels.forEach(parcel => {

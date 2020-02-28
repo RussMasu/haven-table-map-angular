@@ -80,6 +80,9 @@ export class SecondScreenComponent implements OnInit {
         console.log("Loading streams data for second monitor...");
         //Insert HTML loading code/function here.
         break;
+
+        default:
+          console.log("Unknown message received. Something break?")
     }
 
   }

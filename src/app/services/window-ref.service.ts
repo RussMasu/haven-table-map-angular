@@ -98,7 +98,7 @@ export class WindowRefService {
    * @param messageData => The data
    */
   private sendMessageToSecondScreen(screenId: string, messageData: string): void {
-    console.log(screenId);
+    //console.log(screenId);
     this.multiWindowService.sendMessage(screenId, 'customEvent', messageData).subscribe(
       (messageId: string) => {
        // console.log('Message send, ID is ' + messageId);
