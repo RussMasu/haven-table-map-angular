@@ -46,10 +46,9 @@ export class MapMainComponent implements AfterViewInit {
     private router: Router,
     private windowRefService: WindowRefService) {
 
-      this.planService.setupSelectedPlan(BigIslandPlan);
       this.planService.setState('run');
+      this.planService.setupSelectedPlan(BigIslandPlan);
       this.plan = this.planService.getCurrentPlan();
-  
   
     // if the plan is undefined, then the application will go back to the landing page.
     try {
@@ -58,7 +57,7 @@ export class MapMainComponent implements AfterViewInit {
       this.addColor = this.planService.getSelectedLayer().legendColor;
       this.currentScenario = this.planService.getCurrentScenario().displayName;
     } catch (error) {
-      this.router.navigateByUrl('');
+      this.router.navigateByUrl('landing-home');
       this.planService.setState('landing');
       console.log('No Plan Found --> Route to setup');
     } finally {
