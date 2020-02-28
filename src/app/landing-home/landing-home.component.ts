@@ -340,8 +340,8 @@ export class LandingHomeComponent implements OnInit {
   handleStartButtonClick(plan: Plan): void {
     this.plans.forEach(el => el.selectedPlan = false);
     plan.selectedPlan = true;
-    this.planService.setupSelectedPlan(plan);
-    this.planService.setState('run');
+    //this.planService.setupSelectedPlan(plan);
+    //this.planService.setState('run');
     if (plan.includeSecondScreen) {
       if (this.openSecondScreen()) {
         const planLayerData = [];
