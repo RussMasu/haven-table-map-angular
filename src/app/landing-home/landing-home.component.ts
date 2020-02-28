@@ -173,7 +173,7 @@ export class LandingHomeComponent implements OnInit {
   private manualCalibration(position: number): void {
     const element = this.manualPoint.nativeElement; // Dot that tells user where to place puck for calibration
     let left = '0';
-    let top = '0';
+    let top = '5vh';
 
     switch (position) {
       case 0: {
@@ -182,16 +182,16 @@ export class LandingHomeComponent implements OnInit {
       }
       case 1: {
         top = '5vh'
-        left = 'calc(18vw - 50px)';
+        left = 'calc(16vw - 50px)';
         break;
       }
       case 2: {
-        top = '50vh';
+        top = '37vh';
         break;
       }
       case 3: {
-        left = 'calc(18vw - 50px)';
-        top = '50vh';
+        top = '37vh';
+        left = 'calc(16vw - 50px)';
         break;
       }
       case 4: {
@@ -199,8 +199,8 @@ export class LandingHomeComponent implements OnInit {
         break;
       }
       case 5: {
-        left = 'calc(18vw - 50px)';
         top = 'calc(90% - 50px)';
+        left = 'calc(16vw - 50px)';
         break;
       }
       default: { // When index hits 6, the function is finished
