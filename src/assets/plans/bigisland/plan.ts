@@ -605,6 +605,27 @@ export const BigIslandPlan: Plan = {
                   });
                 },
         },//end 100ft elevation 
+        {//Remove Layers
+          //It sounds cool.
+          name: 'remove layers',
+          displayName: 'Remove Layers',
+          active: false,
+          included: true,
+          iconPath: 'assets/plans/bigisland/images/icons/cross-icon.png',
+          secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
+          secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+          fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
+          borderColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
+          borderWidth: 0.04,  //Border width, default is set here.
+          legendColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
+          filePath: '',
+          parcels: [],
+                setupFunction(planService: PlanService) {
+                },
+                updateFunction(planService: PlanService) {
+                  planService.removeAllLayers();
+                },
+        },//end removelayer
 
     ],
   }

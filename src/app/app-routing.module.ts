@@ -5,8 +5,8 @@ import { MapMainComponent } from './map-main/map-main.component';
 import { SecondScreenComponent } from './second-screen/second-screen.component';
 
 const routes: Routes = [
-  { path: '', component: LandingHomeComponent },
-  { path: 'map-main', component: MapMainComponent },
+  { path: 'landing-home', component: LandingHomeComponent },
+  { path: '', component: MapMainComponent },
   { path: 'second-screen', component: SecondScreenComponent }
 ];
 

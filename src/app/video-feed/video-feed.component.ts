@@ -37,16 +37,6 @@ export class VideoFeedComponent implements OnInit {
     /* Video Data */
     this.videoArray = [
       {
-        id: 2,
-        video: this.videoElement1.nativeElement,
-        canvas: {
-          element: this.videoCanvas2.nativeElement,
-          width: this.canvasWidth,
-          height: this.canvasHeight,
-          ctx: this.videoCanvas2.nativeElement.getContext("2d")
-        },
-      },
-      {
         id: 1,
         video: this.videoElement.nativeElement,
         canvas: {
@@ -54,6 +44,16 @@ export class VideoFeedComponent implements OnInit {
           width: this.canvasWidth,
           height: this.canvasHeight,
           ctx: this.videoCanvas1.nativeElement.getContext("2d")
+        },
+      },
+      {
+        id: 2,
+        video: this.videoElement1.nativeElement,
+        canvas: {
+          element: this.videoCanvas2.nativeElement,
+          width: this.canvasWidth,
+          height: this.canvasHeight,
+          ctx: this.videoCanvas2.nativeElement.getContext("2d")
         },
       }];
 
