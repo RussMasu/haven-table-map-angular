@@ -39,11 +39,6 @@ export class SecondScreenComponent implements OnInit {
       if (data.type === 'setup') {
         this.setupSecondScreen(data);
       } 
-      else if (data.type === 'streams')
-      {
-        this.secondScreenUpdate('streams');
-      }
-        //TODO: Figure out how to set data.type for other messages and functions.
     });
   }
 
@@ -80,19 +75,12 @@ export class SecondScreenComponent implements OnInit {
     //Updates htmlFilePath variable and takes care of loading data onto the second monitor.
     switch(layerName)
     {
-      case 'elevation':
+      case 'streams':
         this.htmlFilePath="Placeholder.html";  
-        console.log("Loading elevation data for second monitor...");
+        console.log("Loading streams data for second monitor...");
         //Insert HTML loading code/function here.
         break;
     }
-
-    // //Test forEach loop. Testing syntax, mainly.  
-    // this.plan.map.mapLayers.forEach(planLayer=> {
-    //   console.log(planLayer.active);
-    // });
-
-
 
   }
 
