@@ -39,6 +39,10 @@ export class SecondScreenComponent implements OnInit {
       if (data.type === 'setup') {
         this.setupSecondScreen(data);
       } 
+      else if (data.type === 'streams')
+      {
+        this.secondScreenUpdate('streams');
+      }
         //TODO: Figure out how to set data.type for other messages and functions.
     });
   }

@@ -6,6 +6,7 @@ import * as d3 from 'd3';
 import { ParseSourceFile } from '@angular/compiler';
 import { SecondScreenComponent } from '@app/second-screen/second-screen.component';
 
+
 export const BigIslandPlan: Plan = {
   name: 'bigisland',
   displayName: 'Big Island',
@@ -160,9 +161,12 @@ export const BigIslandPlan: Plan = {
         setupFunction(planService: PlanService) {
           console.log(this.secondScreenExists())
           
+          this.secondScreenUpdate(this.name);
+          
           if (this.secondScreenExists())
           {
             this.notifySecondScreen('transmission');
+            //this.send
           }
 
           this.parcels.forEach(parcel => {
@@ -535,9 +539,7 @@ export const BigIslandPlan: Plan = {
                 },
 
         },// ending hunting 
-        
-          {//Start Hunting Area Layer.
-          //It doesn't sound as cool.
+          {//Trails layer.
           name: 'trails',
           displayName: 'Na Ala Hele Trails',
           active: false,
