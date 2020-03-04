@@ -197,10 +197,10 @@ export class ArService {
     });
 
     // The offsets are the x and y adjustments to the tracking that allow for more precise tracking.
-    this.xOffset = defaultTrackingPoints.offsets.xOffset;
-    this.yOffset = defaultTrackingPoints.offsets.yOffset;
-    this.xOffset2 = defaultTrackingPoints.offsets.xOffset2+240;
-    this.yOffset2 = defaultTrackingPoints.offsets.yOffset2;
+    this.xOffset = defaultTrackingPoints.offsets.xOffset-10;
+    this.yOffset = defaultTrackingPoints.offsets.yOffset-2;
+    this.xOffset2 = defaultTrackingPoints.offsets.xOffset2+224;
+    this.yOffset2 = defaultTrackingPoints.offsets.yOffset2-35;
   }
 
   /** Finishes the calibration process

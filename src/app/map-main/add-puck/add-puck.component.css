@@ -5,12 +5,11 @@
 }
 
 .icon {
-    width: 40%;
-    height: 40%;
+    width: 50%;
+    height: 50%;
     position: absolute;
-    top: 36%;
-    left: 28%;
-    
+    top: 26%;
+    left: 25%;
 }
 
 .icon img{ 
@@ -21,7 +20,7 @@
 .text {
     color: white;
     font-size: 15px;
-    left: -60px;
+    left: -15px;
     width: 200%;
     text-align: center;
     position: absolute;
@@ -30,7 +29,8 @@
 
 .title {
     font-size: 16px;
-    top: -26px;
+    top: -50px;
+    left: 30px;
     position: absolute;
     width: 100%;
     text-align: center;
