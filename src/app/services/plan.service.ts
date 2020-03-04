@@ -51,6 +51,10 @@ export class PlanService {
   private UPDATE_DELAY: number = 600;
   private startTime: number;
 
+
+  /* Current legend Image*/
+  private legendImagePath: string;
+  public ImagePathSubject = new Subject<string>(); 
   constructor(private soundsService: SoundsService) {
     this.plans = Plans;
     this.state = 'landing'; // Initial state is landing
@@ -356,7 +360,8 @@ export class PlanService {
     this.selectedLayerSubject.next(this.selectedLayer);
     this.layerChangeSubject.next('decrement');
     this.soundsService.tick();
-
+   
+    this.setLegendImagePath();
   }
 
   /** Cycles forwards through layers */
@@ -366,6 +371,8 @@ export class PlanService {
     this.selectedLayerSubject.next(this.selectedLayer);
     this.layerChangeSubject.next('increment');
     this.soundsService.tick();
+    
+    this.setLegendImagePath();
   }
 
   /** Adds or removes the selected layer after checking it's active state. */
@@ -525,5 +532,23 @@ export class PlanService {
     } else {
       return false;
     }
+  }
+
+   private setLegendImagePath(): void{
+       this.legendImagePath = this.selectedLayer.legendImagePath;
+       this.ImagePathSubject.next(this.legendImagePath);
+       /*
+        if (this.selectedLayer.active == true){
+        this.legendImagePath = this.selectedLayer.legendImagePath;
+        }
+        else{
+        this.legendImagePath = "../../assets/plans/bigisland/images/icons/dod-icon.png"
+        }
+        */
+   }
+
+   public getLegendImagePath(): string{ 
+           console.log("changed the image");
+           return this.legendImagePath;
   }
 }

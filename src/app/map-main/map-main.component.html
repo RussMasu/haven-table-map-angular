@@ -2,20 +2,30 @@
   is responsible for all interaction with the pucks -->
 <!--<app-interaction-element class="interaction-container"></app-interaction-element>-->
 
+<app-pie-chart class="interaction-container" [style.top]="plan.css.charts.pie.top" [style.left]="plan.css.charts.pie.left" cdkDrag>
+</app-pie-chart>
+
+
 <!-- This component contains the map, charts, etc that is displayed on the right side of the table -->
 <app-map-element class="map-container" [style.top]="plan.css.map.top" [style.left]="plan.css.map.left" cdkDrag>
 </app-map-element>
 <app-legend class="legend-container" [ngStyle]="{'top': top, 'left': left, 'width': width}" cdkDrag>
 </app-legend>
-<app-pie-chart class="interaction-container" [style.top]="plan.css.charts.pie.top" [style.left]="plan.css.charts.pie.left" cdkDrag>
-</app-pie-chart>
+
+
 <app-title class="title-container" [style.top]="plan.css.title.top" [style.left]="plan.css.title.left" cdkDrag>
 </app-title>
+
+
+        
 <app-line-chart class="line-chart" [style.top]="plan.css.charts.line.top" [style.left]="plan.css.charts.line.left"
   cdkDrag>
 </app-line-chart>
+<!--
 <app-pie-chart class="pie-chart" [style.top]="plan.css.charts.pie.top" [style.left]="plan.css.charts.pie.left" cdkDrag>
 </app-pie-chart>
+-->
+
 <!--disabled scenario-->
 <!--<app-scenario class="scenario-container" [style.top]="plan.css.scenario.top" [style.left]="plan.css.scenario.left"
   cdkDrag></app-scenario>-->

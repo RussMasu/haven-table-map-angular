@@ -81,6 +81,7 @@ export const BigIslandPlan: Plan = {
         active: false,
         included: false,
         iconPath: 'assets/plans/bigisland/images/icons/transmission-icon.png',
+        legendImagePath: 'assets/plans/bigisland/images/icons/transmission-icon.png',
         secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/transmission.jpg',
         secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
         fillColor: mapLayerColors.Transmission.fill,
@@ -112,6 +113,7 @@ export const BigIslandPlan: Plan = {
         active: false,  //Default for active (visible) status
         included: true,   //Default for inclusion in the layer list
         iconPath: 'assets/plans/bigisland/images/icons/elevation-icon.png',  //Icon path for table.
+        legendImagePath: 'assets/plans/bigisland/images/icons/elevation-icon.png',
         secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',    //Background image for second screen, image path.
         secondScreenText: 'Slide the Layer Puck to add or remove this layer',  //Instructional/information text on second screen.
         fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
@@ -146,6 +148,7 @@ export const BigIslandPlan: Plan = {
         active: false,
         included: true,
         iconPath: 'assets/plans/bigisland/images/icons/stream-icon.png',
+        legendImagePath: 'assets/plans/bigisland/images/icons/stream-icon.png',
         secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
         secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
         fillColor: '#ff0066',
@@ -201,6 +204,7 @@ export const BigIslandPlan: Plan = {
               active: false,
               included: true,
               iconPath: 'assets/plans/bigisland/images/icons/fire.png',
+              legendImagePath: 'assets/plans/bigisland/images/icons/fire.png',
               secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
               secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
               fillColor: mapLayerColors.Dod.fill,
@@ -267,6 +271,7 @@ export const BigIslandPlan: Plan = {
               active: false,
               included: true,//enable-disable layer
               iconPath: 'assets/plans/bigisland/images/icons/palila-icon.png',//controls icon image for layer
+              legendImagePath: 'assets/plans/bigisland/images/icons/palila-icon.png',
               secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
               secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
               fillColor: '#ff0066',
@@ -305,6 +310,7 @@ export const BigIslandPlan: Plan = {
           active: false,
           included: true,
           iconPath: 'assets/plans/bigisland/images/icons/fire.png',
+          legendImagePath: 'assets/plans/bigisland/images/icons/transmission-icon.png',
           secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
           secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
           fillColor: mapLayerColors.Dod.fill,
@@ -463,6 +469,7 @@ export const BigIslandPlan: Plan = {
           active: false,
           included: true,
           iconPath: 'assets/plans/bigisland/images/icons/fire.png',
+          legendImagePath: 'assets/plans/bigisland/images/icons/fire.png',
           secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
           secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
           fillColor: mapLayerColors.Dod.fill,
@@ -499,6 +506,7 @@ export const BigIslandPlan: Plan = {
           active: false,
           included: true,
           iconPath: 'assets/plans/bigisland/images/icons/pig.png',
+          legendImagePath: 'assets/plans/bigisland/images/icons/pig.png',
           secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
           secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
           fillColor: mapLayerColors.Dod.fill,
@@ -536,6 +544,7 @@ export const BigIslandPlan: Plan = {
           active: false,
           included: true,
           iconPath: 'assets/plans/bigisland/images/icons/pig.png',
+          legendImagePath: 'assets/plans/bigisland/images/icons/pig.png',
           secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
           secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
           fillColor: mapLayerColors.Dod.fill,
@@ -572,6 +581,7 @@ export const BigIslandPlan: Plan = {
           active: false,
           included: false,
           iconPath: 'assets/plans/bigisland/images/icons/elevation-icon.png',
+          legendImagePath: 'assets/plans/bigisland/images/icons/elevation-icon.png',
           secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
           secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
           fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
