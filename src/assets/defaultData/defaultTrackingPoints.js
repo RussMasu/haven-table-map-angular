@@ -49,6 +49,7 @@ mapY: 962.5,
 {
 cam2X: 0,
 cam2Y: 0,
+
 camX: 304,
 camY: 338.5,
 mapX: 297.6875,
