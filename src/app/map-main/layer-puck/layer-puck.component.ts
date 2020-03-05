@@ -69,7 +69,7 @@ export class LayerPuckComponent implements AfterViewInit {
     this.currentPosition = 0;
 
     for (const e of elements) {
-      e.style.transform = `rotate(-${this.currentPosition}deg) translate(65px) rotate(90deg)`;
+      e.style.transform = `rotate(-${this.currentPosition}deg) translate(90px) rotate(90deg)`;
       this.currentPosition += this.angle;
     };
 
