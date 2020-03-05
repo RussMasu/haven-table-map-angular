@@ -154,7 +154,7 @@ html {
 }
 
 .add {
-  border: 6px solid orange;
+  border: 0px solid orange;
   left: -30px;
   top: -30px;
   position: absolute;
