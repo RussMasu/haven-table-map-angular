@@ -1,5 +1,5 @@
 <div class="second-screen-container" [style.backgroundColor]="plan ? 'transparent' : 'black'">
-  <div *ngIf="plan; else elseBlock">  <!-- Evauluates to true if a plane exists, otherwise it'll show a loading screen.-->
+  <div *ngIf="plan; else elseBlock">  <!-- Evauluates to true if a plan exists, otherwise it'll show a loading screen.-->
     <img class="background-image" src="{{ plan.secondScreenImagePath }}" alt="Background Image"/>  
 </div>
 
