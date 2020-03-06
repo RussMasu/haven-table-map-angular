@@ -561,15 +561,14 @@ export class PlanService {
        this.legendImagePath = this.selectedLayer.legendImagePath;
        this.ImagePathSubject.next(this.legendImagePath);
    }
-  private setLegendImageNull(): void {
-        console.log("attempting to set to null");
-          this.legendImagePath = "../../assets/plans/bigisland/images/icons/null.png" // This could be changed to a clear png or something like such that no black box appears 
+  private setLegendImageNull(): void { 
+          this.legendImagePath = "../../assets/plans/bigisland/images/icons/null.png" 
         this.ImagePathSubject.next(this.legendImagePath);
         }
 
    public getLegendImagePath(): string{ 
-           console.log("changed the image");
-           console.log("this is the image", this.legendImagePath);
+           
+          
            return this.legendImagePath;
   }
 }
