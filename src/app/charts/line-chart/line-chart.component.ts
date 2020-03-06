@@ -31,7 +31,7 @@ export class LineChartComponent implements OnInit {
     this.scenario = this.planService.getCurrentScenario();
     this.year = this.planService.getCurrentYear();
     this.fetchData();
-    this.currentImagePath = this.planService.getLegendImagePath();
+    this.currentImagePath = "../../../assets/plans/bigisland/images/icons/null.png";
     
     this.planService.ImagePathSubject.subscribe(currentImagePath =>{
         if (currentImagePath){

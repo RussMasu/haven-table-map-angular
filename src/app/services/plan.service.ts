@@ -359,9 +359,14 @@ export class PlanService {
     this.selectedLayer = this.layers[(index) % this.layers.length];
     this.selectedLayerSubject.next(this.selectedLayer);
     this.layerChangeSubject.next('decrement');
-    this.soundsService.tick();
-   
-    this.setLegendImagePath();
+    this.soundsService.tick(); 
+        const layer = this.selectedLayer;
+        if (layer.active){ 
+                this.setLegendImagePath();
+              }
+        else {
+                this.setLegendImageNull();
+        }
   }
 
   /** Cycles forwards through layers */
@@ -371,8 +376,14 @@ export class PlanService {
     this.selectedLayerSubject.next(this.selectedLayer);
     this.layerChangeSubject.next('increment');
     this.soundsService.tick();
-    
-    this.setLegendImagePath();
+    const layer = this.selectedLayer;
+          if (layer.active){ 
+                this.setLegendImagePath();
+          }
+          else {
+                  this.setLegendImageNull();
+          }
+
   }
 
   /** Adds or removes the selected layer after checking it's active state. */
@@ -386,6 +397,7 @@ export class PlanService {
   public addLayer(): boolean {
     const layer = this.selectedLayer;
     if (!layer.active) {
+      this.setLegendImagePath();
       layer.active = true;
       this.toggleLayerSubject.next(layer);
       this.soundsService.dropUp();
@@ -404,6 +416,7 @@ export class PlanService {
       layer.active = false;
       this.toggleLayerSubject.next(layer);
       this.soundsService.dropDown();
+      this.setLegendImageNull();
       return true;
     } else {
       return false;
@@ -537,18 +550,16 @@ export class PlanService {
    private setLegendImagePath(): void{
        this.legendImagePath = this.selectedLayer.legendImagePath;
        this.ImagePathSubject.next(this.legendImagePath);
-       /*
-        if (this.selectedLayer.active == true){
-        this.legendImagePath = this.selectedLayer.legendImagePath;
-        }
-        else{
-        this.legendImagePath = "../../assets/plans/bigisland/images/icons/dod-icon.png"
-        }
-        */
    }
+  private setLegendImageNull(): void {
+        console.log("attempting to set to null");
+          this.legendImagePath = "../../assets/plans/bigisland/images/icons/null.png" // This could be changed to a clear png or something like such that no black box appears 
+        this.ImagePathSubject.next(this.legendImagePath);
+        }
 
    public getLegendImagePath(): string{ 
            console.log("changed the image");
+           console.log("this is the image", this.legendImagePath);
            return this.legendImagePath;
   }
 }
