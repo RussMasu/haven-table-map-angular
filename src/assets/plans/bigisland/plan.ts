@@ -33,7 +33,7 @@ export const BigIslandPlan: Plan = {
   css: {
     map: {
       left: '30.5vw',
-      top: '5vh'
+      top: '8vh'
     },
     legend: {
       defaultLayout: 'grid',
@@ -284,7 +284,7 @@ export const BigIslandPlan: Plan = {
                 this.parcels.forEach(parcel => {
                     d3.select(parcel.path)
                       .style('fill', 'transparent')
-                      .style('opacity', (this.active) ? 0.85 : 0.0)
+                      .style('opacity', (this.active) ? 0.95 : 0.0)
                       .style('stroke', this.borderColor)
                       .style('stroke-width', this.borderWidth + 'px');
                 });
@@ -323,7 +323,7 @@ export const BigIslandPlan: Plan = {
                   this.parcels.forEach(parcel => {
                       d3.select(parcel.path)
                         .style('fill', 'transparent')
-                        .style('opacity', (this.active) ? 0.45 : 0.0)
+                        .style('opacity', (this.active) ? 0.20 : 0.0)
                         .style('stroke', this.borderColor)
                         .style('stroke-width', (this.borderWidth) + 'px');
                   });
@@ -335,126 +335,126 @@ export const BigIslandPlan: Plan = {
                         if(vhzone == 1){
                           d3.select(parcel.path)
                             .style('fill', '#FFFFFF')//set to Colors if fill wanted, otherwise transparent
-                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('opacity', this.active ? 0.30 : 0.0)
                             .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 2){
                           d3.select(parcel.path)
                             .style('fill', '#B6F2B3')//set to Colors if fill wanted, otherwise transparent
-                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('opacity', this.active ? 0.30 : 0.0)
                             .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 3){
                           d3.select(parcel.path)
                             .style('fill', '#30EC26')//set to Colors if fill wanted, otherwise transparent
-                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('opacity', this.active ? 0.30 : 0.0)
                             .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 4){
                           d3.select(parcel.path)
                             .style('fill', '#FFC300')//set to Colors if fill wanted, otherwise transparent
-                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('opacity', this.active ? 0.30 : 0.0)
                             .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 5){
                           d3.select(parcel.path)
                             .style('fill', '#F7BDA9')//set to Colors if fill wanted, otherwise transparent
-                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('opacity', this.active ? 0.30 : 0.0)
                             .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 6){
                           d3.select(parcel.path)
                             .style('fill', '#F56D3E')//set to Colors if fill wanted, otherwise transparent
-                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('opacity', this.active ? 0.30 : 0.0)
                             .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 7){
                           d3.select(parcel.path)
                             .style('fill', '#F7BDA9')//light pink
-                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('opacity', this.active ? 0.30 : 0.0)
                             .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 8){
                           d3.select(parcel.path)
                             .style('fill', '#F7BDA9')//light pink
-                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('opacity', this.active ? 0.30 : 0.0)
                             .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 9){
                           d3.select(parcel.path)
                             .style('fill', '#F56D3E')//salmon
-                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('opacity', this.active ? 0.30 : 0.0)
                             .style('stroke',this.borderColor )
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 10){
                           d3.select(parcel.path)
                             .style('fill', '#FF0000')//red
-                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('opacity', this.active ? 0.30 : 0.0)
                             .style('stroke',this.borderColor )
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 11){
                           d3.select(parcel.path)
                             .style('fill', '#F5FF7F')//light yellow
-                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('opacity', this.active ? 0.30 : 0.0)
                             .style('stroke',this.borderColor )
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 12){
                           d3.select(parcel.path)
                             .style('fill', '#F56D3E')//salmon
-                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('opacity', this.active ? 0.30 : 0.0)
                             .style('stroke',this.borderColor )
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 13){
                           d3.select(parcel.path)
                             .style('fill', '#FF0000')//red
-                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('opacity', this.active ? 0.30 : 0.0)
                             .style('stroke',this.borderColor )
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 14){
                           d3.select(parcel.path)
                             .style('fill', '#F56D3E')//salmon
-                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('opacity', this.active ? 0.30 : 0.0)
                             .style('stroke',this.borderColor )
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 15){
                           d3.select(parcel.path)
                             .style('fill', '#E8FA0C')//yellow
-                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('opacity', this.active ? 0.30 : 0.0)
                             .style('stroke',this.borderColor )
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 16){
                           d3.select(parcel.path)
                             .style('fill', '#F7BDA9')//light pink
-                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('opacity', this.active ? 0.30 : 0.0)
                             .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 17){
                           d3.select(parcel.path)
                             .style('fill', '#F7BDA9')//light pink
-                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('opacity', this.active ? 0.30 : 0.0)
                             .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 18){
                           d3.select(parcel.path)
                             .style('fill', '#F5FF7F')//light yellow
-                            .style('opacity', this.active ? 0.45 : 0.0)
+                            .style('opacity', this.active ? 0.30 : 0.0)
                             .style('stroke',this.borderColor )
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
@@ -609,6 +609,27 @@ export const BigIslandPlan: Plan = {
                   });
                 },
         },//end 100ft elevation 
+        {//Remove Layers
+          //It sounds cool.
+          name: 'remove layers',
+          displayName: 'Remove Layers',
+          active: false,
+          included: true,
+          iconPath: 'assets/plans/bigisland/images/icons/cross-icon.png',
+          secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
+          secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+          fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
+          borderColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
+          borderWidth: 0.04,  //Border width, default is set here.
+          legendColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
+          filePath: '',
+          parcels: [],
+                setupFunction(planService: PlanService) {
+                },
+                updateFunction(planService: PlanService) {
+                  planService.removeAllLayers();
+                },
+        },//end removelayer
 
     ],
   }

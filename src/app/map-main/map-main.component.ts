@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Plan } from '@app/interfaces';
 import { PlanService } from '@app/services/plan.service';
 import { ProjectableMarker } from '@app/classes/projectableMarker';
+import { BigIslandPlan } from '../../assets/plans/bigisland/plan'
 
 @Component({
   selector: 'app-map-main',
@@ -45,8 +46,10 @@ export class MapMainComponent implements AfterViewInit {
     private router: Router,
     private windowRefService: WindowRefService) {
 
-    this.plan = this.planService.getCurrentPlan();
-
+      this.planService.setState('run');
+      this.planService.setupSelectedPlan(BigIslandPlan);
+      this.plan = this.planService.getCurrentPlan();
+  
     // if the plan is undefined, then the application will go back to the landing page.
     try {
       this.legendClass = this.planService.getCurrentLegendLayout();
@@ -54,7 +57,7 @@ export class MapMainComponent implements AfterViewInit {
       this.addColor = this.planService.getSelectedLayer().legendColor;
       this.currentScenario = this.planService.getCurrentScenario().displayName;
     } catch (error) {
-      this.router.navigateByUrl('');
+      this.router.navigateByUrl('landing-home');
       this.planService.setState('landing');
       console.log('No Plan Found --> Route to setup');
     } finally {
@@ -315,7 +318,7 @@ export class MapMainComponent implements AfterViewInit {
       this.planService.removeLayer();
     } else if (event.key === 'p') {
       this.planService.resetPlan();
-      this.router.navigateByUrl('');
+      this.router.navigateByUrl('landing-home');
       this.planService.setState('landing');
     }
   }

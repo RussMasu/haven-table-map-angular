@@ -5,7 +5,7 @@ html {
 /* Contains styles for the left side of the main map display */
 
 .interaction-container {
-  width: 20.5vw;
+  width: 19vw;
   height: 100vh;
   background-color: rgb(40,40,40);
   display: inline-block;
@@ -77,8 +77,8 @@ html {
 }
 
 .tracking-dot {
-  width: 110px;
-  height: 110px;
+  width: 85px;
+  height: 85px;
   position: absolute;
   background-color:transparent;
   border-radius: 50%;
@@ -136,7 +136,7 @@ html {
 }
 
 .layer {
-  background-color: black;
+  background-color: transparent;
 }
 
 
@@ -154,12 +154,11 @@ html {
 }
 
 .add {
-  border: 6px solid orange;
-  border-bottom: transparent;
-  left: -10px;
+  border: 0px solid orange;
+  left: -30px;
   top: -30px;
   position: absolute;
-  background-color: black;
+  background-color:transparent;
 }
 
 .scenario .display {
