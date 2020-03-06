@@ -51,6 +51,10 @@ export class PlanService {
   private UPDATE_DELAY: number = 600;
   private startTime: number;
 
+
+  /* Current legend Image*/
+  private legendImagePath: string;
+  public ImagePathSubject = new Subject<string>(); 
   constructor(private soundsService: SoundsService) {
     this.plans = Plans;
     this.state = 'landing'; // Initial state is landing
@@ -355,8 +359,14 @@ export class PlanService {
     this.selectedLayer = this.layers[(index) % this.layers.length];
     this.selectedLayerSubject.next(this.selectedLayer);
     this.layerChangeSubject.next('decrement');
-    this.soundsService.tick();
-
+    this.soundsService.tick(); 
+        const layer = this.selectedLayer;
+        if (layer.active){ 
+                this.setLegendImagePath();
+              }
+        else {
+                this.setLegendImageNull();
+        }
   }
 
   /** Cycles forwards through layers */
@@ -366,6 +376,14 @@ export class PlanService {
     this.selectedLayerSubject.next(this.selectedLayer);
     this.layerChangeSubject.next('increment');
     this.soundsService.tick();
+    const layer = this.selectedLayer;
+          if (layer.active){ 
+                this.setLegendImagePath();
+          }
+          else {
+                  this.setLegendImageNull();
+          }
+
   }
 
   /** Adds or removes the selected layer after checking it's active state. */
@@ -389,6 +407,7 @@ export class PlanService {
   public addLayer(): boolean {
     const layer = this.selectedLayer;
     if (!layer.active) {
+      this.setLegendImagePath();
       layer.active = true;
       this.toggleLayerSubject.next(layer);
       this.soundsService.dropUp();
@@ -407,6 +426,7 @@ export class PlanService {
       layer.active = false;
       this.toggleLayerSubject.next(layer);
       this.soundsService.dropDown();
+      this.setLegendImageNull();
       return true;
     } else {
       return false;
@@ -535,5 +555,20 @@ export class PlanService {
     } else {
       return false;
     }
+  }
+
+   private setLegendImagePath(): void{
+       this.legendImagePath = this.selectedLayer.legendImagePath;
+       this.ImagePathSubject.next(this.legendImagePath);
+   }
+  private setLegendImageNull(): void { 
+          this.legendImagePath = "../../assets/plans/bigisland/images/icons/null.png" 
+        this.ImagePathSubject.next(this.legendImagePath);
+        }
+
+   public getLegendImagePath(): string{ 
+           
+          
+           return this.legendImagePath;
   }
 }
