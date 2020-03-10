@@ -8,7 +8,7 @@ export const BigIslandPlan: Plan = {
   name: 'bigisland',
   displayName: 'Big Island',
   landingImagePath: 'assets/plans/bigisland/images/landing-image.jpg',
-  secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/bigIsland.jpg',
+  secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/LandingPreview.jpg',
   includeSecondScreen: false,
   selectedPlan: false,
   minYear: 2016,
@@ -75,38 +75,6 @@ export const BigIslandPlan: Plan = {
     bounds: [[-156.0618, 20.2696], [-154.8067, 18.9105]],
     baseMapPath: 'assets/plans/bigisland/images/base-map.png',
     mapLayers: [
-      {
-        name: 'transmission',
-        displayName: 'Transmission Lines',
-        active: false,
-        included: false,
-        iconPath: 'assets/plans/bigisland/images/icons/transmission-icon.png',
-        legendImagePath: 'assets/plans/bigisland/images/icons/transmission-icon.png',
-        secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/transmission.jpg',
-        secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
-        fillColor: mapLayerColors.Transmission.fill,
-        borderColor: mapLayerColors.Transmission.border,
-        borderWidth: 0.04,
-        legendColor: mapLayerColors.Transmission.border,
-        filePath: 'assets/plans/bigisland/layers/transmission.json',
-        parcels: [],
-        setupFunction(planService: PlanService) {
-          this.parcels.forEach(parcel => {
-            d3.select(parcel.path)
-              .style('fill', this.fillColor)
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', this.borderColor)
-              .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-          });
-        },
-        updateFunction(planService: PlanService) {
-          this.parcels.forEach(parcel => {
-            d3.select(parcel.path)
-              .style('opacity', this.active ? 0.85 : 0.0);
-          });
-        },
-      },
-    
       {  
         name: 'Elevation',  //Internal layer name
         displayName: 'Elevation Contours 500ft',  //Display name (on the table.)
@@ -114,7 +82,7 @@ export const BigIslandPlan: Plan = {
         included: true,   //Default for inclusion in the layer list
         iconPath: 'assets/plans/bigisland/images/icons/elevation-icon.png',  //Icon path for table.
         legendImagePath: 'assets/plans/bigisland/images/icons/elevation-icon.png',
-        secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',    //Background image for second screen, image path.
+        secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/LandingPreview.jpg',    //Background image for second screen, image path.
         secondScreenText: 'Slide the Layer Puck to add or remove this layer',  //Instructional/information text on second screen.
         fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
         borderColor: 'white', //See defaultColors.ts.
@@ -617,7 +585,7 @@ export const BigIslandPlan: Plan = {
           included: true,  
           legendImagePath: 'assets/plans/bigisland/images/icons/cross-icon.png',
           iconPath: 'assets/plans/bigisland/images/icons/cross-icon.png',
-          secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
+          secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/LandingPreview.jpg',
           secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
           fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
           borderColor: mapLayerColors.Test2019.border, //See defaultColors.ts.

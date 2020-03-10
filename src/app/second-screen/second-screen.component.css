@@ -19,18 +19,18 @@
 }
 
 .left-card {
+  height: 100%;
+  width: 100%;
   position: absolute;
-  left: 2vw;
-  top: 2vh;
-  height: calc(96vh - 20px);
-  width: calc(46vw - 20px);
-  padding: 10px;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.7);
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  color: white;
 }
 
 .left-card img {
-  width: 95%;
+  width: 100%;
 }
 
 .left-card p {
