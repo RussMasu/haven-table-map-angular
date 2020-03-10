@@ -104,7 +104,7 @@ export const BigIslandPlan: Plan = {
         included: true,   //Default for inclusion in the layer list
         iconPath: 'assets/plans/bigisland/images/icons/elevation-icon.png',  //Icon path for table.
         legendImagePath: 'assets/plans/bigisland/images/icons/elevation-icon.png',
-        secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/LandingPreview.jpg',    //Background image for second screen, image path.
+        secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
         secondScreenText: 'Slide the Layer Puck to add or remove this layer',  //Instructional/information text on second screen.
         fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
         borderColor: 'white', //See defaultColors.ts.
