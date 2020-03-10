@@ -2,20 +2,7 @@
   <div *ngIf="plan; else elseBlock">
     <img class="background-image" src="{{ plan.secondScreenImagePath }}" />
     <div *ngFor="let layer of plan.map.mapLayers" class="left-card" [style.opacity]="layer.name === nextLayer ? 1 : 0">
-      <h2>{{ layer.displayName }}</h2>
       <img src="{{ layer.secondScreenImagePath }}" />
-      <p>{{ layer.secondScreenText }}</p>
-    </div>
-    <div class="right-card">
-      <h2 class="chart-title">
-        Sample Chart
-      </h2>
-      <img src="../../assets/images/config-images/3D-Bar.png">
-      <div class="year-display-container">
-        <hr>
-        <h1>{{ currentYear }}</h1>
-        <hr>
-      </div>
     </div>
   </div>
 
