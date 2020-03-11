@@ -2,7 +2,7 @@
   <div *ngIf="plan; else elseBlock">
     <img class="background-image" src="{{ plan.secondScreenImagePath }}" />
     <div id='htmlDisplay' *ngFor="let layer of plan.map.mapLayers" class="left-card" [style.opacity]="layer.name === nextLayer ? 1 : 0">
-      <div [innerHTML]="{{plan.secondScreenHTMLPath }}"></div>
+        <!--Load HTML here.-->
     </div>
   </div>
 
