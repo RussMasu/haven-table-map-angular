@@ -551,7 +551,6 @@ export const BigIslandPlan: Plan = {
                         .style('fill', 'transparent')
                         .style('opacity', (this.active) ? 0.85 : 0.0)
                         .style('stroke', this.borderColor)
-
                         .style('stroke-width', (this.borderWidth) + 'px');
                   });
                 },
@@ -599,6 +598,39 @@ export const BigIslandPlan: Plan = {
                   });
                 },
         },//end 100ft elevation 
+        {//Annual Rainfall
+          name: 'rainfall_annual',
+          displayName: 'Annual Rainfall(Inches)',
+          active: false,
+          included: true,
+          iconPath: 'assets/plans/bigisland/images/icons/elevation-icon.png',
+          secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
+          secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+          fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
+          borderColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
+          borderWidth: 3,  //Border width, default is set here.
+          legendColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
+          filePath: 'assets/plans/bigisland/layers/Annual_Rainfall_in.json',
+          parcels: [],
+          setupFunction(planService: PlanService) {
+            this.parcels.forEach(parcel => {
+                d3.select(parcel.path)
+                .style('fill', 'transparent')
+                .style('opacity', (this.active) ? 0.85 : 0.0)
+                .style('stroke', '#008bff')
+                .style('stroke-width', (this.borderWidth) + 'px');
+            });
+          },
+          updateFunction(planService: PlanService) {
+            this.parcels.forEach(parcel => {
+                  d3.select(parcel.path)
+                    .style('fill', 'transparent')//set to Colors if fill wanted, otherwise transparent
+                    .style('opacity', this.active ? 1 : 0.0)
+                    .style('stroke','#008bff' )//set to borderColors if borders wanted otherwise this.bordercolor
+                    .style('stroke-width', this.borderWidth + 'px');
+            });
+          }, 
+        },
         {//Remove Layers
           //It sounds cool.
           name: 'remove layers',
@@ -620,7 +652,8 @@ export const BigIslandPlan: Plan = {
                   planService.removeAllLayers();
                 },
         },//end removelayer
-
-    ],
+        
+        
+    ]
   }
 }
