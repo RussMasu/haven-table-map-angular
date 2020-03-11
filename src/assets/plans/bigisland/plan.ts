@@ -8,7 +8,7 @@ export const BigIslandPlan: Plan = {
   name: 'bigisland',
   displayName: 'Big Island',
   landingImagePath: 'assets/plans/bigisland/images/landing-image.jpg',
-  secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/bigIsland.jpg',
+  secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/LandingPreview.jpg',
   includeSecondScreen: false,
   selectedPlan: false,
   minYear: 2016,
@@ -75,44 +75,36 @@ export const BigIslandPlan: Plan = {
     bounds: [[-156.0618, 20.2696], [-154.8067, 18.9105]],
     baseMapPath: 'assets/plans/bigisland/images/base-map.png',
     mapLayers: [
-      {
-        name: 'transmission',
-        displayName: 'Transmission Lines',
+
+       {//Remove Layers
+        name: 'remove layers',
+        displayName: 'Remove Layers',
         active: false,
-        included: false,
-        iconPath: 'assets/plans/bigisland/images/icons/transmission-icon.png',
-        secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/transmission.jpg',
+        included: true,  
+        legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
+        iconPath: 'assets/plans/bigisland/images/icons/cross-icon.png',
+        secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/LandingPreview.jpg',
         secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
-        fillColor: mapLayerColors.Transmission.fill,
-        borderColor: mapLayerColors.Transmission.border,
-        borderWidth: 0.04,
-        legendColor: mapLayerColors.Transmission.border,
-        filePath: 'assets/plans/bigisland/layers/transmission.json',
+        fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
+        borderColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
+        borderWidth: 0.04,  //Border width, default is set here.
+        legendColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
+        filePath: '',
         parcels: [],
-        setupFunction(planService: PlanService) {
-          this.parcels.forEach(parcel => {
-            d3.select(parcel.path)
-              .style('fill', this.fillColor)
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', this.borderColor)
-              .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-          });
-        },
-        updateFunction(planService: PlanService) {
-          this.parcels.forEach(parcel => {
-            d3.select(parcel.path)
-              .style('opacity', this.active ? 0.85 : 0.0);
-          });
-        },
-      },
-    
+              setupFunction(planService: PlanService) {
+              },
+              updateFunction(planService: PlanService) {
+                planService.removeAllLayers();
+              },
+      },//end removelayer
       {  
         name: 'Elevation',  //Internal layer name
         displayName: 'Elevation Contours 500ft',  //Display name (on the table.)
         active: false,  //Default for active (visible) status
         included: true,   //Default for inclusion in the layer list
         iconPath: 'assets/plans/bigisland/images/icons/elevation-icon.png',  //Icon path for table.
-        secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',    //Background image for second screen, image path.
+        legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
+        secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
         secondScreenText: 'Slide the Layer Puck to add or remove this layer',  //Instructional/information text on second screen.
         fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
         borderColor: 'white', //See defaultColors.ts.
@@ -146,6 +138,7 @@ export const BigIslandPlan: Plan = {
         active: false,
         included: true,
         iconPath: 'assets/plans/bigisland/images/icons/stream-icon.png',
+        legendImagePath: 'assets/plans/bigisland/images/legends/StreamLegendsDraft2.png',
         secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
         secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
         fillColor: '#ff0066',
@@ -201,6 +194,7 @@ export const BigIslandPlan: Plan = {
               active: false,
               included: true,
               iconPath: 'assets/plans/bigisland/images/icons/fire.png',
+              legendImagePath: 'assets/plans/bigisland/images/icons/fire.png',
               secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
               secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
               fillColor: mapLayerColors.Dod.fill,
@@ -267,6 +261,7 @@ export const BigIslandPlan: Plan = {
               active: false,
               included: true,//enable-disable layer
               iconPath: 'assets/plans/bigisland/images/icons/palila-icon.png',//controls icon image for layer
+              legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
               secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
               secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
               fillColor: '#ff0066',
@@ -279,7 +274,7 @@ export const BigIslandPlan: Plan = {
                 this.parcels.forEach(parcel => {
                     d3.select(parcel.path)
                       .style('fill', 'transparent')
-                      .style('opacity', (this.active) ? 0.95 : 0.0)
+                      .style('opacity', (this.active) ? 0.9 : 0.0)
                       .style('stroke', this.borderColor)
                       .style('stroke-width', this.borderWidth + 'px');
                 });
@@ -289,7 +284,7 @@ export const BigIslandPlan: Plan = {
                  
                   d3.select(parcel.path)
                     .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.85 : 0.0)//controls opacity of layer
+                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
                   
@@ -305,15 +300,17 @@ export const BigIslandPlan: Plan = {
           active: false,
           included: true,
           iconPath: 'assets/plans/bigisland/images/icons/fire.png',
+          legendImagePath: 'assets/plans/bigisland/images/icons/fire.png',
           secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
           secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
           fillColor: mapLayerColors.Dod.fill,
-          borderColor: '#FFFFFF',
-          borderWidth: 2,
+          borderColor: 	'#000000',
+          borderWidth: 0.5,
           legendColor: mapLayerColors.Dod.fill,
           filePath: 'assets/plans/bigisland/layers/Volcano_Lava_Flow_Hazard_Zones.json',
           parcels: [],
                 setupFunction(planService: PlanService) {
+
                   this.parcels.forEach(parcel => {
                       d3.select(parcel.path)
                         .style('fill', 'transparent')
@@ -323,132 +320,144 @@ export const BigIslandPlan: Plan = {
                   });
                 },
                 updateFunction(planService: PlanService) {
+                  const colors = {
+                    'zone9': '#186a3b',
+                    'zone8': '#009704',
+                    'zone7': '#47ff3f',
+                    'zone6': '#DAF7A6',
+                    'zone5': '#ffd101',
+                    'zone4': '#FF5733',
+                    'zone3': '#e30000',
+                    'zone2': '#900C3F',
+                    'zone1': '#581845',
+                  }
+
                   this.parcels.forEach(parcel => {
                     let vhzone = parcel.properties.vhzones_id;//divide based on layer attribute 
 
                         if(vhzone == 1){
                           d3.select(parcel.path)
-                            .style('fill', '#FFFFFF')//set to Colors if fill wanted, otherwise transparent
-                            .style('opacity', this.active ? 0.30 : 0.0)
+                            .style('fill', colors.zone9)
+                            .style('opacity', this.active ? 0.40 : 0.0)
                             .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 2){
                           d3.select(parcel.path)
-                            .style('fill', '#B6F2B3')//set to Colors if fill wanted, otherwise transparent
-                            .style('opacity', this.active ? 0.30 : 0.0)
+                            .style('fill', colors.zone8)
+                            .style('opacity', this.active ? 0.40 : 0.0)
                             .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 3){
                           d3.select(parcel.path)
-                            .style('fill', '#30EC26')//set to Colors if fill wanted, otherwise transparent
-                            .style('opacity', this.active ? 0.30 : 0.0)
+                            .style('fill', colors.zone7)
+                            .style('opacity', this.active ? 0.40 : 0.0)
                             .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 4){
                           d3.select(parcel.path)
-                            .style('fill', '#FFC300')//set to Colors if fill wanted, otherwise transparent
-                            .style('opacity', this.active ? 0.30 : 0.0)
+                            .style('fill', colors.zone4)
+                            .style('opacity', this.active ? 0.40 : 0.0)
                             .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 5){
                           d3.select(parcel.path)
-                            .style('fill', '#F7BDA9')//set to Colors if fill wanted, otherwise transparent
-                            .style('opacity', this.active ? 0.30 : 0.0)
+                            .style('fill', colors.zone3)
+                            .style('opacity', this.active ? 0.40 : 0.0)
                             .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 6){
                           d3.select(parcel.path)
-                            .style('fill', '#F56D3E')//set to Colors if fill wanted, otherwise transparent
-                            .style('opacity', this.active ? 0.30 : 0.0)
+                            .style('fill', colors.zone2)
+                            .style('opacity', this.active ? 0.40 : 0.0)
                             .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 7){
                           d3.select(parcel.path)
-                            .style('fill', '#F7BDA9')//light pink
-                            .style('opacity', this.active ? 0.30 : 0.0)
+                            .style('fill', colors.zone3)
+                            .style('opacity', this.active ? 0.40 : 0.0)
                             .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 8){
                           d3.select(parcel.path)
-                            .style('fill', '#F7BDA9')//light pink
-                            .style('opacity', this.active ? 0.30 : 0.0)
+                            .style('fill', colors.zone3)
+                            .style('opacity', this.active ? 0.40 : 0.0)
                             .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 9){
                           d3.select(parcel.path)
-                            .style('fill', '#F56D3E')//salmon
-                            .style('opacity', this.active ? 0.30 : 0.0)
+                            .style('fill', colors.zone2)
+                            .style('opacity', this.active ? 0.40 : 0.0)
                             .style('stroke',this.borderColor )
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 10){
                           d3.select(parcel.path)
-                            .style('fill', '#FF0000')//red
-                            .style('opacity', this.active ? 0.30 : 0.0)
+                            .style('fill', colors.zone1)
+                            .style('opacity', this.active ? 0.40 : 0.0)
                             .style('stroke',this.borderColor )
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 11){
                           d3.select(parcel.path)
-                            .style('fill', '#F5FF7F')//light yellow
-                            .style('opacity', this.active ? 0.30 : 0.0)
+                            .style('fill', colors.zone6)
+                            .style('opacity', this.active ? 0.40 : 0.0)
                             .style('stroke',this.borderColor )
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 12){
                           d3.select(parcel.path)
-                            .style('fill', '#F56D3E')//salmon
-                            .style('opacity', this.active ? 0.30 : 0.0)
+                            .style('fill', colors.zone2)
+                            .style('opacity', this.active ? 0.40 : 0.0)
                             .style('stroke',this.borderColor )
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 13){
                           d3.select(parcel.path)
-                            .style('fill', '#FF0000')//red
-                            .style('opacity', this.active ? 0.30 : 0.0)
+                            .style('fill', colors.zone1)
+                            .style('opacity', this.active ? 0.40 : 0.0)
                             .style('stroke',this.borderColor )
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 14){
                           d3.select(parcel.path)
-                            .style('fill', '#F56D3E')//salmon
-                            .style('opacity', this.active ? 0.30 : 0.0)
+                            .style('fill', colors.zone2)
+                            .style('opacity', this.active ? 0.40 : 0.0)
                             .style('stroke',this.borderColor )
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 15){
                           d3.select(parcel.path)
-                            .style('fill', '#E8FA0C')//yellow
-                            .style('opacity', this.active ? 0.30 : 0.0)
+                            .style('fill', colors.zone5)
+                            .style('opacity', this.active ? 0.40 : 0.0)
                             .style('stroke',this.borderColor )
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 16){
                           d3.select(parcel.path)
-                            .style('fill', '#F7BDA9')//light pink
-                            .style('opacity', this.active ? 0.30 : 0.0)
+                            .style('fill', colors.zone3)
+                            .style('opacity', this.active ? 0.40 : 0.0)
                             .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 17){
                           d3.select(parcel.path)
-                            .style('fill', '#F7BDA9')//light pink
-                            .style('opacity', this.active ? 0.30 : 0.0)
+                            .style('fill', colors.zone3)
+                            .style('opacity', this.active ? 0.40 : 0.0)
                             .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
                         if(vhzone == 18){
                           d3.select(parcel.path)
-                            .style('fill', '#F5FF7F')//light yellow
-                            .style('opacity', this.active ? 0.30 : 0.0)
+                            .style('fill', colors.zone6)
+                            .style('opacity', this.active ? 0.40 : 0.0)
                             .style('stroke',this.borderColor )
                             .style('stroke-width', (this.borderWidth)  + 'px');
                         }
@@ -463,6 +472,7 @@ export const BigIslandPlan: Plan = {
           active: false,
           included: true,
           iconPath: 'assets/plans/bigisland/images/icons/fire.png',
+          legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
           secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
           secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
           fillColor: mapLayerColors.Dod.fill,
@@ -493,12 +503,12 @@ export const BigIslandPlan: Plan = {
                 },
         },//end Road layer
           {//Start Hunting Area Layer.
-          //It doesn't sound as cool.
           name: 'huntingzones',
           displayName: 'State Hunting Areas',
           active: false,
           included: true,
           iconPath: 'assets/plans/bigisland/images/icons/pig.png',
+          legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
           secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
           secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
           fillColor: mapLayerColors.Dod.fill,
@@ -511,7 +521,7 @@ export const BigIslandPlan: Plan = {
                   this.parcels.forEach(parcel => {
                       d3.select(parcel.path)
                         .style('fill', 'transparent')
-                        .style('opacity', (this.active) ? 0.85 : 0.0)
+                        .style('opacity', (this.active) ? 0.50 : 0.0)
                         .style('stroke', this.borderColor)
                         .style('stroke-width', (this.borderWidth) + 'px');
                   }); 
@@ -521,7 +531,7 @@ export const BigIslandPlan: Plan = {
 
                         d3.select(parcel.path)
                           .style('fill', '#e63900')//set to Colors if fill wanted, otherwise transparent
-                          .style('opacity', this.active ? 0.85 : 0.0)
+                          .style('opacity', this.active ? 0.50 : 0.0)
                           .style('stroke','white' )//set to borderColors if borders wanted otherwise this.bordercolor
                           .style('stroke-width', (this.borderWidth)  + 'px');
                   });
@@ -529,17 +539,17 @@ export const BigIslandPlan: Plan = {
 
         },// ending hunting 
         
-          {//Start Hunting Area Layer.
-          //It doesn't sound as cool.
+          {//Start trails Layer.
           name: 'trails',
           displayName: 'Na Ala Hele Trails',
           active: false,
           included: true,
           iconPath: 'assets/plans/bigisland/images/icons/pig.png',
+          legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
           secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
           secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
           fillColor: mapLayerColors.Dod.fill,
-          borderColor: '#F79F19',
+          borderColor: '#eacaff',
           borderWidth: 3,
           legendColor: mapLayerColors.Dod.fill,
           filePath: 'assets/plans/bigisland/layers/Na_Ala_Hele_Trails.json',
@@ -549,7 +559,7 @@ export const BigIslandPlan: Plan = {
                   this.parcels.forEach(parcel => {
                       d3.select(parcel.path)
                         .style('fill', 'transparent')
-                        .style('opacity', (this.active) ? 0.85 : 0.0)
+                        .style('opacity', (this.active) ? 0.90 : 0.0)
                         .style('stroke', this.borderColor)
                         .style('stroke-width', (this.borderWidth) + 'px');
                   });
@@ -558,11 +568,12 @@ export const BigIslandPlan: Plan = {
                   this.parcels.forEach(parcel => {
                         d3.select(parcel.path)
                           .style('fill', 'transparent')//set to Colors if fill wanted, otherwise transparent
-                          .style('opacity', this.active ? 1 : 0.0)
+                          .style('opacity', this.active ? 0.90 : 0.0)
                           .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                           .style('stroke-width', this.borderWidth + 'px');
                   });
                 }, 
+<<<<<<< HEAD
         },
         {//Elevation
           //It sounds cool.
@@ -655,5 +666,10 @@ export const BigIslandPlan: Plan = {
         
         
     ]
+=======
+        },//end trails layer
+
+    ],
+>>>>>>> 6c6cfd8a10c3a79176d4c530264e995ec70b79b0
   }
 }

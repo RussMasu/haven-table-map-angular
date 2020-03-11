@@ -5,6 +5,7 @@ export interface MapLayer {
   displayName: string;
   filePath: string;
   iconPath: string;
+  legendImagePath: string;
   secondScreenImagePath: string;
   secondScreenText: string;
   active: boolean;

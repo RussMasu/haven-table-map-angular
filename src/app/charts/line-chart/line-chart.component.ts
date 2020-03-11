@@ -19,19 +19,27 @@ export class LineChartComponent implements OnInit {
   capacityData: any;
   scenario: Scenario;
   year: number;
+  currentImagePath: string;
 
   data: any;
   labels: any;
   chartMax: number;
 
   constructor(private planService: PlanService) { }
-
   ngOnInit() {
 
     this.scenario = this.planService.getCurrentScenario();
     this.year = this.planService.getCurrentYear();
     this.fetchData();
-
+    this.currentImagePath = "../../../assets/plans/bigisland/images/icons/null.png";
+    
+    this.planService.ImagePathSubject.subscribe(currentImagePath =>{
+        if (currentImagePath){
+                console.log("did this do anything at all")
+                this.currentImagePath = this.planService.getLegendImagePath();
+        }
+    });
+          
     this.planService.scenarioSubject.subscribe(scenario => {
       if (scenario) {
         this.updateScenario(scenario);
@@ -44,8 +52,7 @@ export class LineChartComponent implements OnInit {
       }
     });
 
-  }
-
+  } 
   fetchData() {
     this.planService.getCapacityData().then(capData => {
       this.capacityData = capData;
@@ -78,9 +85,12 @@ export class LineChartComponent implements OnInit {
         this.data.capacity[scenario].labels = [...new Set(this.data.capacity[scenario].labels)];
       });
       this.chartMax = Math.ceil(Math.max(...valueArray) / 100) * 100;
-      //this.createChart(); Disabled Line Chart.
+      this.createChart(); //Disabled Line Chart.
+        //this.currentImagePath = this.planService.getLegendImagePath();
     });
-
+        
+       
+        //this.currentImagePath = this.planService.getLegendImagePath();
   }
 
   createChart() {
@@ -90,7 +100,10 @@ export class LineChartComponent implements OnInit {
   }
 
   createLineChart(labels: any[], datasets: any[]) {
-    this.ctx = this.chartDiv.nativeElement.getContext('2d');
+    
+          
+          
+          this.ctx = this.chartDiv.nativeElement.getContext('2d');
     this.myChart = new Chart(this.ctx, {
       type: 'line',
       options: {
