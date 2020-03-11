@@ -19,7 +19,10 @@ export class LineChartComponent implements OnInit {
   capacityData: any;
   scenario: Scenario;
   year: number;
+  
   currentImagePath: string;
+  currentImageWidth: number;
+  currentImageHeight: number;
 
   data: any;
   labels: any;
@@ -27,15 +30,35 @@ export class LineChartComponent implements OnInit {
 
   constructor(private planService: PlanService) { }
   ngOnInit() {
-
+    var defaultheight = 325;
+    var defaultwidth = 325;
     this.scenario = this.planService.getCurrentScenario();
     this.year = this.planService.getCurrentYear();
     this.fetchData();
     this.currentImagePath = "../../../assets/plans/bigisland/images/icons/null.png";
-    
+    this.currentImageWidth = defaultwidth;
+    this.currentImageHeight = defaultheight;
     this.planService.ImagePathSubject.subscribe(currentImagePath =>{
-        if (currentImagePath){
-                console.log("did this do anything at all")
+        if (currentImagePath){ 
+                
+                var img = new Image();
+                img.src = this.planService.getLegendImagePath();
+                if (img.height === img.width){
+                console.log("the image has a ratio of 1");
+                this.currentImageHeight = defaultheight;
+                this.currentImageWidth = defaultwidth;
+                }
+                else{
+                        if (img.height > img.width){
+                                var ratio = img.height/ img.width;
+                                this.currentImageHeight = defaultheight*ratio;
+                                this.currentImageWidth = defaultwidth;
+                        } 
+                        else{
+                                this.currentImageHeight = defaultheight;
+                                this.currentImageWidth = defaultwidth;
+                        }
+                }
                 this.currentImagePath = this.planService.getLegendImagePath();
         }
     });
@@ -86,11 +109,11 @@ export class LineChartComponent implements OnInit {
       });
       this.chartMax = Math.ceil(Math.max(...valueArray) / 100) * 100;
       this.createChart(); //Disabled Line Chart.
-        //this.currentImagePath = this.planService.getLegendImagePath();
+       
     });
         
        
-        //this.currentImagePath = this.planService.getLegendImagePath();
+        
   }
 
   createChart() {
