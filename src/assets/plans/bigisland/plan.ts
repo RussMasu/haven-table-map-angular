@@ -300,7 +300,7 @@ export const BigIslandPlan: Plan = {
           active: false,
           included: true,
           iconPath: 'assets/plans/bigisland/images/icons/fire.png',
-          legendImagePath: 'assets/plans/bigisland/images/icons/fire.png',
+          legendImagePath: 'assets/plans/bigisland/images/legends/LavaFlowHazardLegend.png',
           secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
           secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
           fillColor: mapLayerColors.Dod.fill,
