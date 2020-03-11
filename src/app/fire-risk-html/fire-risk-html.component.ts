@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FireRiskHtmlComponent implements OnInit {
 
+  private text: string;
+
   constructor() { }
 
   ngOnInit() {
+    this.text="Fire Risk Area Test.";
   }
 
 }

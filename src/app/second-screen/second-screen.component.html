@@ -1,8 +1,8 @@
 <div class="second-screen-container" [style.backgroundColor]="plan ? 'transparent' : 'black'">
   <div *ngIf="plan; else elseBlock">
     <img class="background-image" src="{{ plan.secondScreenImagePath }}" />
-    <div *ngFor="let layer of plan.map.mapLayers" class="left-card" [style.opacity]="layer.name === nextLayer ? 1 : 0">
-      <img src="{{ layer.secondScreenImagePath }}" />
+    <div id='htmlDisplay' *ngFor="let layer of plan.map.mapLayers" class="left-card" [style.opacity]="layer.name === nextLayer ? 1 : 0">
+      <div [innerHTML]="{{plan.secondScreenHTMLPath }}"></div>
     </div>
   </div>
 
