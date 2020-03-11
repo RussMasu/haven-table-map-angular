@@ -573,7 +573,6 @@ export const BigIslandPlan: Plan = {
                           .style('stroke-width', this.borderWidth + 'px');
                   });
                 }, 
-<<<<<<< HEAD
         },
         {//Elevation
           //It sounds cool.
@@ -582,6 +581,7 @@ export const BigIslandPlan: Plan = {
           active: false,
           included: false,
           iconPath: 'assets/plans/bigisland/images/icons/elevation-icon.png',
+          legendImagePath: '',
           secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
           secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
           fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
@@ -615,6 +615,7 @@ export const BigIslandPlan: Plan = {
           active: false,
           included: true,
           iconPath: 'assets/plans/bigisland/images/icons/elevation-icon.png',
+          legendImagePath: '',
           secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
           secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
           fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
@@ -649,6 +650,7 @@ export const BigIslandPlan: Plan = {
           active: false,
           included: true,
           iconPath: 'assets/plans/bigisland/images/icons/cross-icon.png',
+          legendImagePath: '',
           secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
           secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
           fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
@@ -666,10 +668,5 @@ export const BigIslandPlan: Plan = {
         
         
     ]
-=======
-        },//end trails layer
-
-    ],
->>>>>>> 6c6cfd8a10c3a79176d4c530264e995ec70b79b0
   }
 }
