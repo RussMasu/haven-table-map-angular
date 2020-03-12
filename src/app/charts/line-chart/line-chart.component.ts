@@ -30,8 +30,8 @@ export class LineChartComponent implements OnInit {
 
   constructor(private planService: PlanService) { }
   ngOnInit() {
-    var defaultheight = 325;
-    var defaultwidth = 325;
+    var defaultheight = 690;
+    var defaultwidth = 300;
     this.scenario = this.planService.getCurrentScenario();
     this.year = this.planService.getCurrentYear();
     this.fetchData();
