@@ -1,29 +1,21 @@
-<div class="second-screen-container" [style.backgroundColor]="plan ? 'transparent' : 'black'">
+<div class="second-screen-container">
   <div *ngIf="plan; else elseBlock">
-    <img class="background-image" src="{{ plan.secondScreenImagePath }}" />
-    <div id='htmlDisplay' *ngFor="let layer of plan.map.mapLayers" class="left-card" [style.opacity]="layer.name === nextLayer ? 1 : 0">
-      <div [ngSwitch="layer"]>  <!--Load HTML here.-->
-        <fire-risk *ngSwitchCase="'layer1'"></app-s1>
-        <app-s1 *ngSwitchCase="'layer1'"></app-s1>
-        <app-s1 *ngSwitchCase="'layer1'"></app-s1>
-        <app-s1 *ngSwitchCase="'layer1'"></app-s1>
-        <app-s1 *ngSwitchCase="'layer1'"></app-s1>
-        <app-s1 *ngSwitchCase="'layer1'"></app-s1>
-        <app-s1 *ngSwitchCase="'layer1'"></app-s1>
-        <app-s1 *ngSwitchCase="'layer1'"></app-s1>
+    <div id='htmlDisplay' *ngFor="let layer of plan.map.mapLayers" [style.opacity]="layer.name === nextLayer ? 1 : 0">
+      <div ngSwitch="layer">  <!--Load HTML here.-->
+        <app-fire-risk *ngSwitchCase="firerisk"></app-fire-risk>
       </div>
     </div>
   </div>
 
-  <!-- loader called until plan is set-->
-  <ng-template #elseBlock>
-    <div class="loading">
-      <div class="lds-facebook">
-        <div></div>
-        <div></div>
-        <div></div>
+    <!--Loading screen-->
+    <ng-template #elseBlock>
+      <div class="loading">
+        <div class="lds-facebook">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <h2>Getting The Second Screen Ready</h2>
       </div>
-      <h2>Getting The Second Screen Ready</h2>
-    </div>
-  </ng-template>
-</div>
+    </ng-template>
+  </div>

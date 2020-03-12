@@ -18,7 +18,6 @@ export class SecondScreenComponent implements OnInit {
 
   private currentYear: number;
   private displayName: string;
-  private secondScreenImagePath: string;
   private nextLayer: string;
   private plan: Plan;
   private mapLayers: {text: string, color: string, active: boolean}[] = [];
@@ -32,16 +31,15 @@ export class SecondScreenComponent implements OnInit {
       const data = JSON.parse(value.data);
       if (data.type === 'setup') {
         this.setupSecondScreen(data);
-      } else if (data.type === 'year') {
-        this.currentYear = data.year;
       } else if (data.type === 'layer') {
-        this.nextLayer = data.name;
+        this.changeSecondScreen(data.name);
       }
     });
   }
 
-  changeSecondScreen(nextLayer :"layer1"|"layer2"|"layer3" ){
-    this.nextLayer;
+  changeSecondScreen(layer){
+    console.log("Switching to " + layer);
+    this.nextLayer = layer;
   }
 
   ngOnDestroy(): void {
