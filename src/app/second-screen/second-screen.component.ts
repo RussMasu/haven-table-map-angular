@@ -40,6 +40,10 @@ export class SecondScreenComponent implements OnInit {
     });
   }
 
+  changeSecondScreen(nextLayer :"layer1"|"layer2"|"layer3" ){
+    
+  }
+
   ngOnDestroy(): void {
     this.multiWindowService.name = 'dead';
   }

@@ -2,7 +2,16 @@
   <div *ngIf="plan; else elseBlock">
     <img class="background-image" src="{{ plan.secondScreenImagePath }}" />
     <div id='htmlDisplay' *ngFor="let layer of plan.map.mapLayers" class="left-card" [style.opacity]="layer.name === nextLayer ? 1 : 0">
-        <!--Load HTML here.-->
+      <div [ngSwitch="layer"]>  <!--Load HTML here.-->
+        <app-s1 *ngSwitchCase="'layer1'"></app-s1>
+        <app-s1 *ngSwitchCase="'layer1'"></app-s1>
+        <app-s1 *ngSwitchCase="'layer1'"></app-s1>
+        <app-s1 *ngSwitchCase="'layer1'"></app-s1>
+        <app-s1 *ngSwitchCase="'layer1'"></app-s1>
+        <app-s1 *ngSwitchCase="'layer1'"></app-s1>
+        <app-s1 *ngSwitchCase="'layer1'"></app-s1>
+        <app-s1 *ngSwitchCase="'layer1'"></app-s1>
+      </div>
     </div>
   </div>
 
