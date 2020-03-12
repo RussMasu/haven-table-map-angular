@@ -41,7 +41,7 @@ export class SecondScreenComponent implements OnInit {
   }
 
   changeSecondScreen(nextLayer :"layer1"|"layer2"|"layer3" ){
-    
+    this.nextLayer=nextLayer;
   }
 
   ngOnDestroy(): void {
