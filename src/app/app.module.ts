@@ -34,6 +34,7 @@ import { ArService } from './services/ar.service';
 import { PlanService } from './services/plan.service';
 import { SoundsService } from './services/sounds.service';
 import { WindowRefService } from './services/window-ref.service';
+import { FireRiskComponent } from './second-screen-components/fire-risk/fire-risk.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { WindowRefService } from './services/window-ref.service';
     ScenarioComponent,
     LayerPuckComponent,
     YearPuckComponent,
-    AddPuckComponent
+    AddPuckComponent,
+    FireRiskComponent
   ],
   imports: [
     BrowserModule,
