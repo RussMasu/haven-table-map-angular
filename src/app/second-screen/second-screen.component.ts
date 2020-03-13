@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MultiWindowService, Message} from 'ngx-multi-window';
 import { Plan } from '../interfaces/plan';
+import { OahuPlan } from '../../assets/plans/oahu/plan';
+import { MauiPlan } from '../../assets/plans/maui/plan';
 import { BigIslandPlan } from '../../assets/plans/bigisland/plan';
 
 
@@ -16,9 +18,6 @@ import { BigIslandPlan } from '../../assets/plans/bigisland/plan';
  */
 export class SecondScreenComponent implements OnInit {
 
-  private currentYear: number;
-  private displayName: string;
-  private secondScreenImagePath: string;
   private nextLayer: string;
   private plan: Plan;
   private mapLayers: {text: string, color: string, active: boolean}[] = [];
@@ -31,6 +30,7 @@ export class SecondScreenComponent implements OnInit {
     this.multiWindowService.onMessage().subscribe((value: Message) => {
       const data = JSON.parse(value.data);
       if (data.type === 'setup') {
+        this.setupSecondScreen(data);
       } else if (data.type === 'layer') {
         this.changeSecondScreen(data.name);
       }
@@ -51,7 +51,6 @@ export class SecondScreenComponent implements OnInit {
    * @param data => The setup object
    */
   private setupSecondScreen(data: any): void {
-    this.currentYear = data.currentYear;
     switch (data.name) {
       case 'bigisland':
         this.plan = BigIslandPlan;
@@ -61,8 +60,5 @@ export class SecondScreenComponent implements OnInit {
         break;
     }
     this.nextLayer = this.plan.map.mapLayers[0].name;
-    this.plan.map.mapLayers.forEach(layer => {
-      this.mapLayers.push({text: layer.displayName, color: layer.fillColor, active: false});
-    });
   }
 }
