@@ -1,7 +1,7 @@
 <div class="second-screen-container" [style.backgroundColor]="plan ? 'transparent' : 'black'">
   <div *ngIf="plan; else elseBlock">
      <div [ngSwitch]="nextLayer">  <!--Load HTML here.-->
-        <app-fire-risk *ngSwitchCase ="firerisk"></app-fire-risk>
+        <app-fire-risk *ngSwitchCase="firerisk"></app-fire-risk>
         <app-screen-default *ngSwitchDefault></app-screen-default>
     </div>
   </div>
