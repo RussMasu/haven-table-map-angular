@@ -32,13 +32,13 @@ export const BigIslandPlan: Plan = {
   },
   css: {
     map: {
-      left: '30.5vw',
+      left: '25vw',
       top: '8vh'
     },
     legend: {
       defaultLayout: 'grid',
       grid: {
-        left: '27vw',
+        left: '24vw',
         top: '15vh',
         width: '21vw'
       },
@@ -62,8 +62,8 @@ export const BigIslandPlan: Plan = {
         top: '0vh'
       },
       line: {
-        left: 'calc(100vw - 325px)',
-        top: '0vh'
+        left: 'calc(100vw - 350px)',
+        top: '35vh'
       }
 
     }
@@ -138,7 +138,7 @@ export const BigIslandPlan: Plan = {
         active: false,
         included: true,
         iconPath: 'assets/plans/bigisland/images/icons/stream-icon.png',
-        legendImagePath: 'assets/plans/bigisland/images/legends/StreamLegendsDraft2.png',
+        legendImagePath: 'assets/plans/bigisland/images/legends/StreamsLegend.png',
         secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
         secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
         fillColor: '#ff0066',
@@ -194,7 +194,7 @@ export const BigIslandPlan: Plan = {
               active: false,
               included: true,
               iconPath: 'assets/plans/bigisland/images/icons/fire.png',
-              legendImagePath: 'assets/plans/bigisland/images/icons/fire.png',
+              legendImagePath: 'assets/plans/bigisland/images/legends/Fire.png',
               secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
               secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
               fillColor: mapLayerColors.Dod.fill,
