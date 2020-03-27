@@ -577,7 +577,7 @@ export const BigIslandPlan: Plan = {
         },//end trails layer
 
           {//Start critial plant habitat Layer.
-            name: 'hawaii-crit-habitat',
+            name: 'planthabitat',
             displayName: 'Critial Plant Habitats',
             active: false,
             included: true,
@@ -591,24 +591,25 @@ export const BigIslandPlan: Plan = {
             legendColor: mapLayerColors.Dod.fill,  //Change this.
             filePath: 'assets/plans/bigisland/layers/Big_Island_Critical_Habitat__Plant',
             parcels: [],
-                  setupFunction(planService: PlanService) {
-                    this.parcels.forEach(parcel => {
-                        d3.select(parcel.path)
-                          .style('fill', 'transparent')
-                          .style('opacity', (this.active) ? 0.90 : 0.0)
-                          .style('stroke', this.borderColor)
-                          .style('stroke-width', (this.borderWidth) + 'px');
-                    });
-                  },
-                  updateFunction(planService: PlanService) {
-                    this.parcels.forEach(parcel => {
-                          d3.select(parcel.path)
-                            .style('fill', 'transparent')//set to Colors if fill wanted, otherwise transparent
-                            .style('opacity', this.active ? 0.90 : 0.0)
-                            .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
-                            .style('stroke-width', this.borderWidth + 'px');
-                    });
-                  }, 
+            setupFunction(planService: PlanService) {
+              this.parcels.forEach(parcel => {
+                  d3.select(parcel.path)
+                    .style('fill', 'light blue')
+                    .style('opacity', (this.active) ? 0.80 : 0.0)
+                    .style('stroke', this.borderColor)
+                    .style('stroke-width', (this.borderWidth) + 'px');
+              }); 
+            },
+            updateFunction(planService: PlanService) {
+              this.parcels.forEach(parcel => {
+
+                    d3.select(parcel.path)
+                      .style('fill', '#e63900')//set to Colors if fill wanted, otherwise transparent
+                      .style('opacity', this.active ? 0.80 : 0.0)
+                      .style('stroke','white' )//set to borderColors if borders wanted otherwise this.bordercolor
+                      .style('stroke-width', (this.borderWidth)  + 'px');
+              });
+            },
           },//end critical plant habitat
     ],
   }
