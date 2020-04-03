@@ -634,6 +634,126 @@ export const BigIslandPlan: Plan = {
         }, 
 },//end trails layer
 
+        {//Start trails Layer.
+        name: 'parcels',
+        displayName: 'Hawaii Tax Parcels',
+        active: false,
+        included: true,
+        iconPath: 'assets/plans/bigisland/images/icons/pig.png',
+        legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
+        secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
+        secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+        fillColor: mapLayerColors.Dod.fill,
+        borderColor: 'transparent',
+        borderWidth: 3,
+        legendColor: mapLayerColors.Dod.fill,
+        filePath: 'assets/plans/bigisland/layers/Parcels__Hawaii_County.json',
+        parcels: [],
+              setupFunction(planService: PlanService) {
+                this.parcels.forEach(parcel => {
+                    d3.select(parcel.path)
+                      .style('fill', 'transparent')
+                      .style('opacity', (this.active) ? 0.90 : 0.0)
+                      .style('stroke', this.borderColor)
+                      .style('stroke-width', (this.borderWidth) + 'px');
+                });
+              },
+              updateFunction(planService: PlanService) {
+                this.parcels.forEach(parcel => { 
+                        
+        const PITTColors = {
+              "Residential" : "blue",
+              "Apartment" : "teal",
+              "Commercial" : "orange",
+              "Industrial" : "red",
+              "Agricultural / Forest" : "green",
+              "Hotel and Resort" : "white",
+              "Homeowner" : "blue",
+              "Multiple" : "grey"
+            }
+            let code = parcel.properties.pittcode;
+
+            if(code == 100)
+            {
+              d3.select(parcel.path)
+              .style('fill', PITTColors["Residential"])
+              .style('opacity', this.active ? 0.85 : 0.0)
+              .style('stroke', this.borderColor)
+              .style('stroke-width', (this.borderWidth -2) + 'px');
+            }
+            if(code == "200")
+            {
+              d3.select(parcel.path)
+              .style('fill', PITTColors["Apartment"])
+              .style('opacity', this.active ? 0.85 : 0.0)
+              .style('stroke', this.borderColor)
+              .style('stroke-width', (this.borderWidth -2) + 'px');
+            }
+            if(code == "300")
+            {
+              d3.select(parcel.path)
+              .style('fill', PITTColors["Commercial"])
+              .style('opacity', this.active ? 0.85 : 0.0)
+              .style('stroke', this.borderColor)
+              .style('stroke-width', (this.borderWidth-2) + 'px');
+            }
+                if(code == "400")
+                {
+                  d3.select(parcel.path)
+                  .style('fill', PITTColors["Commercial"])
+                  .style('opacity', this.active ? 0.85 : 0.0)
+                  .style('stroke', this.borderColor)
+                  .style('stroke-width', (this.borderWidth-2) + 'px');
+                }
+                if(code == "500")
+                {
+                  d3.select(parcel.path)
+                  .style('fill', PITTColors["Industrial"])
+                  .style('opacity', this.active ? 0.85 : 0.0)
+                  .style('stroke', this.borderColor)
+                  .style('stroke-width', (this.borderWidth -2) + 'px');
+                }
+                if(code == "600")
+                {
+                  d3.select(parcel.path)
+                  .style('fill', PITTColors["Agricultural / Forest"])
+                  .style('opacity', this.active ? 0.85 : 0.0)
+                  .style('stroke', this.borderColor)
+                  .style('stroke-width', (this.borderWidth -2) + 'px');
+                }
+                if(code == "700")
+                {
+                  d3.select(parcel.path)
+                  .style('fill', PITTColors["Hotel and Resort"])
+                  .style('opacity', this.active ? 0.85 : 0.0)
+                  .style('stroke', this.borderColor)
+                  .style('stroke-width', (this.borderWidth -2) + 'px');
+                }
+                if(code == "900")
+                {
+                  d3.select(parcel.path)
+                  .style('fill', PITTColors["Homeowner"])
+                  .style('opacity', this.active ? 0.85 : 0.0)
+                  .style('stroke', this.borderColor)
+                  .style('stroke-width',  (this.borderWidth -2 ) + 'px');
+                }
+                if(code == "999"){
+                    d3.select(parcel.path)
+                      .style('fill', PITTColors["Multiple"])
+                      .style('opacity', (this.active) ? 0.90 : 0.0)
+                      .style('stroke', this.borderColor)
+                      .style('stroke-width',(this.borderWidth -2 ) + 'px');
+                }
+            if(code == "0"){
+                d3.select(parcel.path)
+                  .style('fill', 'transparent')
+                  .style('opacity', (this.active) ? 0.90 : 0.0)
+                  .style('stroke', this.borderColor)
+                  .style('stroke-width', (this.borderWidth -2 ) + 'px');
+            }
+          });
+              }, 
+      },//end trails layer
     ],
   }
 }
