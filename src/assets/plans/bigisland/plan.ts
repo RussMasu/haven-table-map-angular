@@ -634,11 +634,11 @@ export const BigIslandPlan: Plan = {
         }, 
 },//end trails layer
 
-        {//Start trails Layer.
+        {//Start Parcels Layer.
         name: 'parcels',
         displayName: 'Hawaii Tax Parcels',
         active: false,
-        included: true,
+        included: false,
         iconPath: 'assets/plans/bigisland/images/icons/pig.png',
         legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
         secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
@@ -753,7 +753,44 @@ export const BigIslandPlan: Plan = {
             }
           });
               }, 
-      },//end trails layer
+      },//end parcels layer
+    
+        {//start Ahupuaa layer
+          name: 'Ahupuaa', //display name
+          displayName: 'Ahupua`as',//display name
+          active: false,
+          included: true,//enable-disable layer
+          iconPath: 'assets/plans/bigisland/images/icons/elevation-icon.png',//controls icon image for layer
+          legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
+          secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
+          secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+          fillColor: '#ff0066',
+          borderColor: 'turquoise',
+          borderWidth: 3,
+          legendColor: mapLayerColors.Solar.fill,
+          filePath: 'assets/plans/bigisland/layers/Ahupuaa.json',//set to shapefile link
+          parcels: [],
+          setupFunction(planService: PlanService) {
+            this.parcels.forEach(parcel => {
+                d3.select(parcel.path)
+                  .style('fill', 'transparent')
+                  .style('opacity', (this.active) ? 0.9 : 0.0)
+                  .style('stroke', this.borderColor)
+                  .style('stroke-width', this.borderWidth + 'px');
+            });
+          },
+          updateFunction(planService: PlanService) {
+            this.parcels.forEach(parcel => { 
+              d3.select(parcel.path)
+                .style('fill', 'transparent')//'transparent' if no fill is needed, otherwise set to color hex code
+                .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
+                .style('stroke', this.borderColor)//controls bordercolor - accepts color hex code
+                .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
+              
+
+            });
+          },
+        },//end ahupuaa layer
     ],
   }
 }
