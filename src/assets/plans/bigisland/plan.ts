@@ -253,6 +253,74 @@ export const BigIslandPlan: Plan = {
           });
         },
       },//end fire layer
+		{//start Flood Hazard layer turn off bigislandborder
+		name: 'Flood Hazard', //display name
+		displayName: 'Flood Hazard',//display name
+		active: false,
+		included: true,//enable-disable layer
+		iconPath: 'assets/plans/bigisland/images/icons/stream-icon.png',//controls icon image for layer
+		legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
+		secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
+		secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+		fillColor: '#ff0066',
+		borderColor: '#000000',
+		borderWidth: 1,
+		legendColor: mapLayerColors.Solar.fill,
+		filePath: 'assets/plans/bigisland/layers/floodHazard.json',//set to shapefile link
+		parcels: [],
+		setupFunction(planService: PlanService) {
+		  this.parcels.forEach(parcel => {
+			  d3.select(parcel.path)
+				.style('fill', 'transparent')
+				.style('opacity', (this.active) ? 0.9 : 0.0)
+				.style('stroke', this.borderColor)
+				.style('stroke-width', this.borderWidth + 'px');
+		  });
+		},
+		updateFunction(planService: PlanService) {
+		  this.parcels.forEach(parcel => {
+			
+			let layerattribute=parcel.properties.fld_zone;
+
+			const colors = {
+			  'A': '#ff0000',
+			  'AE': '#e0ff02',
+			  'X': '#619555',
+			  'D':'#646267',
+			}
+
+			if (layerattribute == "A"){
+			d3.select(parcel.path)
+			  .style('fill', colors.A)//'transparent' if no fill is needed, otherwise set to color hex code
+			  .style('opacity', this.active ? 1 : 0.0)//controls opacity of layer
+			  .style('stroke', colors.A)//controls bordercolor - accepts color hex code
+			  .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
+		  }
+		  else if (layerattribute == "AE"){
+			d3.select(parcel.path)
+			  .style('fill', colors.AE)//'transparent' if no fill is needed, otherwise set to color hex code
+			  .style('opacity', this.active ? 1 : 0.0)//controls opacity of layer
+			  .style('stroke', colors.AE)//controls bordercolor - accepts color hex code
+			  .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
+		  }
+		  else if (layerattribute == "X"){
+			d3.select(parcel.path)
+			  .style('fill', colors.X)//'transparent' if no fill is needed, otherwise set to color hex code
+			  .style('opacity', this.active ? 0.6 : 0.0)//controls opacity of layer
+			  .style('stroke', 'transparent')//controls bordercolor - accepts color hex code
+			  .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
+		  }
+		  else if (layerattribute == "D"){
+			d3.select(parcel.path)
+			  .style('fill', colors.D)//'transparent' if no fill is needed, otherwise set to color hex code
+			  .style('opacity', this.active ? 0.6 : 0.0)//controls opacity of layer
+			  .style('stroke', '#000000')//controls bordercolor - accepts color hex code
+			  .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
+		  }
+
+		  });
+		},
+	  },//end Flood Hazard layer
 
       {//start Palila layer
         name: 'Palila Critical Habitat', //display name
