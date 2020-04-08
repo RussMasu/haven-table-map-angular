@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { Plan } from '@app/interfaces';
 import { PlanService } from '@app/services/plan.service';
 import { ProjectableMarker } from '@app/classes/projectableMarker';
-import { BigIslandPlan } from '../../assets/plans/bigisland/plan'
+import { BigIslandPlan } from '../../assets/plans/bigisland/plan';
 
 @Component({
   selector: 'app-map-main',
@@ -26,6 +26,8 @@ export class MapMainComponent implements AfterViewInit {
   @ViewChild('connectingLine', { static: false }) connectingLine; // The line that connects the Layer and Add pucks.
 
   private plan: Plan;                   // The current Plan
+  private nativeWindow: any;
+  private loading: boolean;
 
   /* Legend Related Variables */
   private top: string;                  // Y Position of the legend
@@ -39,18 +41,18 @@ export class MapMainComponent implements AfterViewInit {
   private nextLayer: string;            // The next layer that will be added or removed.
   private addColor: string;             // What color is the next layer associated with.
   private currentScenario: string;      // Current scenario.
-
+        
   constructor(
     private planService: PlanService,
     private arService: ArService,
     private router: Router,
-    private windowRefService: WindowRefService) {
-
+    private windowRefService: WindowRefService){ 
+     this.nativeWindow = this.windowRefService.getNativeWindow();
       this.planService.setState('run');
       this.planService.setupSelectedPlan(BigIslandPlan);
       this.plan = this.planService.getCurrentPlan();
-  
-    // if the plan is undefined, then the application will go back to the landing page.
+      this.handleStartsecondscreen(this.plan);  
+          // if the plan is undefined, then the application will go back to the landing page.
     try {
       this.legendClass = this.planService.getCurrentLegendLayout();
       this.currentYear = this.planService.getMinimumYear();
@@ -65,9 +67,12 @@ export class MapMainComponent implements AfterViewInit {
       this.left = this.plan.css.legend[this.legendClass].left;
       this.width = this.plan.css.legend[this.legendClass].width;
     }
+        
   }
 
   ngAfterViewInit() {
+ 
+
 
     this.trackingDots = [this.trackingDotYear, this.trackingDotLayer, this.trackingDotScenario, this.trackingDotAdd];
 
@@ -323,4 +328,55 @@ export class MapMainComponent implements AfterViewInit {
     }
   }
 
+
+/*
+ * This section here is the second screen logic that is copied from landing home, to make sure that
+ * a second screen opens from map main instead
+ */
+private openSecondScreen(): boolean {
+          if (!(this.windowRefService.secondScreenIsSet())) {
+                  this.windowRefService.setSecondSceenObject(this.nativeWindow.open('second-screen', 's    econdScreen')); 
+                  return true;
+       } else {
+                  return false;
+       }
+     }
+  
+    private handleIncludeSecondScreenCheckboxChange(island: Plan, isChecked: boolean): void {
+      island.includeSecondScreen = isChecked;
+    }   
+  
+  
+  /** Start UP the Second screen */
+     private startSecondScreen(plan: Plan): void {
+       if (this.windowRefService.secondScreenExists()) {
+         this.windowRefService.notifySecondScreen(JSON.stringify(
+           { 
+             type: 'setup',
+             name: plan.name,
+             currentYear: this.planService.getCurrentYear(),
+           }));
+       } else {
+         setTimeout(() => {
+           this.startSecondScreen(plan);
+         }, 1000);
+       }
+     }
+     handleStartsecondscreen(plan: Plan): void { 
+         if (this.openSecondScreen()) {
+           const planLayerData = [];
+           plan.map.mapLayers.forEach(layer => planLayerData.push({
+             name: layer.name,
+             displayName: layer.displayName,
+             iconPath: layer.iconPath
+           }));
+   
+           this.startSecondScreen(plan);
+        }
+       
+     }
+
+
 }
+
+

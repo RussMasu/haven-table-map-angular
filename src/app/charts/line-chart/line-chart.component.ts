@@ -43,12 +43,12 @@ export class LineChartComponent implements OnInit {
                 
                 var img = new Image();
                 img.src = this.planService.getLegendImagePath();
-                if (img.height === img.width){
+                //if (img.height === img.width){
                 console.log("the image has a ratio of 1");
                 this.currentImageHeight = defaultheight;
                 this.currentImageWidth = defaultwidth;
-                }
-                else{
+                //}
+                /*else{
                         if (img.height > img.width){
                                 var ratio = img.height/ img.width;
                                 this.currentImageHeight = defaultheight*ratio;
@@ -58,7 +58,7 @@ export class LineChartComponent implements OnInit {
                                 this.currentImageHeight = defaultheight;
                                 this.currentImageWidth = defaultwidth;
                         }
-                }
+                }*/
                 this.currentImagePath = this.planService.getLegendImagePath();
         }
     });
