@@ -607,157 +607,157 @@ export const BigIslandPlan: Plan = {
 
                   if (species == "Argyroxiphium kauense"){
                     d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'red')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else if (species == "Bonamia menziesii"){
                     d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'pink')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else if (species == "Clermontia lindseyana"){
                     d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'magenta')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else if (species == "Clermontia peleana"){
                     d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'green')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else if (species == "Clermontia pyrularia"){
                     d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'blue')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else if (species == "Colubrina oppositifolia"){
                     d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', '#purple')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else if (species == "Cyanea hamatiflora ssp. carlsonii"){
                     d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'light blue')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else if (species == "Cyanea platyphylla"){
                     d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'light purple')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else if (species == "Cyanea shipmanii"){
                     d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'light green')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else if (species == "Cyanea stictophylla"){
                     d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'blueviolet')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else if (species == "Cyrtandra giffardii"){
                     d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'bisque')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else if (species == "Cyrtandra tintinnabula"){
                     d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'Chartreuse')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else if (species == "Delissea undulata"){
                     d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'cadetblue')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else if (species == "Hibiscadelphus giffardianus"){
                     d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'crimson')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else if (species == "Hibiscus brackenridgei"){
                     d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'DarkOliveGreen')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else if (species == "Neraudia ovata"){
                     d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'Gainsboro')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else if (species == "Nothocestrum breviflorum"){
                     d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'LemonChiffon')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else if (species == "Phyllostegia racemosa"){
                     d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'MediumAquaMarine')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else if (species == "Phyllostegia velutina"){
                     d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'Moccasin')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else if (species == "Plantago hawaiiensis"){
                     d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'MistyRose')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else if (species == "Pleomele hawaiiensis"){
                     d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'papayawhip')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else if (species == "Sicyos alba"){
                     d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'RosyBrown')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else if (species == "Silene hawaiiensis"){
                     d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'Teal')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else if (species == "Solanum incompletum"){
                     d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'Turquoise')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else if (species == "Zanthoxylum dipetalum ssp. tomentosum"){
                     d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'SeaGreen')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else{
                   d3.select(parcel.path)
-                    .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'IndianRed')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
