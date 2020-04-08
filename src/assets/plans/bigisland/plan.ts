@@ -706,7 +706,7 @@ export const BigIslandPlan: Plan = {
         name: 'parcels',
         displayName: 'Hawaii Tax Parcels',
         active: false,
-        included: false,
+        included: true,
         iconPath: 'assets/plans/bigisland/images/icons/pig.png',
         legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
         secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
@@ -721,7 +721,7 @@ export const BigIslandPlan: Plan = {
                 this.parcels.forEach(parcel => {
                     d3.select(parcel.path)
                       .style('fill', 'transparent')
-                      .style('opacity', (this.active) ? 0.90 : 0.0)
+                      .style('opacity', (this.active) ? 0.40 : 0.0)
                       .style('stroke', this.borderColor)
                       .style('stroke-width', (this.borderWidth) + 'px');
                 });
@@ -745,7 +745,7 @@ export const BigIslandPlan: Plan = {
             {
               d3.select(parcel.path)
               .style('fill', PITTColors["Residential"])
-              .style('opacity', this.active ? 0.85 : 0.0)
+              .style('opacity', this.active ? 0.4 : 0.0)
               .style('stroke', this.borderColor)
               .style('stroke-width', (this.borderWidth -2) + 'px');
             }
@@ -753,7 +753,7 @@ export const BigIslandPlan: Plan = {
             {
               d3.select(parcel.path)
               .style('fill', PITTColors["Apartment"])
-              .style('opacity', this.active ? 0.85 : 0.0)
+              .style('opacity', this.active ? 0.4 : 0.0)
               .style('stroke', this.borderColor)
               .style('stroke-width', (this.borderWidth -2) + 'px');
             }
@@ -761,7 +761,7 @@ export const BigIslandPlan: Plan = {
             {
               d3.select(parcel.path)
               .style('fill', PITTColors["Commercial"])
-              .style('opacity', this.active ? 0.85 : 0.0)
+              .style('opacity', this.active ? 0.4 : 0.0)
               .style('stroke', this.borderColor)
               .style('stroke-width', (this.borderWidth-2) + 'px');
             }
@@ -769,7 +769,7 @@ export const BigIslandPlan: Plan = {
                 {
                   d3.select(parcel.path)
                   .style('fill', PITTColors["Commercial"])
-                  .style('opacity', this.active ? 0.85 : 0.0)
+                  .style('opacity', this.active ? 0.4 : 0.0)
                   .style('stroke', this.borderColor)
                   .style('stroke-width', (this.borderWidth-2) + 'px');
                 }
@@ -777,7 +777,7 @@ export const BigIslandPlan: Plan = {
                 {
                   d3.select(parcel.path)
                   .style('fill', PITTColors["Industrial"])
-                  .style('opacity', this.active ? 0.85 : 0.0)
+                  .style('opacity', this.active ? 0.4 : 0.0)
                   .style('stroke', this.borderColor)
                   .style('stroke-width', (this.borderWidth -2) + 'px');
                 }
@@ -785,7 +785,7 @@ export const BigIslandPlan: Plan = {
                 {
                   d3.select(parcel.path)
                   .style('fill', PITTColors["Agricultural / Forest"])
-                  .style('opacity', this.active ? 0.85 : 0.0)
+                  .style('opacity', this.active ? 0.4 : 0.0)
                   .style('stroke', this.borderColor)
                   .style('stroke-width', (this.borderWidth -2) + 'px');
                 }
@@ -793,7 +793,7 @@ export const BigIslandPlan: Plan = {
                 {
                   d3.select(parcel.path)
                   .style('fill', PITTColors["Hotel and Resort"])
-                  .style('opacity', this.active ? 0.85 : 0.0)
+                  .style('opacity', this.active ? 0.4 : 0.0)
                   .style('stroke', this.borderColor)
                   .style('stroke-width', (this.borderWidth -2) + 'px');
                 }
@@ -801,21 +801,21 @@ export const BigIslandPlan: Plan = {
                 {
                   d3.select(parcel.path)
                   .style('fill', PITTColors["Homeowner"])
-                  .style('opacity', this.active ? 0.85 : 0.0)
+                  .style('opacity', this.active ? 0.4 : 0.0)
                   .style('stroke', this.borderColor)
                   .style('stroke-width',  (this.borderWidth -2 ) + 'px');
                 }
                 if(code == "999"){
                     d3.select(parcel.path)
                       .style('fill', PITTColors["Multiple"])
-                      .style('opacity', (this.active) ? 0.90 : 0.0)
+                      .style('opacity', (this.active) ? 0.40 : 0.0)
                       .style('stroke', this.borderColor)
                       .style('stroke-width',(this.borderWidth -2 ) + 'px');
                 }
             if(code == "0"){
                 d3.select(parcel.path)
                   .style('fill', 'transparent')
-                  .style('opacity', (this.active) ? 0.90 : 0.0)
+                  .style('opacity', (this.active) ? 0.40 : 0.0)
                   .style('stroke', this.borderColor)
                   .style('stroke-width', (this.borderWidth -2 ) + 'px');
             }
