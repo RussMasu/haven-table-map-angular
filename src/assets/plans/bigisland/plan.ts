@@ -1040,14 +1040,14 @@ export const BigIslandPlan: Plan = {
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else{
                   d3.select(parcel.path)
-                    .style('fill', 'IndianRed')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'transparent')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
                   }
-                });
-              },
-            },//end critical plant habitat layer
-          ],
-        }
-      }
+          });
+        },
+      },//end critical plant habitat layer
+    ],
+  }
+}
