@@ -888,6 +888,10 @@ export const BigIslandPlan: Plan = {
                  
                   let species = parcel.properties.species;
 
+                  /*
+                  Checks for every type of species in the data.  
+                  Add a case if something's missing, I think I got them all.
+                  */
                   if (species == "Argyroxiphium kauense"){
                     d3.select(parcel.path)
                     .style('fill', 'red')//'transparent' if no fill is needed, otherwise set to color hex code
@@ -1040,7 +1044,7 @@ export const BigIslandPlan: Plan = {
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
                   }else{
                   d3.select(parcel.path)
-                    .style('fill', 'transparent')//'transparent' if no fill is needed, otherwise set to color hex code
+                    .style('fill', 'magenta')//'transparent' if no fill is needed, otherwise set to color hex code
                     .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
                     .style('stroke', 'white')//controls bordercolor - accepts color hex code
                     .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
