@@ -102,7 +102,7 @@ export const BigIslandPlan: Plan = {
         displayName: 'Elevation Contours 500ft',  //Display name (on the table.)
         active: false,  //Default for active (visible) status
         included: true,   //Default for inclusion in the layer list
-        iconPath: 'assets/plans/bigisland/images/icons/elevation-icon.png',  //Icon path for table.
+        iconPath: 'assets/plans/bigisland/images/icons/Elevation.png',  //Icon path for table.
         legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
         secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
         secondScreenText: 'Slide the Layer Puck to add or remove this layer',  //Instructional/information text on second screen.
@@ -137,7 +137,7 @@ export const BigIslandPlan: Plan = {
         displayName: 'Streams',
         active: false,
         included: true,
-        iconPath: 'assets/plans/bigisland/images/icons/stream-icon.png',
+        iconPath: 'assets/plans/bigisland/images/icons/Streams.png',
         legendImagePath: 'assets/plans/bigisland/images/legends/StreamsLegend.png',
         secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
         secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
@@ -192,7 +192,7 @@ export const BigIslandPlan: Plan = {
         displayName: 'Fire Risk Zones',
         active: false,
         included: true,
-        iconPath: 'assets/plans/bigisland/images/icons/fire.png',
+        iconPath: 'assets/plans/bigisland/images/icons/Fire.png',
         legendImagePath: 'assets/plans/bigisland/images/legends/Fire.png',
         secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
         secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
@@ -258,8 +258,8 @@ export const BigIslandPlan: Plan = {
 		displayName: 'Flood Hazard',//display name
 		active: false,
 		included: true,//enable-disable layer
-		iconPath: 'assets/plans/bigisland/images/icons/stream-icon.png',//controls icon image for layer
-		legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
+		iconPath: 'assets/plans/bigisland/images/icons/pig.png',//controls icon image for layer
+		legendImagePath: 'assets/plans/bigisland/images/legends/FloodLegend.png',
 		secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
 		secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
 		fillColor: '#ff0066',
@@ -327,7 +327,7 @@ export const BigIslandPlan: Plan = {
         displayName: 'Palila Critical Habitat',//display name
         active: false,
         included: true,//enable-disable layer
-        iconPath: 'assets/plans/bigisland/images/icons/palila-icon.png',//controls icon image for layer
+        iconPath: 'assets/plans/bigisland/images/icons/Palila.png',//controls icon image for layer
         legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
         secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
         secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
@@ -365,8 +365,8 @@ export const BigIslandPlan: Plan = {
       displayName: 'Vegetation',//display name
       active: false,
       included: true,//enable-disable layer
-      iconPath: 'assets/plans/bigisland/images/icons/palila-icon.png',//controls icon image for layer
-      legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
+      iconPath: 'assets/plans/bigisland/images/icons/Conservation.png',//controls icon image for layer
+      legendImagePath: 'assets/plans/bigisland/images/legends/VegLegend.png',
       secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
       fillColor: '#ff0066',
@@ -426,7 +426,7 @@ export const BigIslandPlan: Plan = {
       displayName: 'Volcano Lava Flow Hazard Zones',
       active: false,
       included: true,
-      iconPath: 'assets/plans/bigisland/images/icons/fire.png',
+      iconPath: 'assets/plans/bigisland/images/icons/Lava-Flows.png',
       legendImagePath: 'assets/plans/bigisland/images/legends/LavaFlowHazardLegend.png',
       secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
@@ -597,7 +597,7 @@ export const BigIslandPlan: Plan = {
       displayName: 'Major Roads Hawaii County',
       active: false,
       included: true,
-      iconPath: 'assets/plans/bigisland/images/icons/fire.png',
+      iconPath: 'assets/plans/bigisland/images/icons/Roads.png',
       legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
       secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
@@ -670,7 +670,7 @@ export const BigIslandPlan: Plan = {
   displayName: 'Na Ala Hele Trails',
   active: false,
   included: true,
-  iconPath: 'assets/plans/bigisland/images/icons/pig.png',
+  iconPath: 'assets/plans/bigisland/images/icons/Trails.png',
   legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
   secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
   secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
@@ -708,7 +708,7 @@ export const BigIslandPlan: Plan = {
         active: false,
         included: true,
         iconPath: 'assets/plans/bigisland/images/icons/pig.png',
-        legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
+        legendImagePath: 'assets/plans/bigisland/images/legends/ParcelLegend.png',
         secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
         secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
         fillColor: mapLayerColors.Dod.fill,
@@ -828,7 +828,7 @@ export const BigIslandPlan: Plan = {
           displayName: 'Ahupua`as',//display name
           active: false,
           included: true,//enable-disable layer
-          iconPath: 'assets/plans/bigisland/images/icons/elevation-icon.png',//controls icon image for layer
+          iconPath: 'assets/plans/bigisland/images/icons/pig.png',//controls icon image for layer
           legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
           secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
           secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
@@ -864,7 +864,7 @@ export const BigIslandPlan: Plan = {
               displayName: 'Plants Critical Habitat',//display name
               active: false,
               included: true,//enable-disable layer
-              iconPath: 'assets/plans/bigisland/images/icons/palila-icon.png',//controls icon image for layer
+              iconPath: 'assets/plans/bigisland/images/icons/pig.png',//controls icon image for layer
               legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
               secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
               secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
