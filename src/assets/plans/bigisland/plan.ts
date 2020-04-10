@@ -859,6 +859,133 @@ export const BigIslandPlan: Plan = {
             });
           },
         },//end ahupuaa layer
+        {//start Rainfall layer layer
+                name: 'rainfall', //display name
+          displayName: 'Rainfall',//display name
+          active: false,
+          included: true,//enable-disable layer
+          iconPath: 'assets/plans/bigisland/images/icons/elevation-icon.png',//controls icon image for layer
+          legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
+          secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
+          secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+          fillColor: '#ff0066',
+          borderColor: 'blue',
+          borderWidth: 3,
+          legendColor: mapLayerColors.Solar.fill,
+          filePath: 'assets/plans/bigisland/layers/Annual_Rainfall_in.json',//set to shapefile link
+          parcels: [],
+          setupFunction(planService: PlanService) {
+            this.parcels.forEach(parcel => {
+                d3.select(parcel.path)
+                  .style('fill', 'transparent')
+                  .style('opacity', (this.active) ? 0.9 : 0.0)
+                  .style('stroke', this.borderColor)
+                  .style('stroke-width', this.borderWidth + 'px');
+            });
+          },
+          updateFunction(planService: PlanService) {
+            this.parcels.forEach(parcel => { 
+              d3.select(parcel.path)
+                .style('fill', 'transparent')//'transparent' if no fill is needed, otherwise set to color hex code
+                .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
+                .style('stroke', this.borderColor)//controls bordercolor - accepts color hex code
+                .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
+              
+                          
+          const PITTColors = {
+                "Residential" : "blue",
+                "Apartment" : "teal",
+                "Commercial" : "orange",
+                "Industrial" : "red",
+                "Agricultural / Forest" : "green",
+                "Hotel and Resort" : "white",
+                "Homeowner" : "blue",
+                "Multiple" : "grey"
+              }
+              let code = parcel.properties.pittcode;
+
+              if(code == 100)
+              {
+                d3.select(parcel.path)
+                .style('fill', PITTColors["Residential"])
+                .style('opacity', this.active ? 0.4 : 0.0)
+                .style('stroke', this.borderColor)
+                .style('stroke-width', (this.borderWidth -2) + 'px');
+              }
+              if(code == "200")
+              {
+                d3.select(parcel.path)
+                .style('fill', PITTColors["Apartment"])
+                .style('opacity', this.active ? 0.4 : 0.0)
+                .style('stroke', this.borderColor)
+                .style('stroke-width', (this.borderWidth -2) + 'px');
+              }
+              if(code == "300")
+              {
+                d3.select(parcel.path)
+                .style('fill', PITTColors["Commercial"])
+                .style('opacity', this.active ? 0.4 : 0.0)
+                .style('stroke', this.borderColor)
+                .style('stroke-width', (this.borderWidth-2) + 'px');
+              }
+                  if(code == "400")
+                  {
+                    d3.select(parcel.path)
+                    .style('fill', PITTColors["Commercial"])
+                    .style('opacity', this.active ? 0.4 : 0.0)
+                    .style('stroke', this.borderColor)
+                    .style('stroke-width', (this.borderWidth-2) + 'px');
+                  }
+                  if(code == "500")
+                  {
+                    d3.select(parcel.path)
+                    .style('fill', PITTColors["Industrial"])
+                    .style('opacity', this.active ? 0.4 : 0.0)
+                    .style('stroke', this.borderColor)
+                    .style('stroke-width', (this.borderWidth -2) + 'px');
+                  }
+                  if(code == "600")
+                  {
+                    d3.select(parcel.path)
+                    .style('fill', PITTColors["Agricultural / Forest"])
+                    .style('opacity', this.active ? 0.4 : 0.0)
+                    .style('stroke', this.borderColor)
+                    .style('stroke-width', (this.borderWidth -2) + 'px');
+                  }
+                  if(code == "700")
+                  {
+                    d3.select(parcel.path)
+                    .style('fill', PITTColors["Hotel and Resort"])
+                    .style('opacity', this.active ? 0.4 : 0.0)
+                    .style('stroke', this.borderColor)
+                    .style('stroke-width', (this.borderWidth -2) + 'px');
+                  }
+                  if(code == "900")
+                  {
+                    d3.select(parcel.path)
+                    .style('fill', PITTColors["Homeowner"])
+                    .style('opacity', this.active ? 0.4 : 0.0)
+                    .style('stroke', this.borderColor)
+                    .style('stroke-width',  (this.borderWidth -2 ) + 'px');
+                  }
+                  if(code == "999"){
+                      d3.select(parcel.path)
+                        .style('fill', PITTColors["Multiple"])
+                        .style('opacity', (this.active) ? 0.40 : 0.0)
+                        .style('stroke', this.borderColor)
+                        .style('stroke-width',(this.borderWidth -2 ) + 'px');
+                  }
+              if(code == "0"){
+                  d3.select(parcel.path)
+                    .style('fill', 'transparent')
+                    .style('opacity', (this.active) ? 0.40 : 0.0)
+                    .style('stroke', this.borderColor)
+                    .style('stroke-width', (this.borderWidth -2 ) + 'px');
+              }
+
+            });
+          },
+        },//end ahupuaa layer
     ],
   }
 }
