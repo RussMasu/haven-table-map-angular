@@ -76,291 +76,287 @@ export const BigIslandPlan: Plan = {
     baseMapPath: 'assets/plans/bigisland/images/base-map.png',
     mapLayers: [
 
-       {//Remove Layers
-        name: 'remove layers',
-        displayName: 'Remove Layers',
-        active: false,
-        included: true,  
-        legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
-        iconPath: 'assets/plans/bigisland/images/icons/cross-icon.png',
-        secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/LandingPreview.jpg',
-        secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
-        fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
-        borderColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
-        borderWidth: 0.04,  //Border width, default is set here.
-        legendColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
-        filePath: '',
-        parcels: [],
-              setupFunction(planService: PlanService) {
-              },
-              updateFunction(planService: PlanService) {
-                planService.removeAllLayers();
-              },
-      },//end removelayer
-      {  
-        name: 'Elevation',  //Internal layer name
-        displayName: 'Elevation Contours 500ft',  //Display name (on the table.)
-        active: false,  //Default for active (visible) status
-        included: true,   //Default for inclusion in the layer list
-        iconPath: 'assets/plans/bigisland/images/icons/Elevation.png',  //Icon path for table.
-        legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
-        secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
-        secondScreenText: 'Slide the Layer Puck to add or remove this layer',  //Instructional/information text on second screen.
-        fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
-        borderColor: 'white', //See defaultColors.ts.
-        borderWidth: 1,  //Border width, default is set here.
-        legendColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
-        filePath: 'assets/plans/bigisland/layers/Elevation_Ranges.json',
-        parcels: [],  //Empty list of parcels, gets populated by setupFunction()
-        setupFunction(planService: PlanService) {
+    {//Remove Layers
+      name: 'remove layers',
+      displayName: 'Remove Layers',
+      active: false,
+      included: true,  
+      legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
+      iconPath: 'assets/plans/bigisland/images/icons/cross-icon.png',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/LandingPreview.jpg',
+      secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+      fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
+      borderColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
+      borderWidth: 0.04,  //Border width, default is set here.
+      legendColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
+      filePath: '',
+      parcels: [],
+            setupFunction(planService: PlanService) {
+            },
+            updateFunction(planService: PlanService) {
+              planService.removeAllLayers();
+            },
+    },//end removelayer
+    {  
+      name: 'Elevation',  //Internal layer name
+      displayName: 'Elevation Contours 500ft',  //Display name (on the table.)
+      active: false,  //Default for active (visible) status
+      included: true,   //Default for inclusion in the layer list
+      iconPath: 'assets/plans/bigisland/images/icons/Elevation.png',  //Icon path for table.
+      legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
+      secondScreenText: 'Slide the Layer Puck to add or remove this layer',  //Instructional/information text on second screen.
+      fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
+      borderColor: 'white', //See defaultColors.ts.
+      borderWidth: 1,  //Border width, default is set here.
+      legendColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
+      filePath: 'assets/plans/bigisland/layers/Elevation_Ranges.json',
+      parcels: [],  //Empty list of parcels, gets populated by setupFunction()
+      setupFunction(planService: PlanService) {
 
-          this.parcels.forEach(parcel => {
-            d3.select(parcel.path)
-                  .style('fill','transparent')
-                  .style('opacity', this.active ? 1 : 0.0)
-                  .style('stroke',this.borderColor)
-                  .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-          });
-        },
-        updateFunction(planService: PlanService) {
-          this.parcels.forEach(parcel => {
-                d3.select(parcel.path)
-                  .style('fill', 'transparent')//set to Colors if fill wanted, otherwise transparent
-                  .style('opacity', this.active ? 1 : 0.0)
-                  .style('stroke',this.borderColor)//set to borderColors if borders wanted otherwise this.bordercolor
-                  .style('stroke-width', this.borderWidth + 'px');
-          });
-        },
-      },//end elevation layer
-      {
-        name: 'streams', //start stream layer
-        displayName: 'Streams',
-        active: false,
-        included: true,
-        iconPath: 'assets/plans/bigisland/images/icons/Streams.png',
-        legendImagePath: 'assets/plans/bigisland/images/legends/StreamsLegend.png',
-        secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
-        secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
-        fillColor: '#ff0066',
-        borderColor: '#ffffff',
-        borderWidth: 0.9,//0.5
-        legendColor: mapLayerColors.Solar.fill,
-        filePath: 'assets/plans/bigisland/layers/streams.json',
-        parcels: [],
-        setupFunction(planService: PlanService) {
-          this.parcels.forEach(parcel => {
+        this.parcels.forEach(parcel => {
+          d3.select(parcel.path)
+                .style('fill','transparent')
+                .style('opacity', this.active ? 1 : 0.0)
+                .style('stroke',this.borderColor)
+                .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
+        });
+      },
+      updateFunction(planService: PlanService) {
+        this.parcels.forEach(parcel => {
               d3.select(parcel.path)
-                .style('fill', 'transparent')
-                .style('opacity', (this.active) ? 0.85 : 0.0)
-                .style('stroke', this.borderColor)
+                .style('fill', 'transparent')//set to Colors if fill wanted, otherwise transparent
+                .style('opacity', this.active ? 1 : 0.0)
+                .style('stroke',this.borderColor)//set to borderColors if borders wanted otherwise this.bordercolor
                 .style('stroke-width', this.borderWidth + 'px');
-          });
-        },
-        updateFunction(planService: PlanService) {
-          this.parcels.forEach(parcel => {
-            let layerattribute = parcel.properties.type;//divide based on layer attribute 
-
-            const borderColors = {
-              'NON-PERENNIAL': '#99d6ff',//look at json file for names
-              'PERENNIAL': '#0099ff',
-            }
-
-            if(layerattribute == 'NON-PERENNIAL')
-            {
+        });
+      },
+    },//end elevation layer
+    {
+      name: 'streams', //start stream layer
+      displayName: 'Streams',
+      active: false,
+      included: true,
+      iconPath: 'assets/plans/bigisland/images/icons/Streams.png',
+      legendImagePath: 'assets/plans/bigisland/images/legends/StreamsLegend.png',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
+      secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+      fillColor: '#ff0066',
+      borderColor: '#ffffff',
+      borderWidth: 0.9,//0.5
+      legendColor: mapLayerColors.Solar.fill,
+      filePath: 'assets/plans/bigisland/layers/streams.json',
+      parcels: [],
+      setupFunction(planService: PlanService) {
+        this.parcels.forEach(parcel => {
             d3.select(parcel.path)
-              .style('fill', 'transparent')//set to Colors if fill wanted, otherwise transparent
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', borderColors[parcel.properties.type])//set to borderColors if borders wanted otherwise this.bordercolor
-              .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-            }
-            else if(layerattribute == 'PERENNIAL')
-            {
-            d3.select(parcel.path)
-              .style('fill', 'transparent')//set to Colors if fill wanted, otherwise transparent
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', borderColors[parcel.properties.type])//set to borderColors if borders wanted otherwise this.bordercolor
-              .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-            }
+              .style('fill', 'transparent')
+              .style('opacity', (this.active) ? 0.85 : 0.0)
+              .style('stroke', this.borderColor)
+              .style('stroke-width', this.borderWidth + 'px');
+        });
+      },
+      updateFunction(planService: PlanService) {
+        this.parcels.forEach(parcel => {
+          let layerattribute = parcel.properties.type;//divide based on layer attribute 
 
-          });
-        },
-      },//end stream layer
+          const borderColors = {
+            'NON-PERENNIAL': '#99d6ff',//look at json file for names
+            'PERENNIAL': '#0099ff',
+          }
+
+          if(layerattribute == 'NON-PERENNIAL')
+          {
+          d3.select(parcel.path)
+            .style('fill', 'transparent')//set to Colors if fill wanted, otherwise transparent
+            .style('opacity', this.active ? 0.85 : 0.0)
+            .style('stroke', borderColors[parcel.properties.type])//set to borderColors if borders wanted otherwise this.bordercolor
+            .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
+          }
+          else if(layerattribute == 'PERENNIAL')
+          {
+          d3.select(parcel.path)
+            .style('fill', 'transparent')//set to Colors if fill wanted, otherwise transparent
+            .style('opacity', this.active ? 0.85 : 0.0)
+            .style('stroke', borderColors[parcel.properties.type])//set to borderColors if borders wanted otherwise this.bordercolor
+            .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
+          }
+
+        });
+      },
+    },//end stream layer
+    {//Start FIRE LAYER
+      name: 'firerisk',
+      displayName: 'Fire Risk Zones',
+      active: false,
+      included: true,
+      iconPath: 'assets/plans/bigisland/images/icons/fire.png',
+      legendImagePath: 'assets/plans/bigisland/images/legends/Fire.png',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
+      secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+      fillColor: mapLayerColors.Dod.fill,
+      borderColor: mapLayerColors.Dod.border,
+      borderWidth: 1,
+      legendColor: mapLayerColors.Dod.fill,
+      filePath: 'assets/plans/bigisland/layers/Fire_Risk_Areas.json',
+      parcels: [],
+      setupFunction(planService: PlanService) {
+        this.parcels.forEach(parcel => {
+          d3.select(parcel.path)
+            .style('fill', 'transparent')//change from type to attribute name
+            .style('opacity', this.active ? 0.85 : 0.0)
+            .style('stroke', 'white')
+            .style('stroke-width', this.borderWidth + 'px');
+        });
+      },
+
       
+      updateFunction(planService: PlanService) {
+        this.parcels.forEach(parcel => {
+          
+          const fireColors = {
+            "Low" : "#238d65",
+            "Medium" : "#2a9ed9",
+            "High" : "#fee71f",
+            "Very High" : "#f6a553",
+            "Extreme" : "#ef4246",
+            "Critical" : "white"
+          }
+          let risk = parcel.properties.risk_ratin;
 
-      {//Start FIRE LAYER
-        name: 'firerisk',
-        displayName: 'Fire Risk Zones',
-        active: false,
-        included: true,
-        iconPath: 'assets/plans/bigisland/images/icons/Fire.png',
-        legendImagePath: 'assets/plans/bigisland/images/legends/Fire.png',
-        secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
-        secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
-        fillColor: mapLayerColors.Dod.fill,
-        borderColor: mapLayerColors.Dod.border,
-        borderWidth: 1,
-        legendColor: mapLayerColors.Dod.fill,
-        filePath: 'assets/plans/bigisland/layers/Fire_Risk_Areas.json',
-        parcels: [],
-        setupFunction(planService: PlanService) {
-          this.parcels.forEach(parcel => {
+          if(risk == "Low")
+          {
             d3.select(parcel.path)
-              .style('fill', 'transparent')//change from type to attribute name
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', 'white')
-              .style('stroke-width', this.borderWidth + 'px');
-          });
-        },
-
-        
-        updateFunction(planService: PlanService) {
-          this.parcels.forEach(parcel => {
-            
-            const fireColors = {
-              "Low" : "#238d65",
-              "Medium" : "#2a9ed9",
-              "High" : "#fee71f",
-              "Very High" : "#f6a553",
-              "Extreme" : "#ef4246",
-              "Critical" : "white"
-            }
-            let risk = parcel.properties.risk_ratin;
-
-            if(risk == "Low")
-            {
-              d3.select(parcel.path)
-              .style('fill', fireColors["Low"])
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', this.borderColor)
-              .style('stroke-width', this.borderWidth + 'px');
-            }
-            if(risk == "Medium")
-            {
-              d3.select(parcel.path)
-              .style('fill', fireColors["Medium"])
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', this.borderColor)
-              .style('stroke-width', this.borderWidth + 'px');
-            }
-            if(risk == "High")
-            {
-              d3.select(parcel.path)
-              .style('fill', fireColors["High"])
-              .style('opacity', this.active ? 0.85 : 0.0)
-              .style('stroke', this.borderColor)
-              .style('stroke-width', this.borderWidth + 'px');
-            }
-          });
-        },
-      },//end fire layer
+            .style('fill', fireColors["Low"])
+            .style('opacity', this.active ? 0.85 : 0.0)
+            .style('stroke', this.borderColor)
+            .style('stroke-width', this.borderWidth + 'px');
+          }
+          if(risk == "Medium")
+          {
+            d3.select(parcel.path)
+            .style('fill', fireColors["Medium"])
+            .style('opacity', this.active ? 0.85 : 0.0)
+            .style('stroke', this.borderColor)
+            .style('stroke-width', this.borderWidth + 'px');
+          }
+          if(risk == "High")
+          {
+            d3.select(parcel.path)
+            .style('fill', fireColors["High"])
+            .style('opacity', this.active ? 0.85 : 0.0)
+            .style('stroke', this.borderColor)
+            .style('stroke-width', this.borderWidth + 'px');
+          }
+        });
+      },
+    },//end fire layer
 		{//start Flood Hazard layer turn off bigislandborder
-		name: 'Flood Hazard', //display name
-		displayName: 'Flood Hazard',//display name
-		active: false,
-		included: true,//enable-disable layer
-		iconPath: 'assets/plans/bigisland/images/icons/pig.png',//controls icon image for layer
-		legendImagePath: 'assets/plans/bigisland/images/legends/FloodLegend.png',
-		secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
-		secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
-		fillColor: '#ff0066',
-		borderColor: '#000000',
-		borderWidth: 1,
-		legendColor: mapLayerColors.Solar.fill,
-		filePath: 'assets/plans/bigisland/layers/floodHazard.json',//set to shapefile link
-		parcels: [],
-		setupFunction(planService: PlanService) {
-		  this.parcels.forEach(parcel => {
-			  d3.select(parcel.path)
-				.style('fill', 'transparent')
-				.style('opacity', (this.active) ? 0.9 : 0.0)
-				.style('stroke', this.borderColor)
-				.style('stroke-width', this.borderWidth + 'px');
-		  });
-		},
-		updateFunction(planService: PlanService) {
-		  this.parcels.forEach(parcel => {
-			
-			let layerattribute=parcel.properties.fld_zone;
+      name: 'Flood Hazard', //display name
+      displayName: 'Flood Hazard',//display name
+      active: false,
+      included: true,//enable-disable layer
+      iconPath: 'assets/plans/bigisland/images/icons/pig.png',//controls icon image for layer
+      legendImagePath: 'assets/plans/bigisland/images/legends/FloodLegend.png',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
+      secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+      fillColor: '#ff0066',
+      borderColor: '#000000',
+      borderWidth: 1,
+      legendColor: mapLayerColors.Solar.fill,
+      filePath: 'assets/plans/bigisland/layers/floodHazard.json',//set to shapefile link
+      parcels: [],
+      setupFunction(planService: PlanService) {
+        this.parcels.forEach(parcel => {
+          d3.select(parcel.path)
+          .style('fill', 'transparent')
+          .style('opacity', (this.active) ? 0.9 : 0.0)
+          .style('stroke', this.borderColor)
+          .style('stroke-width', this.borderWidth + 'px');
+        });
+      },
+      updateFunction(planService: PlanService) {
+        this.parcels.forEach(parcel => {
+        
+        let layerattribute=parcel.properties.fld_zone;
 
-			const colors = {
-			  'A': '#ff0000',
-			  'AE': '#e0ff02',
-			  'X': '#619555',
-			  'D':'#646267',
-			}
+        const colors = {
+          'A': '#ff0000',
+          'AE': '#e0ff02',
+          'X': '#619555',
+          'D':'#646267',
+        }
 
-			if (layerattribute == "A"){
-			d3.select(parcel.path)
-			  .style('fill', colors.A)//'transparent' if no fill is needed, otherwise set to color hex code
-			  .style('opacity', this.active ? 1 : 0.0)//controls opacity of layer
-			  .style('stroke', colors.A)//controls bordercolor - accepts color hex code
-			  .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-		  }
-		  else if (layerattribute == "AE"){
-			d3.select(parcel.path)
-			  .style('fill', colors.AE)//'transparent' if no fill is needed, otherwise set to color hex code
-			  .style('opacity', this.active ? 1 : 0.0)//controls opacity of layer
-			  .style('stroke', colors.AE)//controls bordercolor - accepts color hex code
-			  .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-		  }
-		  else if (layerattribute == "X"){
-			d3.select(parcel.path)
-			  .style('fill', colors.X)//'transparent' if no fill is needed, otherwise set to color hex code
-			  .style('opacity', this.active ? 0.6 : 0.0)//controls opacity of layer
-			  .style('stroke', 'transparent')//controls bordercolor - accepts color hex code
-			  .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-		  }
-		  else if (layerattribute == "D"){
-			d3.select(parcel.path)
-			  .style('fill', colors.D)//'transparent' if no fill is needed, otherwise set to color hex code
-			  .style('opacity', this.active ? 0.6 : 0.0)//controls opacity of layer
-			  .style('stroke', '#000000')//controls bordercolor - accepts color hex code
-			  .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-		  }
+        if (layerattribute == "A"){
+        d3.select(parcel.path)
+          .style('fill', colors.A)//'transparent' if no fill is needed, otherwise set to color hex code
+          .style('opacity', this.active ? 1 : 0.0)//controls opacity of layer
+          .style('stroke', colors.A)//controls bordercolor - accepts color hex code
+          .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
+        }
+        else if (layerattribute == "AE"){
+        d3.select(parcel.path)
+          .style('fill', colors.AE)//'transparent' if no fill is needed, otherwise set to color hex code
+          .style('opacity', this.active ? 1 : 0.0)//controls opacity of layer
+          .style('stroke', colors.AE)//controls bordercolor - accepts color hex code
+          .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
+        }
+        else if (layerattribute == "X"){
+        d3.select(parcel.path)
+          .style('fill', colors.X)//'transparent' if no fill is needed, otherwise set to color hex code
+          .style('opacity', this.active ? 0.6 : 0.0)//controls opacity of layer
+          .style('stroke', 'transparent')//controls bordercolor - accepts color hex code
+          .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
+        }
+        else if (layerattribute == "D"){
+        d3.select(parcel.path)
+          .style('fill', colors.D)//'transparent' if no fill is needed, otherwise set to color hex code
+          .style('opacity', this.active ? 0.6 : 0.0)//controls opacity of layer
+          .style('stroke', '#000000')//controls bordercolor - accepts color hex code
+          .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
+        }
 
-		  });
-		},
+        });
+      },
 	  },//end Flood Hazard layer
-
-      {//start Palila layer
-        name: 'Palila Critical Habitat', //display name
-        displayName: 'Palila Critical Habitat',//display name
-        active: false,
-        included: true,//enable-disable layer
-        iconPath: 'assets/plans/bigisland/images/icons/Palila.png',//controls icon image for layer
-        legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
-        secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
-        secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
-        fillColor: '#ff0066',
-        borderColor: '#ffffff',
-        borderWidth: 0.5,
-        legendColor: mapLayerColors.Solar.fill,
-        filePath: 'assets/plans/bigisland/layers/palila.json',//set to shapefile link
-        parcels: [],
-        setupFunction(planService: PlanService) {
-          this.parcels.forEach(parcel => {
-              d3.select(parcel.path)
-                .style('fill', 'transparent')
-                .style('opacity', (this.active) ? 0.9 : 0.0)
-                .style('stroke', this.borderColor)
-                .style('stroke-width', this.borderWidth + 'px');
-          });
-        },
-        updateFunction(planService: PlanService) {
-          this.parcels.forEach(parcel => {
-            
+    {//start Palila layer
+      name: 'Palila Critical Habitat', //display name
+      displayName: 'Palila Critical Habitat',//display name
+      active: false,
+      included: true,//enable-disable layer
+      iconPath: 'assets/plans/bigisland/images/icons/Palila.png',//controls icon image for layer
+      legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
+      secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+      fillColor: '#ff0066',
+      borderColor: '#ffffff',
+      borderWidth: 0.5,
+      legendColor: mapLayerColors.Solar.fill,
+      filePath: 'assets/plans/bigisland/layers/palila.json',//set to shapefile link
+      parcels: [],
+      setupFunction(planService: PlanService) {
+        this.parcels.forEach(parcel => {
             d3.select(parcel.path)
-              .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
-              .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-              .style('stroke', 'white')//controls bordercolor - accepts color hex code
-              .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-            
+              .style('fill', 'transparent')
+              .style('opacity', (this.active) ? 0.9 : 0.0)
+              .style('stroke', this.borderColor)
+              .style('stroke-width', this.borderWidth + 'px');
+        });
+      },
+      updateFunction(planService: PlanService) {
+        this.parcels.forEach(parcel => {
+          
+          d3.select(parcel.path)
+            .style('fill', '#f0cd1f')//'transparent' if no fill is needed, otherwise set to color hex code
+            .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
+            .style('stroke', 'white')//controls bordercolor - accepts color hex code
+            .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
+          
 
-          });
-        },
-      },//end paalia layer
-
-      {//start vegetation layer
+        });
+      },
+    },//end paalia layer
+    {//start vegetation layer
       name: 'vegetation', //display name
       displayName: 'Vegetation',//display name
       active: false,
@@ -420,7 +416,6 @@ export const BigIslandPlan: Plan = {
         });
       },
     },//end vegetation layer
-
     {//Start Volcano
       name: 'volcanohazard',
       displayName: 'Volcano Lava Flow Hazard Zones',
@@ -590,8 +585,7 @@ export const BigIslandPlan: Plan = {
                     }
               });
             },
-    },//end volcano layer
-    
+    },//end volcano layer 
     {//Start Road
       name: 'majorroads',
       displayName: 'Major Roads Hawaii County',
@@ -629,517 +623,408 @@ export const BigIslandPlan: Plan = {
             },
     },//end Road layer
     {//Start Hunting Area Layer.
-    name: 'huntingzones',
-    displayName: 'State Hunting Areas',
-    active: false,
-    included: true,
-    iconPath: 'assets/plans/bigisland/images/icons/pig.png',
-    legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
-    secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
-    secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
-    fillColor: mapLayerColors.Dod.fill,
-    borderColor: mapLayerColors.Dod.border,
-    borderWidth: 1,
-    legendColor: mapLayerColors.Dod.fill,
-    filePath: 'assets/plans/bigisland/layers/Public_Hunting_Areas.json',
-    parcels: [],
-          setupFunction(planService: PlanService) {
-            this.parcels.forEach(parcel => {
-                d3.select(parcel.path)
-                  .style('fill', 'transparent')
-                  .style('opacity', (this.active) ? 0.50 : 0.0)
-                  .style('stroke', this.borderColor)
-                  .style('stroke-width', (this.borderWidth) + 'px');
-            }); 
-          },
-          updateFunction(planService: PlanService) {
-            this.parcels.forEach(parcel => {
-
+      name: 'huntingzones',
+      displayName: 'State Hunting Areas',
+      active: false,
+      included: true,
+      iconPath: 'assets/plans/bigisland/images/icons/pig.png',
+      legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
+      secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+      fillColor: mapLayerColors.Dod.fill,
+      borderColor: mapLayerColors.Dod.border,
+      borderWidth: 1,
+      legendColor: mapLayerColors.Dod.fill,
+      filePath: 'assets/plans/bigisland/layers/Public_Hunting_Areas.json',
+      parcels: [],
+            setupFunction(planService: PlanService) {
+              this.parcels.forEach(parcel => {
                   d3.select(parcel.path)
-                    .style('fill', '#e63900')//set to Colors if fill wanted, otherwise transparent
-                    .style('opacity', this.active ? 0.50 : 0.0)
-                    .style('stroke','white' )//set to borderColors if borders wanted otherwise this.bordercolor
-                    .style('stroke-width', (this.borderWidth)  + 'px');
-            });
-          },
+                    .style('fill', 'transparent')
+                    .style('opacity', (this.active) ? 0.50 : 0.0)
+                    .style('stroke', this.borderColor)
+                    .style('stroke-width', (this.borderWidth) + 'px');
+              }); 
+            },
+            updateFunction(planService: PlanService) {
+              this.parcels.forEach(parcel => {
 
-  },// ending hunting 
-        
-  {//Start trails Layer.
-  name: 'trails',
-  displayName: 'Na Ala Hele Trails',
-  active: false,
-  included: true,
-  iconPath: 'assets/plans/bigisland/images/icons/Trails.png',
-  legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
-  secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
-  secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
-  fillColor: mapLayerColors.Dod.fill,
-  borderColor: '#eacaff',
-  borderWidth: 3,
-  legendColor: mapLayerColors.Dod.fill,
-  filePath: 'assets/plans/bigisland/layers/Na_Ala_Hele_Trails.json',
-
-  parcels: [],
-        setupFunction(planService: PlanService) {
-          this.parcels.forEach(parcel => {
-              d3.select(parcel.path)
-                .style('fill', 'transparent')
-                .style('opacity', (this.active) ? 0.90 : 0.0)
-                .style('stroke', this.borderColor)
-
-                .style('stroke-width', (this.borderWidth) + 'px');
-          });
-        },
-        updateFunction(planService: PlanService) {
-          this.parcels.forEach(parcel => {
-                d3.select(parcel.path)
-                  .style('fill', 'transparent')//set to Colors if fill wanted, otherwise transparent
-                  .style('opacity', this.active ? 0.90 : 0.0)
-                  .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
-                  .style('stroke-width', this.borderWidth + 'px');
-          });
-        }, 
-},//end trails layer
-
-        {//Start Parcels Layer.
-        name: 'parcels',
-        displayName: 'Hawaii Tax Parcels',
-        active: false,
-        included: false,
-        iconPath: 'assets/plans/bigisland/images/icons/pig.png',
-        legendImagePath: 'assets/plans/bigisland/images/legends/ParcelLegend.png',
-        secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
-        secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
-        fillColor: mapLayerColors.Dod.fill,
-        borderColor: 'transparent',
-        borderWidth: 3,
-        legendColor: mapLayerColors.Dod.fill,
-        filePath: 'assets/plans/bigisland/layers/Parcels__Hawaii_County.json',
-        parcels: [],
-              setupFunction(planService: PlanService) {
-                this.parcels.forEach(parcel => {
                     d3.select(parcel.path)
-                      .style('fill', 'transparent')
-                      .style('opacity', (this.active) ? 0.40 : 0.0)
-                      .style('stroke', this.borderColor)
-                      .style('stroke-width', (this.borderWidth) + 'px');
-                });
-              },
-              updateFunction(planService: PlanService) {
-                this.parcels.forEach(parcel => { 
-                        
-        const PITTColors = {
-              "Residential" : "blue",
-              "Apartment" : "teal",
-              "Commercial" : "orange",
-              "Industrial" : "red",
-              "Agricultural / Forest" : "green",
-              "Hotel and Resort" : "white",
-              "Homeowner" : "blue",
-              "Multiple" : "grey"
-            }
-            let code = parcel.properties.pittcode;
+                      .style('fill', '#e63900')//set to Colors if fill wanted, otherwise transparent
+                      .style('opacity', this.active ? 0.50 : 0.0)
+                      .style('stroke','white' )//set to borderColors if borders wanted otherwise this.bordercolor
+                      .style('stroke-width', (this.borderWidth)  + 'px');
+              });
+            },
 
-            if(code == 100)
-            {
-              d3.select(parcel.path)
-              .style('fill', PITTColors["Residential"])
-              .style('opacity', this.active ? 0.4 : 0.0)
-              .style('stroke', this.borderColor)
-              .style('stroke-width', (this.borderWidth -2) + 'px');
-            }
-            if(code == "200")
-            {
-              d3.select(parcel.path)
-              .style('fill', PITTColors["Apartment"])
-              .style('opacity', this.active ? 0.4 : 0.0)
-              .style('stroke', this.borderColor)
-              .style('stroke-width', (this.borderWidth -2) + 'px');
-            }
-            if(code == "300")
-            {
-              d3.select(parcel.path)
-              .style('fill', PITTColors["Commercial"])
-              .style('opacity', this.active ? 0.4 : 0.0)
-              .style('stroke', this.borderColor)
-              .style('stroke-width', (this.borderWidth-2) + 'px');
-            }
-                if(code == "400")
-                {
+    },// ending hunting       
+    {//Start trails Layer.
+      name: 'trails',
+      displayName: 'Na Ala Hele Trails',
+      active: false,
+      included: true,
+      iconPath: 'assets/plans/bigisland/images/icons/Trails.png',
+      legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
+      secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+      fillColor: mapLayerColors.Dod.fill,
+      borderColor: '#eacaff',
+      borderWidth: 3,
+      legendColor: mapLayerColors.Dod.fill,
+      filePath: 'assets/plans/bigisland/layers/Na_Ala_Hele_Trails.json',
+
+      parcels: [],
+            setupFunction(planService: PlanService) {
+              this.parcels.forEach(parcel => {
                   d3.select(parcel.path)
-                  .style('fill', PITTColors["Commercial"])
-                  .style('opacity', this.active ? 0.4 : 0.0)
-                  .style('stroke', this.borderColor)
-                  .style('stroke-width', (this.borderWidth-2) + 'px');
-                }
-                if(code == "500")
-                {
-                  d3.select(parcel.path)
-                  .style('fill', PITTColors["Industrial"])
-                  .style('opacity', this.active ? 0.4 : 0.0)
-                  .style('stroke', this.borderColor)
-                  .style('stroke-width', (this.borderWidth -2) + 'px');
-                }
-                if(code == "600")
-                {
-                  d3.select(parcel.path)
-                  .style('fill', PITTColors["Agricultural / Forest"])
-                  .style('opacity', this.active ? 0.4 : 0.0)
-                  .style('stroke', this.borderColor)
-                  .style('stroke-width', (this.borderWidth -2) + 'px');
-                }
-                if(code == "700")
-                {
-                  d3.select(parcel.path)
-                  .style('fill', PITTColors["Hotel and Resort"])
-                  .style('opacity', this.active ? 0.4 : 0.0)
-                  .style('stroke', this.borderColor)
-                  .style('stroke-width', (this.borderWidth -2) + 'px');
-                }
-                if(code == "900")
-                {
-                  d3.select(parcel.path)
-                  .style('fill', PITTColors["Homeowner"])
-                  .style('opacity', this.active ? 0.4 : 0.0)
-                  .style('stroke', this.borderColor)
-                  .style('stroke-width',  (this.borderWidth -2 ) + 'px');
-                }
-                if(code == "999"){
+                    .style('fill', 'transparent')
+                    .style('opacity', (this.active) ? 0.90 : 0.0)
+                    .style('stroke', this.borderColor)
+
+                    .style('stroke-width', (this.borderWidth) + 'px');
+              });
+            },
+            updateFunction(planService: PlanService) {
+              this.parcels.forEach(parcel => {
                     d3.select(parcel.path)
-                      .style('fill', PITTColors["Multiple"])
-                      .style('opacity', (this.active) ? 0.40 : 0.0)
-                      .style('stroke', this.borderColor)
-                      .style('stroke-width',(this.borderWidth -2 ) + 'px');
-                }
-            if(code == "0"){
-                d3.select(parcel.path)
-                  .style('fill', 'transparent')
-                  .style('opacity', (this.active) ? 0.40 : 0.0)
-                  .style('stroke', this.borderColor)
-                  .style('stroke-width', (this.borderWidth -2 ) + 'px');
-            }
-          });
-              }, 
-      },//end parcels layer
-    
-        {//start Ahupuaa layer
-          name: 'Ahupuaa', //display name
-          displayName: 'Ahupua`as',//display name
-          active: false,
-          included: true,//enable-disable layer
-          iconPath: 'assets/plans/bigisland/images/icons/pig.png',//controls icon image for layer
-          legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
-          secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
-          secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
-          fillColor: '#ff0066',
-          borderColor: 'turquoise',
-          borderWidth: 3,
-          legendColor: mapLayerColors.Solar.fill,
-          filePath: 'assets/plans/bigisland/layers/Ahupuaa.json',//set to shapefile link
-          parcels: [],
-          setupFunction(planService: PlanService) {
-            this.parcels.forEach(parcel => {
-                d3.select(parcel.path)
-                  .style('fill', 'transparent')
-                  .style('opacity', (this.active) ? 0.9 : 0.0)
-                  .style('stroke', this.borderColor)
-                  .style('stroke-width', this.borderWidth + 'px');
-            });
-          },
-          updateFunction(planService: PlanService) {
-            this.parcels.forEach(parcel => { 
-              d3.select(parcel.path)
-                .style('fill', 'transparent')//'transparent' if no fill is needed, otherwise set to color hex code
-                .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                .style('stroke', this.borderColor)//controls bordercolor - accepts color hex code
-                .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-              
+                      .style('fill', 'transparent')//set to Colors if fill wanted, otherwise transparent
+                      .style('opacity', this.active ? 0.90 : 0.0)
+                      .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
+                      .style('stroke-width', this.borderWidth + 'px');
+              });
+            }, 
+    },//end trails layer
+    {//Start Parcels Layer.
+      name: 'parcels',
+      displayName: 'Hawaii Tax Parcels',
+      active: false,
+      included: true,
+      iconPath: 'assets/plans/bigisland/images/icons/pig.png',
+      legendImagePath: 'assets/plans/bigisland/images/legends/ParcelLegend.png',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
+      secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+      fillColor: mapLayerColors.Dod.fill,
+      borderColor: 'transparent',
+      borderWidth: 3,
+      legendColor: mapLayerColors.Dod.fill,
+      filePath: 'assets/plans/bigisland/layers/Parcels__Hawaii_County.json',
+      parcels: [],
+            setupFunction(planService: PlanService) {
+              this.parcels.forEach(parcel => {
+                  d3.select(parcel.path)
+                    .style('fill', 'transparent')
+                    .style('opacity', (this.active) ? 0.40 : 0.0)
+                    .style('stroke', this.borderColor)
+                    .style('stroke-width', (this.borderWidth) + 'px');
+              });
+            },
+            updateFunction(planService: PlanService) {
+              this.parcels.forEach(parcel => { 
+                      
+      const PITTColors = {
+            "Residential" : "blue",
+            "Apartment" : "teal",
+            "Commercial" : "orange",
+            "Industrial" : "red",
+            "Agricultural / Forest" : "green",
+            "Hotel and Resort" : "white",
+            "Homeowner" : "blue",
+            "Multiple" : "grey"
+          }
+          let code = parcel.properties.pittcode;
 
-            });
-          },
-        },//end ahupuaa layer
- {//Annual Rainfall
-          name: 'rainfall_annual',
-          displayName: 'Annual Rainfall(Inches)',
-          active: false,
-          included: true,
-          iconPath: 'assets/plans/bigisland/images/icons/elevation-icon.png',
-          legendImagePath: '',
-          secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
-          secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
-          fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
-          borderColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
-          borderWidth: 5,  //Border width, default is set here.
-          legendColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
-          filePath: 'assets/plans/bigisland/layers/Annual_Rainfall_in.json',
-          parcels: [],
-          setupFunction(planService: PlanService) {
-            this.parcels.forEach(parcel => {
-                d3.select(parcel.path)
-                .style('fill', 'transparent')
-                .style('opacity', (this.active) ? 0.85 : 0.0)
-                .style('stroke', '#008bff')
-                .style('stroke-width', (this.borderWidth) + 'px');
-            });
-          },
-          updateFunction(planService: PlanService) {
-    this.parcels.forEach(parcel => {  
-                  
-  const Rainfallcolors = {
-        "low" : "#00E6FF",
-        "medium low" : "#0091FF",
-        "medium" : "#0066FF",
-        "medium high" : "#0049FF",
-        "high" : "#0022FF",
-        "very high" : "#00098A"
-      }
-      let code = parcel.properties.contour;
-      
-        if(code > 0 && code <= 50)
-      {
-        d3.select(parcel.path)
-        .style('fill', 'transparent')
-        .style('opacity', this.active ? 0.8 : 0.0)
-        .style('stroke', Rainfallcolors["low"])
-        .style('stroke-width', this.borderwidth + 'px');
-      }
-      if(code > 50 && code <= 100)
-      {
-        d3.select(parcel.path)
-        .style('fill', 'transparent')
-        .style('opacity', this.active ? 0.8 : 0.0)
-        .style('stroke', Rainfallcolors["medium low"])
-        .style('stroke-width', this.borderwidth + 'px');
-      }
-      if(code >100 && code <=150)
-      {
-        d3.select(parcel.path)
-        .style('fill', 'transparent')
-        .style('opacity', this.active ? 0.8 : 0.0)
-        .style('stroke', Rainfallcolors["medium"])
-        .style('stroke-width', (this.borderWidth-2) + 'px');
-      }
-          if(code >150 && code <= 200)
+          if(code == 100)
           {
             d3.select(parcel.path)
-            .style('fill', 'transparent')
-            .style('opacity', this.active ? 0.8 : 0.0)
-            .style('stroke', Rainfallcolors["medium high"])
+            .style('fill', PITTColors["Residential"])
+            .style('opacity', this.active ? 1 : 0.0)
+            .style('stroke', this.borderColor)
+            .style('stroke-width', (this.borderWidth -2) + 'px');
+          }
+          if(code == "200")
+          {
+            d3.select(parcel.path)
+            .style('fill', PITTColors["Apartment"])
+            .style('opacity', this.active ? 1 : 0.0)
+            .style('stroke', this.borderColor)
+            .style('stroke-width', (this.borderWidth -2) + 'px');
+          }
+          if(code == "300")
+          {
+            d3.select(parcel.path)
+            .style('fill', PITTColors["Commercial"])
+            .style('opacity', this.active ? 1 : 0.0)
+            .style('stroke', this.borderColor)
             .style('stroke-width', (this.borderWidth-2) + 'px');
           }
-          if(code >200 && code <= 250)
+          if(code == "400")
           {
             d3.select(parcel.path)
-            .style('fill', 'transparent')
-            .style('opacity', this.active ? 0.8 : 0.0)
-            .style('stroke', Rainfallcolors["high"])
-            .style('stroke-width', this.borderwidth + 'px');
+            .style('fill', PITTColors["Commercial"])
+            .style('opacity', this.active ? 1 : 0.0)
+            .style('stroke', this.borderColor)
+            .style('stroke-width', (this.borderWidth-2) + 'px');
           }
-          if(code >250 && code <= 300)
+          if(code == "500")
           {
             d3.select(parcel.path)
-            .style('fill', 'transparent')
-            .style('opacity', this.active ? 0.8 : 0.0)
-            .style('stroke', Rainfallcolors["very high"])
-            .style('stroke-width', this.borderwidth + 'px');
+            .style('fill', PITTColors["Industrial"])
+            .style('opacity', this.active ? 0.4 : 0.0)
+            .style('stroke', this.borderColor)
+            .style('stroke-width', (this.borderWidth -2) + 'px');
           }
-    });
-  },
-        },//end rainfall layer
-            {//start critical habitat layer
-              name: 'critcalplant', //display name
-              displayName: 'Plants Critical Habitat',//display name
-              active: false,
-              included: true,//enable-disable layer
-              iconPath: 'assets/plans/bigisland/images/icons/pig.png',//controls icon image for layer
-              legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
-              secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
-              secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
-              fillColor: '#ff0066',
-              borderColor: '#ffffff',
-              borderWidth: 0.5,
-              legendColor: mapLayerColors.Solar.fill,
-              filePath: 'assets/plans/bigisland/layers/Big_Island_Critical_Habitat__Plant.json',//set to shapefile link
-              parcels: [],
-              setupFunction(planService: PlanService) {
-                this.parcels.forEach(parcel => {
-                    d3.select(parcel.path)
-                      .style('fill', 'transparent')
-                      .style('opacity', (this.active) ? 0.9 : 0.0)
-                      .style('stroke', this.borderColor)
-                      .style('stroke-width', this.borderWidth + 'px');
-                });
-              },
-              updateFunction(planService: PlanService) {
-                this.parcels.forEach(parcel => {
-                 
-                  let species = parcel.properties.species;
+          if(code == "600")
+          {
+            d3.select(parcel.path)
+            .style('fill', PITTColors["Agricultural / Forest"])
+            .style('opacity', this.active ? 0.4 : 0.0)
+            .style('stroke', this.borderColor)
+            .style('stroke-width', (this.borderWidth -2) + 'px');
+          }
+          if(code == "700")
+          {
+            d3.select(parcel.path)
+            .style('fill', PITTColors["Hotel and Resort"])
+            .style('opacity', this.active ? 1 : 0.0)
+            .style('stroke', this.borderColor)
+            .style('stroke-width', (this.borderWidth -2) + 'px');
+          }
+          if(code == "900")
+          {
+            d3.select(parcel.path)
+            .style('fill', PITTColors["Homeowner"])
+            .style('opacity', this.active ? 1 : 0.0)
+            .style('stroke', this.borderColor)
+            .style('stroke-width',  (this.borderWidth -2 ) + 'px');
+          }
+          if(code == "999"){
+              d3.select(parcel.path)
+                .style('fill', PITTColors["Multiple"])
+                .style('opacity', (this.active) ? 0.8 : 0.0)
+                .style('stroke', this.borderColor)
+                .style('stroke-width',(this.borderWidth -2 ) + 'px');
+              }
+          if(code == "0"){
+              d3.select(parcel.path)
+                .style('fill', 'transparent')
+                .style('opacity', (this.active) ? 0.40 : 0.0)
+                .style('stroke', this.borderColor)
+                .style('stroke-width', (this.borderWidth -2 ) + 'px');
+              }
+            });
+                }, 
+    },//end parcels layer
+    {//start Ahupuaa layer
+      name: 'Ahupuaa', //display name
+      displayName: 'Ahupua`as',//display name
+      active: false,
+      included: true,//enable-disable layer
+      iconPath: 'assets/plans/bigisland/images/icons/pig.png',//controls icon image for layer
+      legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
+      secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+      fillColor: '#ff0066',
+      borderColor: 'turquoise',
+      borderWidth: 3,
+      legendColor: mapLayerColors.Solar.fill,
+      filePath: 'assets/plans/bigisland/layers/Ahupuaa.json',//set to shapefile link
+      parcels: [],
+      setupFunction(planService: PlanService) {
+        this.parcels.forEach(parcel => {
+            d3.select(parcel.path)
+              .style('fill', 'transparent')
+              .style('opacity', (this.active) ? 0.9 : 0.0)
+              .style('stroke', this.borderColor)
+              .style('stroke-width', this.borderWidth + 'px');
+        });
+      },
+      updateFunction(planService: PlanService) {
+        this.parcels.forEach(parcel => { 
+          d3.select(parcel.path)
+            .style('fill', 'transparent')//'transparent' if no fill is needed, otherwise set to color hex code
+            .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
+            .style('stroke', this.borderColor)//controls bordercolor - accepts color hex code
+            .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
+          
 
-                  /*
-                  Checks for every type of species in the data.  
-                  Add a case if something's missing, I think I got them all.
-                  */
-                  if (species == "Argyroxiphium kauense"){
-                    d3.select(parcel.path)
-                    .style('fill', 'red')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
-                  }else if (species == "Bonamia menziesii"){
-                    d3.select(parcel.path)
-                    .style('fill', 'pink')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
-                  }else if (species == "Clermontia lindseyana"){
-                    d3.select(parcel.path)
-                    .style('fill', 'magenta')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
-                  }else if (species == "Clermontia peleana"){
-                    d3.select(parcel.path)
-                    .style('fill', 'green')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
-                  }else if (species == "Clermontia pyrularia"){
-                    d3.select(parcel.path)
-                    .style('fill', 'blue')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
-                  }else if (species == "Colubrina oppositifolia"){
-                    d3.select(parcel.path)
-                    .style('fill', '#purple')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
-                  }else if (species == "Cyanea hamatiflora ssp. carlsonii"){
-                    d3.select(parcel.path)
-                    .style('fill', 'light blue')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
-                  }else if (species == "Cyanea platyphylla"){
-                    d3.select(parcel.path)
-                    .style('fill', 'light purple')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
-                  }else if (species == "Cyanea shipmanii"){
-                    d3.select(parcel.path)
-                    .style('fill', 'light green')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
-                  }else if (species == "Cyanea stictophylla"){
-                    d3.select(parcel.path)
-                    .style('fill', 'blueviolet')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
-                  }else if (species == "Cyrtandra giffardii"){
-                    d3.select(parcel.path)
-                    .style('fill', 'bisque')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
-                  }else if (species == "Cyrtandra tintinnabula"){
-                    d3.select(parcel.path)
-                    .style('fill', 'Chartreuse')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
-                  }else if (species == "Delissea undulata"){
-                    d3.select(parcel.path)
-                    .style('fill', 'cadetblue')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
-                  }else if (species == "Hibiscadelphus giffardianus"){
-                    d3.select(parcel.path)
-                    .style('fill', 'crimson')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
-                  }else if (species == "Hibiscus brackenridgei"){
-                    d3.select(parcel.path)
-                    .style('fill', 'DarkOliveGreen')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
-                  }else if (species == "Neraudia ovata"){
-                    d3.select(parcel.path)
-                    .style('fill', 'Gainsboro')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
-                  }else if (species == "Nothocestrum breviflorum"){
-                    d3.select(parcel.path)
-                    .style('fill', 'LemonChiffon')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
-                  }else if (species == "Phyllostegia racemosa"){
-                    d3.select(parcel.path)
-                    .style('fill', 'MediumAquaMarine')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
-                  }else if (species == "Phyllostegia velutina"){
-                    d3.select(parcel.path)
-                    .style('fill', 'Moccasin')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
-                  }else if (species == "Plantago hawaiiensis"){
-                    d3.select(parcel.path)
-                    .style('fill', 'MistyRose')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
-                  }else if (species == "Pleomele hawaiiensis"){
-                    d3.select(parcel.path)
-                    .style('fill', 'papayawhip')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
-                  }else if (species == "Sicyos alba"){
-                    d3.select(parcel.path)
-                    .style('fill', 'RosyBrown')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
-                  }else if (species == "Silene hawaiiensis"){
-                    d3.select(parcel.path)
-                    .style('fill', 'Teal')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
-                  }else if (species == "Solanum incompletum"){
-                    d3.select(parcel.path)
-                    .style('fill', 'Turquoise')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
-                  }else if (species == "Zanthoxylum dipetalum ssp. tomentosum"){
-                    d3.select(parcel.path)
-                    .style('fill', 'SeaGreen')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
-                  }else{
-                  d3.select(parcel.path)
-                    .style('fill', 'magenta')//'transparent' if no fill is needed, otherwise set to color hex code
-                    .style('opacity', this.active ? 0.9 : 0.0)//controls opacity of layer
-                    .style('stroke', 'white')//controls bordercolor - accepts color hex code
-                    .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
-                  }
-          });
-        },
-      },//end critical plant habitat layer
+        });
+      },
+    },//end ahupuaa layer
+    {//Annual Rainfall
+      name: 'rainfall_annual',
+      displayName: 'Annual Rainfall(Inches)',
+      active: false,
+      included: true,
+      iconPath: 'assets/plans/bigisland/images/icons/Rainfall.png',
+      legendImagePath: 'assets/plans/bigisland/images/legends/RainfallLegend.png',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
+      secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+      fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
+      borderColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
+      borderWidth: 5,  //Border width, default is set here.
+      legendColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
+      filePath: 'assets/plans/bigisland/layers/Annual_Rainfall_in.json',
+      parcels: [],
+      setupFunction(planService: PlanService) {
+        this.parcels.forEach(parcel => {
+            d3.select(parcel.path)
+            .style('fill', 'transparent')
+            .style('opacity', (this.active) ? 0.85 : 0.0)
+            .style('stroke', '#008bff')
+            .style('stroke-width', (this.borderWidth) + 'px');
+        });
+      },
+      updateFunction(planService: PlanService) {
+      this.parcels.forEach(parcel => {               
+      const Rainfallcolors = {
+          "low" : "#CEFDFF",
+          "medium low" : "#59F8FF",
+          "medium" : "#0091FF",
+          "medium high" : "#0022FF",
+          "high" : "#00098A",
+          "very high" : "#09003D"
+        }
+        let code = parcel.properties.contour;
+        
+          if(code > 0 && code <= 50)
+        {
+          d3.select(parcel.path)
+          .style('fill', 'transparent')
+          .style('opacity', this.active ? 0.8 : 0.0)
+          .style('stroke', Rainfallcolors["low"])
+          .style('stroke-width', this.borderwidth + 'px');
+        }
+        if(code > 50 && code <= 100)
+        {
+          d3.select(parcel.path)
+          .style('fill', 'transparent')
+          .style('opacity', this.active ? 0.8 : 0.0)
+          .style('stroke', Rainfallcolors["medium low"])
+          .style('stroke-width', this.borderwidth + 'px');
+        }
+        if(code >100 && code <=150)
+        {
+          d3.select(parcel.path)
+          .style('fill', 'transparent')
+          .style('opacity', this.active ? 0.8 : 0.0)
+          .style('stroke', Rainfallcolors["medium"])
+          .style('stroke-width', (this.borderWidth-2) + 'px');
+        }
+            if(code >150 && code <= 200)
+            {
+              d3.select(parcel.path)
+              .style('fill', 'transparent')
+              .style('opacity', this.active ? 0.8 : 0.0)
+              .style('stroke', Rainfallcolors["medium high"])
+              .style('stroke-width', (this.borderWidth-2) + 'px');
+            }
+            if(code >200 && code <= 250)
+            {
+              d3.select(parcel.path)
+              .style('fill', 'transparent')
+              .style('opacity', this.active ? 0.8 : 0.0)
+              .style('stroke', Rainfallcolors["high"])
+              .style('stroke-width', this.borderwidth + 'px');
+            }
+            if(code >250 && code <= 300)
+            {
+              d3.select(parcel.path)
+              .style('fill', 'transparent')
+              .style('opacity', this.active ? 0.8 : 0.0)
+              .style('stroke', Rainfallcolors["very high"])
+              .style('stroke-width', this.borderwidth + 'px');
+            }
+        });
+      },
+    },//end rainfall layer
+    {//start critical habitat layer
+      name: 'critcalplant', //display name
+      displayName: 'Plants Critical Habitat',//display name
+      active: false,
+      included: true,//enable-disable layer
+      iconPath: 'assets/plans/bigisland/images/icons/pig.png',//controls icon image for layer
+      legendImagePath: 'assets/plans/bigisland/images/legends/PlantLegend.png',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/solar.jpg',
+      secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+      fillColor: '#ff0066',
+      borderColor: '#000000',
+      borderWidth: 0.5,
+      legendColor: mapLayerColors.Solar.fill,
+      filePath: 'assets/plans/bigisland/layers/Big_Island_Critical_Habitat__Plant.json',//set to shapefile link
+      parcels: [],
+      setupFunction(planService: PlanService) {
+      this.parcels.forEach(parcel => {
+        d3.select(parcel.path)
+          .style('fill', 'transparent')
+          .style('opacity', (this.active) ? 0.9 : 0.0)
+          .style('stroke', this.borderColor)
+          .style('stroke-width', this.borderWidth + 'px');
+      });
+      },
+      updateFunction(planService: PlanService) {
+      this.parcels.forEach(parcel => {
+        
+        let species = parcel.properties.species;
+
+        if (species == "Argyroxiphium kauense"){
+        d3.select(parcel.path)
+        .style('fill','#d2dceb')//'transparent' if no fill is needed, otherwise set to color hex code
+        .style('opacity', this.active ? 0.6 : 0.0)//controls opacity of layer
+        .style('stroke', this.borderColor)//controls bordercolor - accepts color hex code
+        .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
+        } 
+        else if (species == "Clermontia lindseyana"){
+        d3.select(parcel.path)
+        .style('fill', 'magenta')//'transparent' if no fill is needed, otherwise set to color hex code
+        .style('opacity', this.active ? 1 : 0.0)//controls opacity of layer
+        .style('stroke', this.borderColor)//controls bordercolor - accepts color hex code
+        .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
+        }
+        else if (species == "Clermontia peleana"){
+        d3.select(parcel.path)
+        .style('fill', '#6af908')//'transparent' if no fill is needed, otherwise set to color hex code
+        .style('opacity', this.active ? 0.5 : 0.0)//controls opacity of layer
+        .style('stroke', this.borderColor)//controls bordercolor - accepts color hex code
+        .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
+        }
+        else if (species == "Cyrtandra giffardii"){
+        d3.select(parcel.path)
+        .style('fill', '#ff0000')//'transparent' if no fill is needed, otherwise set to color hex code
+        .style('opacity', this.active ? 0.8 : 0.0)//controls opacity of layer
+        .style('stroke', this.borderColor)//controls bordercolor - accepts color hex code
+        .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
+        }
+        else if (species == "Pleomele hawaiiensis"){
+        d3.select(parcel.path)
+        .style('fill', '#00cdc4')//'transparent' if no fill is needed, otherwise set to color hex code
+        .style('opacity', this.active ? 1 : 0.0)//controls opacity of layer
+        .style('stroke', this.borderColor)//controls bordercolor - accepts color hex code
+        .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
+        }
+        else if (species == "Sicyos alba"){
+        d3.select(parcel.path)
+        .style('fill', '#bc8f8f')//'transparent' if no fill is needed, otherwise set to color hex code
+        .style('opacity', this.active ? 1 : 0.0)//controls opacity of layer
+        .style('stroke', this.borderColor)//controls bordercolor - accepts color hex code
+        .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
+        }
+        else if (species == "Nothocestrum breviflorum"){
+        d3.select(parcel.path)
+        .style('fill', '#f0ff00')//'transparent' if no fill is needed, otherwise set to color hex code
+        .style('opacity', this.active ? 0.7 : 0.0)//controls opacity of layer
+        .style('stroke', this.borderColor)//controls bordercolor - accepts color hex code
+        .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
+        }
+        else{
+        d3.select(parcel.path)
+        .style('fill', '#556695')//'transparent' if no fill is needed, otherwise set to color hex code
+        .style('opacity', this.active ? 0.1 : 0.0)//controls opacity of layer
+        .style('stroke', 'transparent')//controls bordercolor - accepts color hex code
+        .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
+        }
+     });
+     },
+    },//end critical plant habitat layer
 
     ],
   }
