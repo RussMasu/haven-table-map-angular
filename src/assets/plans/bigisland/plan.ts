@@ -706,7 +706,7 @@ export const BigIslandPlan: Plan = {
         name: 'parcels',
         displayName: 'Hawaii Tax Parcels',
         active: false,
-        included: true,
+        included: false,
         iconPath: 'assets/plans/bigisland/images/icons/pig.png',
         legendImagePath: 'assets/plans/bigisland/images/legends/ParcelLegend.png',
         secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
@@ -859,6 +859,94 @@ export const BigIslandPlan: Plan = {
             });
           },
         },//end ahupuaa layer
+ {//Annual Rainfall
+          name: 'rainfall_annual',
+          displayName: 'Annual Rainfall(Inches)',
+          active: false,
+          included: true,
+          iconPath: 'assets/plans/bigisland/images/icons/elevation-icon.png',
+          legendImagePath: '',
+          secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/layer-images/dod.jpg',
+          secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+          fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
+          borderColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
+          borderWidth: 5,  //Border width, default is set here.
+          legendColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
+          filePath: 'assets/plans/bigisland/layers/Annual_Rainfall_in.json',
+          parcels: [],
+          setupFunction(planService: PlanService) {
+            this.parcels.forEach(parcel => {
+                d3.select(parcel.path)
+                .style('fill', 'transparent')
+                .style('opacity', (this.active) ? 0.85 : 0.0)
+                .style('stroke', '#008bff')
+                .style('stroke-width', (this.borderWidth) + 'px');
+            });
+          },
+          updateFunction(planService: PlanService) {
+    this.parcels.forEach(parcel => {  
+                  
+  const Rainfallcolors = {
+        "low" : "#00E6FF",
+        "medium low" : "#0091FF",
+        "medium" : "#0066FF",
+        "medium high" : "#0049FF",
+        "high" : "#0022FF",
+        "very high" : "#00098A"
+      }
+      let code = parcel.properties.contour;
+      
+        if(code > 0 && code <= 50)
+      {
+        d3.select(parcel.path)
+        .style('fill', 'transparent')
+        .style('opacity', this.active ? 0.8 : 0.0)
+        .style('stroke', Rainfallcolors["low"])
+        .style('stroke-width', this.borderwidth + 'px');
+      }
+      if(code > 50 && code <= 100)
+      {
+        d3.select(parcel.path)
+        .style('fill', 'transparent')
+        .style('opacity', this.active ? 0.8 : 0.0)
+        .style('stroke', Rainfallcolors["medium low"])
+        .style('stroke-width', this.borderwidth + 'px');
+      }
+      if(code >100 && code <=150)
+      {
+        d3.select(parcel.path)
+        .style('fill', 'transparent')
+        .style('opacity', this.active ? 0.8 : 0.0)
+        .style('stroke', Rainfallcolors["medium"])
+        .style('stroke-width', (this.borderWidth-2) + 'px');
+      }
+          if(code >150 && code <= 200)
+          {
+            d3.select(parcel.path)
+            .style('fill', 'transparent')
+            .style('opacity', this.active ? 0.8 : 0.0)
+            .style('stroke', Rainfallcolors["medium high"])
+            .style('stroke-width', (this.borderWidth-2) + 'px');
+          }
+          if(code >200 && code <= 250)
+          {
+            d3.select(parcel.path)
+            .style('fill', 'transparent')
+            .style('opacity', this.active ? 0.8 : 0.0)
+            .style('stroke', Rainfallcolors["high"])
+            .style('stroke-width', this.borderwidth + 'px');
+          }
+          if(code >250 && code <= 300)
+          {
+            d3.select(parcel.path)
+            .style('fill', 'transparent')
+            .style('opacity', this.active ? 0.8 : 0.0)
+            .style('stroke', Rainfallcolors["very high"])
+            .style('stroke-width', this.borderwidth + 'px');
+          }
+    });
+  },
+        },//end rainfall layer
             {//start critical habitat layer
               name: 'critcalplant', //display name
               displayName: 'Plants Critical Habitat',//display name
@@ -1052,6 +1140,7 @@ export const BigIslandPlan: Plan = {
           });
         },
       },//end critical plant habitat layer
+
     ],
   }
 }
