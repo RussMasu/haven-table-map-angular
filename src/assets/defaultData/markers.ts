@@ -43,7 +43,7 @@ export const markers: Marker[] = [{
   secondId: 7,
   job: 'add',
   delay: 600, 
-  minRotation: 15,
+  minRotation: 10,
   rotateLeft(planService: PlanService) {
     planService.toggleLayer();
    },
