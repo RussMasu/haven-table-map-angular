@@ -104,7 +104,8 @@ export class MapMainComponent implements AfterViewInit {
         this.windowRefService.notifySecondScreen(JSON.stringify(
           {
             type: 'layer',
-            name: value.name
+            name: value.name,
+            isActive: value.active
           }));
         this.nextLayer = value.displayName;
         this.addColor = value.legendColor;

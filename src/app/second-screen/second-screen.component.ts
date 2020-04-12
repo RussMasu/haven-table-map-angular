@@ -38,6 +38,8 @@ export class SecondScreenComponent implements OnInit {
         this.currentYear = data.year;
       } else if (data.type === 'layer') {
         this.nextLayer = data.name;
+        console.log(data.name);
+        console.log(data.isActive);
       }
     });
   }
