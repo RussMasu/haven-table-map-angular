@@ -1,6 +1,10 @@
 <div class="second-screen-container" [style.backgroundColor]="plan ? 'transparent' : 'black'">
   <div *ngIf="plan; else elseBlock">
-    <app-dstarting></app-dstarting>
+    <div [ngSwitch]="nextLayer">
+      <div *ngSwitchDefault>
+        <app-dstarting></app-dstarting>
+      </div>
+    </div>
   </div>
   <!-- loader called until plan is set-->
   <ng-template #elseBlock>

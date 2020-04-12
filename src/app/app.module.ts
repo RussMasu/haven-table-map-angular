@@ -35,6 +35,7 @@ import { PlanService } from './services/plan.service';
 import { SoundsService } from './services/sounds.service';
 import { WindowRefService } from './services/window-ref.service';
 import { DstartingComponent } from './dstarting/dstarting.component';
+import { DelevationComponent } from './delevation/delevation.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { DstartingComponent } from './dstarting/dstarting.component';
     LayerPuckComponent,
     YearPuckComponent,
     AddPuckComponent,
-    DstartingComponent
+    DstartingComponent,
+    DelevationComponent
   ],
   imports: [
     BrowserModule,
