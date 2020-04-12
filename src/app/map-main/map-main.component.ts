@@ -113,6 +113,21 @@ export class MapMainComponent implements AfterViewInit {
       }
     });
 
+    // Push Year Data to Second Screen
+    this.planService.toggleLayerSubject.subscribe({
+      next: value => {
+        this.windowRefService.notifySecondScreen(JSON.stringify(
+          {
+            type: 'layer',
+            name: value.name,
+            isActive: value.active
+          }));
+        this.nextLayer = value.displayName;
+        this.addColor = value.legendColor;
+        this.connectLayerAndAdd(this.trackingDotLayer.nativeElement, this.trackingDotAdd.nativeElement);
+      }
+    });
+
     this.arService.trackingSubject.subscribe({
       next: value => {
         this.trackingDots.forEach(dot => dot.nativeElement.style.opacity = 0);
