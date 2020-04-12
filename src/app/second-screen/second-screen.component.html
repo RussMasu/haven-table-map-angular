@@ -1,7 +1,10 @@
 <div class="second-screen-container" [style.backgroundColor]="plan ? 'transparent' : 'black'">
   <div *ngIf="plan; else elseBlock">
-    <app-dstarting></app-dstarting>
+    <div *ngFor="let layer of plan.map.mapLayers" [style.opacity]="layer.name === nextLayer ? 1 : 0">
+      <img class = "backgroundImage" src="{{ layer.secondScreenImagePath }}" />
+    </div>  
   </div>
+
   <!-- loader called until plan is set-->
   <ng-template #elseBlock>
     <div class="loading">
