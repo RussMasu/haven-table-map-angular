@@ -22,8 +22,9 @@ export class SecondScreenComponent implements OnInit {
   private displayName: string;
   private secondScreenImagePath: string;
   private nextLayer: string;
+  private activeLayer: boolean;
   private plan: Plan;
-  private mapLayers: {text: string, color: string, active: boolean}[] = [];
+  private mapLayers: {text: string, color: string}[] = [];
 
   constructor(private multiWindowService: MultiWindowService) {
     multiWindowService.name = 'secondScreen';
@@ -38,8 +39,7 @@ export class SecondScreenComponent implements OnInit {
         this.currentYear = data.year;
       } else if (data.type === 'layer') {
         this.nextLayer = data.name;
-        console.log(data.name);
-        console.log(data.isActive);
+        this.activeLayer = data.isActive;
       }
     });
   }
@@ -70,7 +70,7 @@ export class SecondScreenComponent implements OnInit {
     }
     this.nextLayer = this.plan.map.mapLayers[0].name;
     this.plan.map.mapLayers.forEach(layer => {
-      this.mapLayers.push({text: layer.displayName, color: layer.fillColor, active: false});
+      this.mapLayers.push({text: layer.displayName, color: layer.fillColor});
     });
   }
 }
