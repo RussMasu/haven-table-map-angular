@@ -1,7 +1,9 @@
 <div class="second-screen-container" [style.backgroundColor]="plan ? 'transparent' : 'black'">
   <div *ngIf="plan; else elseBlock">
     <div *ngFor="let layer of plan.map.mapLayers" [style.opacity]="layer.name === nextLayer ? 1 : 0">
-      <img class = "backgroundImage" src="{{ layer.secondScreenImagePath }}" />
+      <div *ngIf="activeLayer; else notActive">
+        <img class = "backgroundImage" src="{{ layer.secondScreenImagePath }}" />
+      </div>
     </div>  
   </div>
 
@@ -17,3 +19,7 @@
     </div>
   </ng-template>
 </div>
+
+<ng-template #notActive>
+  <img class = "backgroundImage" src="assets/plans/bigisland/images/second-screen-images/backgrounds/LandingPreview.jpg" />
+</ng-template>

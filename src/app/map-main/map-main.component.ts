@@ -104,7 +104,23 @@ export class MapMainComponent implements AfterViewInit {
         this.windowRefService.notifySecondScreen(JSON.stringify(
           {
             type: 'layer',
-            name: value.name
+            name: value.name,
+            isActive: value.active
+          }));
+        this.nextLayer = value.displayName;
+        this.addColor = value.legendColor;
+        this.connectLayerAndAdd(this.trackingDotLayer.nativeElement, this.trackingDotAdd.nativeElement);
+      }
+    });
+
+    // Push Year Data to Second Screen
+    this.planService.toggleLayerSubject.subscribe({
+      next: value => {
+        this.windowRefService.notifySecondScreen(JSON.stringify(
+          {
+            type: 'layer',
+            name: value.name,
+            isActive: value.active
           }));
         this.nextLayer = value.displayName;
         this.addColor = value.legendColor;
