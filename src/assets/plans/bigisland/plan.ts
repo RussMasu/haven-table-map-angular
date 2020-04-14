@@ -929,20 +929,12 @@ export const BigIslandPlan: Plan = {
           if(code == "400")
           {
             d3.select(parcel.path)
-            .style('fill', PITTColors["Commercial"])
-            .style('opacity', this.active ? 1 : 0.0)
-            .style('stroke', this.borderColor)
-            .style('stroke-width', (this.borderWidth-2) + 'px');
-          }
-          if(code == "500")
-          {
-            d3.select(parcel.path)
             .style('fill', PITTColors["Industrial"])
             .style('opacity', this.active ? 0.4 : 0.0)
             .style('stroke', this.borderColor)
             .style('stroke-width', (this.borderWidth -2) + 'px');
           }
-          if(code == "600")
+          if(code == "500")
           {
             d3.select(parcel.path)
             .style('fill', PITTColors["Agricultural / Forest"])
@@ -972,13 +964,6 @@ export const BigIslandPlan: Plan = {
                 .style('opacity', (this.active) ? 0.8 : 0.0)
                 .style('stroke', this.borderColor)
                 .style('stroke-width',(this.borderWidth -2 ) + 'px');
-              }
-          if(code == "0"){
-              d3.select(parcel.path)
-                .style('fill', 'transparent')
-                .style('opacity', (this.active) ? 0.40 : 0.0)
-                .style('stroke', this.borderColor)
-                .style('stroke-width', (this.borderWidth -2 ) + 'px');
               }
             });
                 }, 
