@@ -104,7 +104,7 @@ export const BigIslandPlan: Plan = {
       included: true,   //Default for inclusion in the layer list
       iconPath: 'assets/plans/bigisland/images/icons/Elevation.png',  //Icon path for table.
       legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
-      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/dod.jpg',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Elevation-Contours.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer',  //Instructional/information text on second screen.
       fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
       borderColor: 'white', //See defaultColors.ts.
@@ -139,7 +139,7 @@ export const BigIslandPlan: Plan = {
       included: true,
       iconPath: 'assets/plans/bigisland/images/icons/Streams.png',
       legendImagePath: 'assets/plans/bigisland/images/legends/StreamsLegend.png',
-      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/solar.jpg',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/LandingPreview.jpg',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
       fillColor: '#ff0066',
       borderColor: '#ffffff',
@@ -192,7 +192,7 @@ export const BigIslandPlan: Plan = {
       included: true,
       iconPath: 'assets/plans/bigisland/images/icons/Rainfall.png',
       legendImagePath: 'assets/plans/bigisland/images/legends/RainfallLegend.png',
-      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/dod.jpg',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Annual-Rainfall.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
       fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
       borderColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
@@ -279,7 +279,7 @@ export const BigIslandPlan: Plan = {
       included: true,
       iconPath: 'assets/plans/bigisland/images/icons/fire.png',
       legendImagePath: 'assets/plans/bigisland/images/legends/Fire.png',
-      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/dod.jpg',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/LandingPreview.jpg',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
       fillColor: mapLayerColors.Dod.fill,
       borderColor: mapLayerColors.Dod.border,
@@ -345,7 +345,7 @@ export const BigIslandPlan: Plan = {
       included: true,
       iconPath: 'assets/plans/bigisland/images/icons/Lava-Flows.png',
       legendImagePath: 'assets/plans/bigisland/images/legends/LavaFlowHazardLegend.png',
-      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/dod.jpg',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Lava-Hazard-Zones.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
       fillColor: mapLayerColors.Dod.fill,
       borderColor: 	'#000000',
@@ -513,9 +513,9 @@ export const BigIslandPlan: Plan = {
       displayName: 'Flood Hazard',//display name
       active: false,
       included: true,//enable-disable layer
-      iconPath: 'assets/plans/bigisland/images/icons/pig.png',//controls icon image for layer
+      iconPath: 'assets/plans/bigisland/images/icons/Flood-Zones.png',//controls icon image for layer
       legendImagePath: 'assets/plans/bigisland/images/legends/FloodLegend.png',
-      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/solar.jpg',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Flood-Hazard-Zones.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
       fillColor: '#ff0066',
       borderColor: '#000000',
@@ -583,7 +583,7 @@ export const BigIslandPlan: Plan = {
       included: true,//enable-disable layer
       iconPath: 'assets/plans/bigisland/images/icons/Palila.png',//controls icon image for layer
       legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
-      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/dod.jpg',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/LandingPreview.jpg',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
       fillColor: '#ff0066',
       borderColor: '#ffffff',
@@ -618,9 +618,9 @@ export const BigIslandPlan: Plan = {
       displayName: 'Plants Critical Habitat',//display name
       active: false,
       included: true,//enable-disable layer
-      iconPath: 'assets/plans/bigisland/images/icons/pig.png',//controls icon image for layer
+      iconPath: 'assets/plans/bigisland/images/icons/Plant-Habitat.png',//controls icon image for layer
       legendImagePath: 'assets/plans/bigisland/images/legends/PlantLegend.png',
-      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/solar.jpg',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Critical-Plant-Habitat.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
       fillColor: '#ff0066',
       borderColor: '#000000',
@@ -702,7 +702,7 @@ export const BigIslandPlan: Plan = {
       included: true,//enable-disable layer
       iconPath: 'assets/plans/bigisland/images/icons/Conservation.png',//controls icon image for layer
       legendImagePath: 'assets/plans/bigisland/images/legends/VegLegend.png',
-      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/dod.jpg',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Vegetation.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
       fillColor: '#ff0066',
       borderColor: '#ffffff',
@@ -762,7 +762,7 @@ export const BigIslandPlan: Plan = {
       included: true,
       iconPath: 'assets/plans/bigisland/images/icons/Roads.png',
       legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
-      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/dod.jpg',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Major-Roads.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
       fillColor: mapLayerColors.Dod.fill,
       borderColor: '#B53CFF',
@@ -796,9 +796,9 @@ export const BigIslandPlan: Plan = {
       displayName: 'State Hunting Areas',
       active: false,
       included: true,
-      iconPath: 'assets/plans/bigisland/images/icons/pig.png',
+      iconPath: 'assets/plans/bigisland/images/icons/Hunting.png',
       legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
-      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/dod.jpg',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/LandingPreview.jpg',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
       fillColor: mapLayerColors.Dod.fill,
       borderColor: mapLayerColors.Dod.border,
@@ -834,7 +834,7 @@ export const BigIslandPlan: Plan = {
       included: true,
       iconPath: 'assets/plans/bigisland/images/icons/Trails.png',
       legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
-      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/dod.jpg',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/LandingPreview.jpg',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
       fillColor: mapLayerColors.Dod.fill,
       borderColor: '#eacaff',
@@ -868,9 +868,9 @@ export const BigIslandPlan: Plan = {
       displayName: 'Hawaii Tax Parcels',
       active: false,
       included: true,
-      iconPath: 'assets/plans/bigisland/images/icons/pig.png',
+      iconPath: 'assets/plans/bigisland/images/icons/Tax-Parcels.png',
       legendImagePath: 'assets/plans/bigisland/images/legends/ParcelLegend.png',
-      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/dod.jpg',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Hawaii-Tax-Parcels.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
       fillColor: mapLayerColors.Dod.fill,
       borderColor: 'transparent',
@@ -973,9 +973,9 @@ export const BigIslandPlan: Plan = {
       displayName: 'Ahupua`as',//display name
       active: false,
       included: true,//enable-disable layer
-      iconPath: 'assets/plans/bigisland/images/icons/pig.png',//controls icon image for layer
+      iconPath: 'assets/plans/bigisland/images/icons/Ahupuaa.png',//controls icon image for layer
       legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
-      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/dod.jpg',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/LandingPreview.jpg',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
       fillColor: '#ff0066',
       borderColor: 'turquoise',
