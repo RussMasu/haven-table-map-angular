@@ -975,7 +975,7 @@ export const BigIslandPlan: Plan = {
       included: true,//enable-disable layer
       iconPath: 'assets/plans/bigisland/images/icons/Ahupuaa.png',//controls icon image for layer
       legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
-      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/LandingPreview.jpg',
+      secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Hawaii-Tax-Parcels.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
       fillColor: '#ff0066',
       borderColor: 'turquoise',
