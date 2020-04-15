@@ -39,7 +39,7 @@ export const BigIslandPlan: Plan = {
       defaultLayout: 'grid',
       grid: {
         left: '24vw',
-        top: '15vh',
+        top: '7vh',
         width: '21vw'
       },
       vertical: {
