@@ -351,7 +351,7 @@ export class MapMainComponent implements AfterViewInit {
  */
 private openSecondScreen(): boolean {
           if (!(this.windowRefService.secondScreenIsSet())) {
-                  this.windowRefService.setSecondSceenObject(this.nativeWindow.open('second-screen', 's    econdScreen')); 
+                  this.windowRefService.setSecondSceenObject(this.nativeWindow.open('second-screen', 's    econdScreen','left=1900, width = 1900, height = 1000')); 
                   return true;
        } else {
                   return false;
