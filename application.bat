@@ -1,2 +1,2 @@
-start chrome --start-fullscreen http://localhost:4200
-ng serve
+start autohotkey fullscreenWindows.ahk
+ng serve --open

@@ -4,6 +4,7 @@ import { Plan } from '../interfaces/plan';
 import { OahuPlan } from '../../assets/plans/oahu/plan';
 import { MauiPlan } from '../../assets/plans/maui/plan';
 import { BigIslandPlan } from '../../assets/plans/bigisland/plan';
+import {Title} from '@angular/platform-browser';
 
 
 @Component({
@@ -26,8 +27,10 @@ export class SecondScreenComponent implements OnInit {
   private plan: Plan;
   private mapLayers: {text: string, color: string}[] = [];
 
-  constructor(private multiWindowService: MultiWindowService) {
+  constructor(private multiWindowService: MultiWindowService,
+    private titleService: Title,) {
     multiWindowService.name = 'secondScreen';
+    titleService.setTitle("secondscreen");
   }
 
   ngOnInit() {
