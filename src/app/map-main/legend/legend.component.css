@@ -2,7 +2,7 @@
 .legend-card-grid-wrapper {
   width: 100%;
   height: 100%;
-  position: relative;
+  position: relative; 
 }
 
 .legend-card-grid-wrapper .legend-card-wrapper {
@@ -12,8 +12,9 @@
 .legend-card-grid-wrapper .legend-card {
   position: relative;
   display: inline-block;
-  width: 30%;
-  padding: 1%;
+  width: 35%; /* changed from 30 to 35 to have columns of 2 */
+  padding: 1%; 
+  text-align: center;
   opacity: 0.3;
   transition: opacity 0.4s ease-out;
 }
