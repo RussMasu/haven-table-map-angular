@@ -970,7 +970,7 @@ export const BigIslandPlan: Plan = {
     },//end parcels layer
     {//start Ahupuaa layer
       name: 'Ahupuaa', //display name
-      displayName: 'Ahupua`as',//display name
+      displayName: 'Ahupua`a',//display name
       active: false,
       included: true,//enable-disable layer
       iconPath: 'assets/plans/bigisland/images/icons/Ahupuaa.png',//controls icon image for layer
