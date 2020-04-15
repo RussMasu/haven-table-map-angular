@@ -6,6 +6,7 @@ import { Plan } from '@app/interfaces';
 import { PlanService } from '@app/services/plan.service';
 import { ProjectableMarker } from '@app/classes/projectableMarker';
 import { BigIslandPlan } from '../../assets/plans/bigisland/plan';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-map-main',
@@ -43,10 +44,12 @@ export class MapMainComponent implements AfterViewInit {
   private currentScenario: string;      // Current scenario.
         
   constructor(
+    private titleService: Title,
     private planService: PlanService,
     private arService: ArService,
     private router: Router,
     private windowRefService: WindowRefService){ 
+      titleService.setTitle("mapmain");
      this.nativeWindow = this.windowRefService.getNativeWindow();
       this.planService.setState('run');
       this.planService.setupSelectedPlan(BigIslandPlan);
@@ -71,8 +74,6 @@ export class MapMainComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
- 
-
 
     this.trackingDots = [this.trackingDotYear, this.trackingDotLayer, this.trackingDotScenario, this.trackingDotAdd];
 
@@ -352,6 +353,7 @@ export class MapMainComponent implements AfterViewInit {
 private openSecondScreen(): boolean {
           if (!(this.windowRefService.secondScreenIsSet())) {
                   this.windowRefService.setSecondSceenObject(this.nativeWindow.open('second-screen', 's    econdScreen','left=1900, width = 1900, height = 1000')); 
+                  this.nativeWindow.focus();
                   return true;
        } else {
                   return false;
