@@ -32,14 +32,14 @@ export const BigIslandPlan: Plan = {
   },
   css: {
     map: {
-      left: '25vw',
-      top: '8vh'
+      left: '22vw',
+      top: '9vh'
     },
     legend: {
       defaultLayout: 'grid',
       grid: {
-        left: '24vw',
-        top: '7vh',
+        left: '25vw',
+        top: '3vh',
         width: '21vw'
       },
       vertical: {
@@ -70,8 +70,8 @@ export const BigIslandPlan: Plan = {
   },
   map: {
     scale: 0.32,
-    width: 2179,
-    height: 2479,
+    width: 2179*1.07,
+    height: 2479*1.07,
     bounds: [[-156.0618, 20.2696], [-154.8067, 18.9105]],
     baseMapPath: 'assets/plans/bigisland/images/base-map.png',
     mapLayers: [
