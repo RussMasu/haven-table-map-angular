@@ -700,7 +700,7 @@ export const BigIslandPlan: Plan = {
       displayName: 'Vegetation',//display name
       active: false,
       included: true,//enable-disable layer
-      iconPath: 'assets/plans/bigisland/images/icons/Conservation.png',//controls icon image for layer
+      iconPath: 'assets/plans/bigisland/images/icons/Vegetation.png',
       legendImagePath: 'assets/plans/bigisland/images/legends/VegLegend.png',
       secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Vegetation.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
