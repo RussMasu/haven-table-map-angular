@@ -1,5 +1,5 @@
 WinWait HavenTableAngular
-Sleep, 7000
+Sleep, 6000
 WinWait HavenTableAngular
 Send, {F11}
 Sleep, 1000
