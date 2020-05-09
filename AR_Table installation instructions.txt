@@ -1,0 +1,4 @@
+Install Autohotkey
+Set default browser to firefox
+Open console and type npm install angular; in order to install angular
+Run program by running application.batch file
