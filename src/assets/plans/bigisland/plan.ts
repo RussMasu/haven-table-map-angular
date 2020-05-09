@@ -62,14 +62,14 @@ export const BigIslandPlan: Plan = {
         top: '0vh'
       },
       line: {
-        left: 'calc(100vw - 350px)',
+        left: 'calc(100vw - 300px)',
         top: '35vh'
       }
 
     }
   },
   map: {
-    scale: 0.32,
+    scale: 0.325,
     width: 2179*1.07,
     height: 2479*1.07,
     bounds: [[-156.0618, 20.2696], [-154.8067, 18.9105]],
