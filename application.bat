@@ -1,2 +1,2 @@
 start autohotkey fullscreenWindows.ahk
-ng serve --open
+npm run-script ng serve --open
