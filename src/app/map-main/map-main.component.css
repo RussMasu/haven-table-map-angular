@@ -5,7 +5,7 @@ html {
 /* Contains styles for the left side of the main map display */
 
 .interaction-container {
-  width: 19vw;
+  width: 21vw;
   height: 100vh;
   background-color: rgb(40,40,40);
   display: inline-block;
@@ -50,11 +50,12 @@ html {
   text-align: center;
 }
 
-/* Holds the chart data.  Positioned for each island*/
+/* Holds the chart data.  Positionxed for each island*/
 
 .line-chart {
   width: 325px;
   height: 325px;
+  left: 90%;
   position: absolute;
   color: white;
 }
