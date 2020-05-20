@@ -31,6 +31,7 @@ export class PlanService {
   private scenarios: Scenario[];                // Array Holding All Scenarios
   private currentScenario: Scenario;            // Currently active scenario
   public scenarioSubject = new Subject<Scenario>(); // Scenario publisher
+  private currentFeature: number;               // Value holding what to do with the current scenario
 
   private currentYear: number;                  // Current year
   public yearSubject = new Subject<number>();   // Year Publisher
@@ -349,6 +350,26 @@ export class PlanService {
     this.scenarioSubject.next(this.currentScenario);
     this.soundsService.tick();
   }
+
+  public incrementFeature():void {
+
+
+  }
+
+  public decrementFeature():void {
+
+
+
+  }
+
+
+
+
+
+
+
+
+
 
   /** Cycles backwards through layers */
   public decrementNextLayer() {
