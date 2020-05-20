@@ -85,6 +85,7 @@ export const BigIslandPlan: Plan = {
       iconPath: 'assets/plans/bigisland/images/icons/cross-icon.png',
       secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/LandingPreview.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+      totalFeatures: 0,
       fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
       borderColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
       borderWidth: 0.04,  //Border width, default is set here.
@@ -106,6 +107,7 @@ export const BigIslandPlan: Plan = {
       legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
       secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Elevation-Contours-Screen.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer',  //Instructional/information text on second screen.
+      totalFeatures: 0,
       fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
       borderColor: 'white', //See defaultColors.ts.
       borderWidth: 1,  //Border width, default is set here.
@@ -141,6 +143,7 @@ export const BigIslandPlan: Plan = {
       legendImagePath: 'assets/plans/bigisland/images/legends/StreamsLegend.png',
       secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Streams-Screen.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+      totalFeatures: 0,
       fillColor: '#ff0066',
       borderColor: '#ffffff',
       borderWidth: 0.9,//0.5
@@ -194,6 +197,7 @@ export const BigIslandPlan: Plan = {
       legendImagePath: 'assets/plans/bigisland/images/legends/RainfallLegend.png',
       secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Rainfall-Screen.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+      totalFeatures: 0,
       fillColor: mapLayerColors.Test2019.fill,     //See defaultColors.ts.
       borderColor: mapLayerColors.Test2019.border, //See defaultColors.ts.
       borderWidth: 5,  //Border width, default is set here.
@@ -281,6 +285,7 @@ export const BigIslandPlan: Plan = {
       legendImagePath: 'assets/plans/bigisland/images/legends/Fire.png',
       secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Fire-Hazard-Areas-Screen.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+      totalFeatures: 0,
       fillColor: mapLayerColors.Dod.fill,
       borderColor: mapLayerColors.Dod.border,
       borderWidth: 1,
@@ -347,6 +352,7 @@ export const BigIslandPlan: Plan = {
       legendImagePath: 'assets/plans/bigisland/images/legends/LavaFlowHazardLegend.png',
       secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Lava-Flows-Screen.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+      totalFeatures: 0,
       fillColor: mapLayerColors.Dod.fill,
       borderColor: 	'#000000',
       borderWidth: 0.5,
@@ -517,6 +523,7 @@ export const BigIslandPlan: Plan = {
       legendImagePath: 'assets/plans/bigisland/images/legends/FloodLegend.png',
       secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Flood-Zones-Screen.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+      totalFeatures: 0,
       fillColor: '#ff0066',
       borderColor: '#000000',
       borderWidth: 1,
@@ -585,6 +592,7 @@ export const BigIslandPlan: Plan = {
       legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
       secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Palila-Critical-Habitat-Screen.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+      totalFeatures: 0,
       fillColor: '#ff0066',
       borderColor: '#ffffff',
       borderWidth: 0.5,
@@ -622,6 +630,7 @@ export const BigIslandPlan: Plan = {
       legendImagePath: 'assets/plans/bigisland/images/legends/PlantLegend.png',
       secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Critical-Plant-Habitat-Screen.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+      totalFeatures: 0,
       fillColor: '#ff0066',
       borderColor: '#000000',
       borderWidth: 0.5,
@@ -704,6 +713,7 @@ export const BigIslandPlan: Plan = {
       legendImagePath: 'assets/plans/bigisland/images/legends/VegLegend.png',
       secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Vegetation-Screen.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+      totalFeatures: 0,
       fillColor: '#ff0066',
       borderColor: '#ffffff',
       borderWidth: 0.2,
@@ -764,6 +774,7 @@ export const BigIslandPlan: Plan = {
       legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
       secondScreenImagePath:'assets/plans/bigisland/images/second-screen-images/backgrounds/Roads-Screen.png', 
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+      totalFeatures: 0,
       fillColor: mapLayerColors.Dod.fill,
       borderColor: '#B53CFF',
       borderWidth: 1,
@@ -800,6 +811,7 @@ export const BigIslandPlan: Plan = {
       legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
       secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Hunting-Areas-Screen.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+      totalFeatures: 0,
       fillColor: mapLayerColors.Dod.fill,
       borderColor: mapLayerColors.Dod.border,
       borderWidth: 1,
@@ -836,6 +848,7 @@ export const BigIslandPlan: Plan = {
       legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
       secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Trails-Screen.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+      totalFeatures: 0,
       fillColor: mapLayerColors.Dod.fill,
       borderColor: '#eacaff',
       borderWidth: 3,
@@ -872,6 +885,7 @@ export const BigIslandPlan: Plan = {
       legendImagePath: 'assets/plans/bigisland/images/legends/ParcelLegend.png',
       secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Tax.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+      totalFeatures: 0,
       fillColor: mapLayerColors.Dod.fill,
       borderColor: 'transparent',
       borderWidth: 3,
@@ -977,6 +991,7 @@ export const BigIslandPlan: Plan = {
       legendImagePath: 'assets/plans/bigisland/images/icons/null.png',
       secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Ahupuaa-Screen.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
+      totalFeatures: 0,
       fillColor: '#ff0066',
       borderColor: 'turquoise',
       borderWidth: 3,
