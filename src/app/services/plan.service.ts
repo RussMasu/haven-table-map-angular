@@ -31,7 +31,6 @@ export class PlanService {
   private scenarios: Scenario[];                // Array Holding All Scenarios
   private currentScenario: Scenario;            // Currently active scenario
   public scenarioSubject = new Subject<Scenario>(); // Scenario publisher
-  private currentFeature: number;               // Value holding what to do with the current scenario
 
   private currentYear: number;                  // Current year
   public yearSubject = new Subject<number>();   // Year Publisher
@@ -39,6 +38,10 @@ export class PlanService {
   private legendLayouts: string[] = [];         // Array holding possible layouts (grid / vertical)
   private currentLegendLayout: number;          // Currently selected legend layout
   public legendSubject = new Subject<string>(); // Legend Publisher
+
+  private layerFeatures: number;                // number of different features on a layer
+  private currentFeature: number;               // which feature we are currently on  
+  public featureSubject = new Subject<number>(); 
 
   /* Reset Subjects */
   public resetLayersSubject = new Subject<any>();
@@ -82,6 +85,10 @@ export class PlanService {
 
     this.selectedLayer = this.layers[0];  // This is the layer that can currently be added/removed.
     this.selectedLayerSubject.next(this.selectedLayer); // Publish current selected layer
+    
+    this.currentFeature = 0;
+    this.layerFeatures = this.selectedLayer.totalFeatures; //current amount of features in the starting layer
+    this.featureSubject.next(this.currentFeature); // updating 
 
     // Publish data for each layer.
     this.scenarioSubject.subscribe(scenario => {
@@ -351,25 +358,37 @@ export class PlanService {
     this.soundsService.tick();
   }
 
+
+  /* 
+   * GOTTA CHANGE THE FEATURE NUMBER AS WELL IN INC/DECREMENT LAYER
+   */
+
+  
   public incrementFeature():void {
-
-
+       const layer = this.selectedLayer;
+          if (layer.active){
+                 this.currentFeature = this.currentFeature+1;
+                  if (this.currentFeature > this.layerFeatures){
+                          this.currentFeature =0;
+                  }
+                 this.updateLayerSubject.next(layer);
+                  
+          }
   }
 
   public decrementFeature():void {
-
+        const layer = this.selectedLayer;
+           if (layer.active){
+                  this.currentFeature = this.currentFeature-1; 
+                   if ( this.currentFeature < 0){
+                           this.currentFeature = this.layerFeatures;
+                   }
+                  this.updateLayerSubject.next(layer);
+                
+           }
 
 
   }
-
-
-
-
-
-
-
-
-
 
   /** Cycles backwards through layers */
   public decrementNextLayer() {
@@ -379,6 +398,9 @@ export class PlanService {
     }
     this.selectedLayer = this.layers[(index) % this.layers.length];
     this.selectedLayerSubject.next(this.selectedLayer);
+    this.layerFeatures = this.selectedLayer.totalFeatures;
+    this.currentFeature =0;
+    this.featureSubject.next(this.layerFeatures);
     this.layerChangeSubject.next('decrement');
     this.soundsService.tick(); 
         const layer = this.selectedLayer;
@@ -395,6 +417,9 @@ export class PlanService {
     const index = this.layers.indexOf(this.selectedLayer) + 1;
     this.selectedLayer = this.layers[(index) % this.layers.length];
     this.selectedLayerSubject.next(this.selectedLayer);
+    this.layerFeatures = this.selectedLayer.totalFeatures;
+    this.currentFeature =0;
+    this.featureSubject.next(this.layerFeatures);
     this.layerChangeSubject.next('increment');
     this.soundsService.tick();
     const layer = this.selectedLayer;
@@ -427,6 +452,7 @@ export class PlanService {
    */
   public addLayer(): boolean {
     const layer = this.selectedLayer;
+    this.currentFeature =0;
     if (!layer.active) {
       this.setLegendImagePath();
       layer.active = true;
@@ -443,6 +469,7 @@ export class PlanService {
    */
   public removeLayer(): boolean {
     const layer = this.selectedLayer;
+    this.currentFeature =0;
     if (layer.active) {
       layer.active = false;
       this.toggleLayerSubject.next(layer);
@@ -587,9 +614,11 @@ export class PlanService {
         this.ImagePathSubject.next(this.legendImagePath);
         }
 
-   public getLegendImagePath(): string{ 
-           
-          
+   public getLegendImagePath(): string{  
            return this.legendImagePath;
   }
+
+ public getCurrentFeature(): number{
+         return this.currentFeature;
+ }
 }

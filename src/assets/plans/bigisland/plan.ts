@@ -285,7 +285,7 @@ export const BigIslandPlan: Plan = {
       legendImagePath: 'assets/plans/bigisland/images/legends/Fire.png',
       secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Fire-Hazard-Areas-Screen.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
-      totalFeatures: 0,
+      totalFeatures: 3,
       fillColor: mapLayerColors.Dod.fill,
       borderColor: mapLayerColors.Dod.border,
       borderWidth: 1,
@@ -315,20 +315,20 @@ export const BigIslandPlan: Plan = {
             "Critical" : "white"
           }
           let risk = parcel.properties.risk_ratin;
-
-          if(risk == "Low")
+          let feature = planService.getCurrentFeature();
+          if(risk == "Low" )
           {
             d3.select(parcel.path)
             .style('fill', fireColors["Low"])
-            .style('opacity', this.active ? 0.85 : 0.0)
+            .style('opacity', (this.active && (feature == 1 || feature ==0)) ? 0.85 : 0.0)
             .style('stroke', this.borderColor)
             .style('stroke-width', this.borderWidth + 'px');
           }
-          if(risk == "Medium")
+          if(risk == "Medium" )
           {
             d3.select(parcel.path)
             .style('fill', fireColors["Medium"])
-            .style('opacity', this.active ? 0.85 : 0.0)
+            .style('opacity', (this.active && (feature == 2 || feature ==0)) ? 0.85 : 0.0)
             .style('stroke', this.borderColor)
             .style('stroke-width', this.borderWidth + 'px');
           }
@@ -336,7 +336,7 @@ export const BigIslandPlan: Plan = {
           {
             d3.select(parcel.path)
             .style('fill', fireColors["High"])
-            .style('opacity', this.active ? 0.85 : 0.0)
+            .style('opacity', (this.active && (feature == 3 || feature ==0)) ? 0.85 : 0.0)
             .style('stroke', this.borderColor)
             .style('stroke-width', this.borderWidth + 'px');
           }
