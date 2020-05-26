@@ -354,7 +354,7 @@ export const BigIslandPlan: Plan = {
       legendImagePath: 'assets/plans/bigisland/images/legends/LavaFlowHazardLegend.png',
       secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Lava-Flows-Screen.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
-      totalFeatures: 188888888,
+      totalFeatures: 9,
       fillColor: mapLayerColors.Dod.fill,
       borderColor: 	'#000000',
       borderWidth: 0.5,
@@ -383,134 +383,134 @@ export const BigIslandPlan: Plan = {
                 'zone2': '#900C3F',
                 'zone1': '#581845',
               }
-             let feature = planService.getCurrentFeature();
+                let feature = planService.getCurrentFeature();
 
-              this.parcels.forEach(parcel => {
-                let vhzone = parcel.properties.vhzones_id;//divide based on layer attribute 
+                this.parcels.forEach(parcel => {
+                    let vhzone = parcel.properties.vhzones_id;//divide based on layer attribute 
 
                     if(vhzone == 1){
                       d3.select(parcel.path)
                         .style('fill', colors.zone9)
-                        .style('opacity', (this.active && (feature == 1 || feature ==0)) ? 0.40 : 0.0)
+                        .style('opacity', (this.active && (feature == 9 || feature ==0)) ? 0.40 : 0.0)
                         .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                         .style('stroke-width', (this.borderWidth)  + 'px');
                     }
                     if(vhzone == 2){
                       d3.select(parcel.path)
                         .style('fill', colors.zone8)
-                        .style('opacity', (this.active && (feature == 1 || feature ==0)) ? 0.40 : 0.0)
+                        .style('opacity', (this.active && (feature == 8 || feature ==0)) ? 0.40 : 0.0)
                         .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                         .style('stroke-width', (this.borderWidth)  + 'px');
                     }
                     if(vhzone == 3){
                       d3.select(parcel.path)
                         .style('fill', colors.zone7)
-                        .style('opacity', (this.active && (feature == 1 || feature ==0))? 0.40 : 0.0)
+                        .style('opacity', (this.active && (feature == 7 || feature ==0))? 0.40 : 0.0)
                         .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                         .style('stroke-width', (this.borderWidth)  + 'px');
                     }
                     if(vhzone == 4){
                       d3.select(parcel.path)
                         .style('fill', colors.zone4)
-                        .style('opacity', (this.active && (feature == 1 || feature ==0)) ? 0.40 : 0.0)
+                        .style('opacity', (this.active && (feature == 4 || feature ==0)) ? 0.40 : 0.0)
                         .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                         .style('stroke-width', (this.borderWidth)  + 'px');
                     }
                     if(vhzone == 5){
                       d3.select(parcel.path)
                         .style('fill', colors.zone3)
-                        .style('opacity', (this.active && (feature == 1 || feature ==0)) ? 0.40 : 0.0)
+                        .style('opacity', (this.active && (feature == 3 || feature ==0)) ? 0.40 : 0.0)
                         .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                         .style('stroke-width', (this.borderWidth)  + 'px');
                     }
                     if(vhzone == 6){
                       d3.select(parcel.path)
                         .style('fill', colors.zone2)
-                        .style('opacity', (this.active && (feature == 1 || feature ==0)) ? 0.40 : 0.0)
+                        .style('opacity', (this.active && (feature == 2 || feature ==0)) ? 0.40 : 0.0)
                         .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                         .style('stroke-width', (this.borderWidth)  + 'px');
                     }
                     if(vhzone == 7){
                       d3.select(parcel.path)
                         .style('fill', colors.zone3)
-                        .style('opacity', (this.active && (feature == 1 || feature ==0)) ? 0.40 : 0.0)
+                        .style('opacity', (this.active && (feature == 3 || feature ==0)) ? 0.40 : 0.0)
                         .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                         .style('stroke-width', (this.borderWidth)  + 'px');
                     }
                     if(vhzone == 8){
                       d3.select(parcel.path)
                         .style('fill', colors.zone3)
-                        .style('opacity', (this.active && (feature == 1 || feature ==0)) ? 0.40 : 0.0)
+                        .style('opacity', (this.active && (feature == 3 || feature ==0)) ? 0.40 : 0.0)
                         .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                         .style('stroke-width', (this.borderWidth)  + 'px');
                     }
                     if(vhzone == 9){
                       d3.select(parcel.path)
                         .style('fill', colors.zone2)
-                        .style('opacity', this.active ? 0.40 : 0.0)
+                        .style('opacity', (this.active && (feature == 2 || feature ==0)) ? 0.40 : 0.0)
                         .style('stroke',this.borderColor )
                         .style('stroke-width', (this.borderWidth)  + 'px');
                     }
                     if(vhzone == 10){
                       d3.select(parcel.path)
                         .style('fill', colors.zone1)
-                        .style('opacity', this.active ? 0.40 : 0.0)
+                        .style('opacity', (this.active && (feature == 1 || feature ==0)) ? 0.40 : 0.0)
                         .style('stroke',this.borderColor )
                         .style('stroke-width', (this.borderWidth)  + 'px');
                     }
                     if(vhzone == 11){
                       d3.select(parcel.path)
                         .style('fill', colors.zone6)
-                        .style('opacity', this.active ? 0.40 : 0.0)
+                        .style('opacity', (this.active && (feature == 6 || feature ==0)) ? 0.40 : 0.0)
                         .style('stroke',this.borderColor )
                         .style('stroke-width', (this.borderWidth)  + 'px');
                     }
                     if(vhzone == 12){
                       d3.select(parcel.path)
                         .style('fill', colors.zone2)
-                        .style('opacity', this.active ? 0.40 : 0.0)
+                        .style('opacity', (this.active && (feature == 2 || feature ==0)) ? 0.40 : 0.0)
                         .style('stroke',this.borderColor )
                         .style('stroke-width', (this.borderWidth)  + 'px');
                     }
                     if(vhzone == 13){
                       d3.select(parcel.path)
                         .style('fill', colors.zone1)
-                        .style('opacity', this.active ? 0.40 : 0.0)
+                        .style('opacity', (this.active && (feature == 1 || feature ==0)) ? 0.40 : 0.0)
                         .style('stroke',this.borderColor )
                         .style('stroke-width', (this.borderWidth)  + 'px');
                     }
                     if(vhzone == 14){
                       d3.select(parcel.path)
                         .style('fill', colors.zone2)
-                        .style('opacity', this.active ? 0.40 : 0.0)
+                        .style('opacity', (this.active && (feature == 2 || feature ==0)) ? 0.40 : 0.0)
                         .style('stroke',this.borderColor )
                         .style('stroke-width', (this.borderWidth)  + 'px');
                     }
                     if(vhzone == 15){
                       d3.select(parcel.path)
                         .style('fill', colors.zone5)
-                        .style('opacity', this.active ? 0.40 : 0.0)
+                        .style('opacity', (this.active && (feature == 5 || feature ==0)) ? 0.40 : 0.0)
                         .style('stroke',this.borderColor )
                         .style('stroke-width', (this.borderWidth)  + 'px');
                     }
                     if(vhzone == 16){
                       d3.select(parcel.path)
                         .style('fill', colors.zone3)
-                        .style('opacity', this.active ? 0.40 : 0.0)
+                        .style('opacity', (this.active && (feature == 3 || feature ==0)) ? 0.40 : 0.0)
                         .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                         .style('stroke-width', (this.borderWidth)  + 'px');
                     }
                     if(vhzone == 17){
                       d3.select(parcel.path)
                         .style('fill', colors.zone3)
-                        .style('opacity', this.active ? 0.40 : 0.0)
+                        .style('opacity', (this.active && (feature == 3 || feature ==0)) ? 0.40 : 0.0)
                         .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                         .style('stroke-width', (this.borderWidth)  + 'px');
                     }
                     if(vhzone == 18){
                       d3.select(parcel.path)
                         .style('fill', colors.zone6)
-                        .style('opacity', this.active ? 0.40 : 0.0)
+                        .style('opacity', (this.active && (feature == 6 || feature ==0)) ? 0.40 : 0.0)
                         .style('stroke',this.borderColor )
                         .style('stroke-width', (this.borderWidth)  + 'px');
                     }
@@ -526,7 +526,7 @@ export const BigIslandPlan: Plan = {
       legendImagePath: 'assets/plans/bigisland/images/legends/FloodLegend.png',
       secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Flood-Zones-Screen.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
-      totalFeatures: 0,
+      totalFeatures: 4,
       fillColor: '#ff0066',
       borderColor: '#000000',
       borderWidth: 1,
@@ -545,6 +545,7 @@ export const BigIslandPlan: Plan = {
       updateFunction(planService: PlanService) {
         this.parcels.forEach(parcel => {
         
+        let feature = planService.getCurrentFeature();
         let layerattribute=parcel.properties.fld_zone;
 
         const colors = {
@@ -557,28 +558,28 @@ export const BigIslandPlan: Plan = {
         if (layerattribute == "A"){
         d3.select(parcel.path)
           .style('fill', '#ff0000')//'transparent' if no fill is needed, otherwise set to color hex code
-          .style('opacity', this.active ? 1 : 0.0)//controls opacity of layer
+          .style('opacity', (this.active && (feature == 1 || feature ==0)) ? 1 : 0.0)//controls opacity of layer
           .style('stroke', '#ffffff')//controls bordercolor - accepts color hex code
           .style('stroke-width', (this.borderWidth )+ 'px');
         }
         else if (layerattribute == "AE"){
         d3.select(parcel.path)
           .style('fill', '#e0ff02')//'transparent' if no fill is needed, otherwise set to color hex code
-          .style('opacity', this.active ? 1 : 0.0)//controls opacity of layer
+          .style('opacity', (this.active && (feature == 2 || feature ==0)) ? 1 : 0.0)//controls opacity of layer
           .style('stroke', '#ffffff')//controls bordercolor - accepts color hex code
           .style('stroke-width', (this.borderWidth) + 'px');
         }
         else if (layerattribute == "X"){
         d3.select(parcel.path)
           .style('fill', colors.X)//'transparent' if no fill is needed, otherwise set to color hex code
-          .style('opacity', this.active ? 0.6 : 0.0)//controls opacity of layer
+          .style('opacity', (this.active && (feature == 3 || feature ==0)) ? 1 : 0.0)//controls opacity of layer
           .style('stroke', 'transparent')//controls bordercolor - accepts color hex code
           .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
         }
         else if (layerattribute == "D"){
         d3.select(parcel.path)
           .style('fill', colors.D)//'transparent' if no fill is needed, otherwise set to color hex code
-          .style('opacity', this.active ? 0.6 : 0.0)//controls opacity of layer
+          .style('opacity', (this.active && (feature == 4 || feature ==0)) ? 1 : 0.0)//controls opacity of layer
           .style('stroke', '#000000')//controls bordercolor - accepts color hex code
           .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px');
         }
@@ -633,7 +634,7 @@ export const BigIslandPlan: Plan = {
       legendImagePath: 'assets/plans/bigisland/images/legends/PlantLegend.png',
       secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Critical-Plant-Habitat-Screen.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
-      totalFeatures: 0,
+      totalFeatures: 7,
       fillColor: '#ff0066',
       borderColor: '#000000',
       borderWidth: 0.5,
@@ -651,55 +652,55 @@ export const BigIslandPlan: Plan = {
       },
       updateFunction(planService: PlanService) {
       this.parcels.forEach(parcel => {
-        
+        let feature = planService.getCurrentFeature();
         let species = parcel.properties.species;
 
         if (species == "Argyroxiphium kauense"){
         d3.select(parcel.path)
         .style('fill','#d2dceb')//'transparent' if no fill is needed, otherwise set to color hex code
-        .style('opacity', this.active ? 0.6 : 0.0)//controls opacity of layer
+        .style('opacity', (this.active && (feature ==1 || feature ==0)) ? 0.6 : 0.0)//controls opacity of layer
         .style('stroke', this.borderColor)//controls bordercolor - accepts color hex code
         .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
         } 
         else if (species == "Clermontia lindseyana"){
         d3.select(parcel.path)
         .style('fill', 'magenta')//'transparent' if no fill is needed, otherwise set to color hex code
-        .style('opacity', this.active ? 1 : 0.0)//controls opacity of layer
+        .style('opacity', (this.active && (feature == 4 || feature ==0)) ? 1 : 0.0)//controls opacity of layer
         .style('stroke', this.borderColor)//controls bordercolor - accepts color hex code
         .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
         }
         else if (species == "Clermontia peleana"){
         d3.select(parcel.path)
         .style('fill', '#6af908')//'transparent' if no fill is needed, otherwise set to color hex code
-        .style('opacity', this.active ? 0.5 : 0.0)//controls opacity of layer
+        .style('opacity', (this.active && (feature == 2 || feature ==0)) ? 0.5 : 0.0)//controls opacity of layer
         .style('stroke', this.borderColor)//controls bordercolor - accepts color hex code
         .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
         }
         else if (species == "Cyrtandra giffardii"){
         d3.select(parcel.path)
         .style('fill', '#ff0000')//'transparent' if no fill is needed, otherwise set to color hex code
-        .style('opacity', this.active ? 0.8 : 0.0)//controls opacity of layer
+        .style('opacity', (this.active && (feature == 3 || feature ==0)) ? 0.8 : 0.0)//controls opacity of layer
         .style('stroke', this.borderColor)//controls bordercolor - accepts color hex code
         .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
         }
         else if (species == "Pleomele hawaiiensis"){
         d3.select(parcel.path)
         .style('fill', '#00cdc4')//'transparent' if no fill is needed, otherwise set to color hex code
-        .style('opacity', this.active ? 1 : 0.0)//controls opacity of layer
+        .style('opacity', (this.active && (feature == 5 || feature ==0)) ? 1 : 0.0)//controls opacity of layer
         .style('stroke', this.borderColor)//controls bordercolor - accepts color hex code
         .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
         }
         else if (species == "Sicyos alba"){
         d3.select(parcel.path)
         .style('fill', '#bc8f8f')//'transparent' if no fill is needed, otherwise set to color hex code
-        .style('opacity', this.active ? 1 : 0.0)//controls opacity of layer
+        .style('opacity', (this.active && (feature == 6 || feature ==0)) ? 1 : 0.0)//controls opacity of layer
         .style('stroke', this.borderColor)//controls bordercolor - accepts color hex code
         .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
         }
         else if (species == "Nothocestrum breviflorum"){
         d3.select(parcel.path)
         .style('fill', '#f0ff00')//'transparent' if no fill is needed, otherwise set to color hex code
-        .style('opacity', this.active ? 0.7 : 0.0)//controls opacity of layer
+        .style('opacity', (this.active && (feature == 7 || feature ==0)) ? 0.7 : 0.0)//controls opacity of layer
         .style('stroke', this.borderColor)//controls bordercolor - accepts color hex code
         .style('stroke-width', (this.borderWidth * parcel.properties.Voltage_kV) + 'px'); 
         }
@@ -716,7 +717,7 @@ export const BigIslandPlan: Plan = {
       legendImagePath: 'assets/plans/bigisland/images/legends/VegLegend.png',
       secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Vegetation-Screen.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
-      totalFeatures: 0,
+      totalFeatures: 3,
       fillColor: '#ff0066',
       borderColor: '#ffffff',
       borderWidth: 0.2,
@@ -734,7 +735,7 @@ export const BigIslandPlan: Plan = {
       },
       updateFunction(planService: PlanService) {
         this.parcels.forEach(parcel => {
-          
+          let feature = planService.getCurrentFeature();
           let layerattribute = parcel.properties.env;//divide based on layer attribute 
               const colors = {
                 'Wet Habitat Species':'#367ead',
@@ -745,21 +746,21 @@ export const BigIslandPlan: Plan = {
               if(layerattribute=="M"){
                   d3.select(parcel.path)
                     .style('fill', colors["Mesic (Moist)Habitat Species"])//set to Colors if fill wanted, otherwise transparent
-                    .style('opacity', this.active ? 0.6 : 0.0)
+                    .style('opacity', (this.active && (feature == 2 || feature ==0)) ? 0.6 : 0.0)
                     .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                     .style('stroke-width', (this.borderWidth) + 'px');
               }
               else if(layerattribute=="W"){
                 d3.select(parcel.path)
                   .style('fill', colors["Wet Habitat Species"])//set to Colors if fill wanted, otherwise transparent
-                  .style('opacity', this.active ? 0.6 : 0.0)
+                  .style('opacity', (this.active && (feature == 3 || feature == 0)) ? 0.6 : 0.0)
                   .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                   .style('stroke-width', (this.borderWidth) + 'px');
             }
             else if(layerattribute=="D"){
               d3.select(parcel.path)
                 .style('fill', colors["Dry Habitat Species"])//set to Colors if fill wanted, otherwise transparent
-                .style('opacity', this.active ? 0.6 : 0.0)
+                .style('opacity', (this.active && (feature == 1 || feature == 0)) ? 0.6 : 0.0)
                 .style('stroke',this.borderColor )//set to borderColors if borders wanted otherwise this.bordercolor
                 .style('stroke-width', (this.borderWidth) + 'px');
           }
@@ -888,7 +889,7 @@ export const BigIslandPlan: Plan = {
       legendImagePath: 'assets/plans/bigisland/images/legends/ParcelLegend.png',
       secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Tax.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
-      totalFeatures: 0,
+      totalFeatures: 7,
       fillColor: mapLayerColors.Dod.fill,
       borderColor: 'transparent',
       borderWidth: 3,
@@ -906,8 +907,8 @@ export const BigIslandPlan: Plan = {
             },
             updateFunction(planService: PlanService) {
               this.parcels.forEach(parcel => { 
-                      
-      const PITTColors = {
+         let feature = planService.getCurrentFeature();             
+         const PITTColors = {
             "Residential" : "blue",
             "Apartment" : "teal",
             "Commercial" : "orange",
@@ -923,7 +924,7 @@ export const BigIslandPlan: Plan = {
           {
             d3.select(parcel.path)
             .style('fill', PITTColors["Residential"])
-            .style('opacity', this.active ? 1 : 0.0)
+            .style('opacity', (this.active && (feature==1 ||feature==0)) ? 1 : 0.0)
             .style('stroke', this.borderColor)
             .style('stroke-width', (this.borderWidth -2) + 'px');
           }
@@ -931,7 +932,7 @@ export const BigIslandPlan: Plan = {
           {
             d3.select(parcel.path)
             .style('fill', PITTColors["Apartment"])
-            .style('opacity', this.active ? 1 : 0.0)
+            .style('opacity', (this.active && (feature==2 ||feature==0)) ? 1 : 0.0)
             .style('stroke', this.borderColor)
             .style('stroke-width', (this.borderWidth -2) + 'px');
           }
@@ -939,7 +940,7 @@ export const BigIslandPlan: Plan = {
           {
             d3.select(parcel.path)
             .style('fill', PITTColors["Commercial"])
-            .style('opacity', this.active ? 1 : 0.0)
+            .style('opacity', (this.active && (feature==3 ||feature==0)) ? 1 : 0.0)
             .style('stroke', this.borderColor)
             .style('stroke-width', (this.borderWidth-2) + 'px');
           }
@@ -947,7 +948,7 @@ export const BigIslandPlan: Plan = {
           {
             d3.select(parcel.path)
             .style('fill', PITTColors["Industrial"])
-            .style('opacity', this.active ? 0.4 : 0.0)
+            .style('opacity', (this.active && (feature==4 ||feature==0)) ? 1 : 0.0)
             .style('stroke', this.borderColor)
             .style('stroke-width', (this.borderWidth -2) + 'px');
           }
@@ -955,7 +956,7 @@ export const BigIslandPlan: Plan = {
           {
             d3.select(parcel.path)
             .style('fill', PITTColors["Agricultural / Forest"])
-            .style('opacity', this.active ? 0.4 : 0.0)
+            .style('opacity', (this.active && (feature==5 ||feature==0)) ? 0.4 : 0.0)
             .style('stroke', this.borderColor)
             .style('stroke-width', (this.borderWidth -2) + 'px');
           }
@@ -963,7 +964,7 @@ export const BigIslandPlan: Plan = {
           {
             d3.select(parcel.path)
             .style('fill', PITTColors["Hotel and Resort"])
-            .style('opacity', this.active ? 1 : 0.0)
+            .style('opacity', (this.active && (feature==6 ||feature==0)) ? 1 : 0.0)
             .style('stroke', this.borderColor)
             .style('stroke-width', (this.borderWidth -2) + 'px');
           }
@@ -971,14 +972,14 @@ export const BigIslandPlan: Plan = {
           {
             d3.select(parcel.path)
             .style('fill', PITTColors["Homeowner"])
-            .style('opacity', this.active ? 1 : 0.0)
+            .style('opacity', (this.active && (feature==1 ||feature==0)) ? 1 : 0.0)
             .style('stroke', this.borderColor)
             .style('stroke-width',  (this.borderWidth -2 ) + 'px');
           }
           if(code == "999"){
               d3.select(parcel.path)
                 .style('fill', PITTColors["Multiple"])
-                .style('opacity', (this.active) ? 0.8 : 0.0)
+                .style('opacity', (this.active && (feature==8 ||feature==0)) ? 0.8 : 0.0)
                 .style('stroke', this.borderColor)
                 .style('stroke-width',(this.borderWidth -2 ) + 'px');
               }
