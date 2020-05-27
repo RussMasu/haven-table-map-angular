@@ -39,6 +39,12 @@ export class PlanService {
   private currentLegendLayout: number;          // Currently selected legend layout
   public legendSubject = new Subject<string>(); // Legend Publisher
 
+
+  private layerFeatures: number;                // number of different features on a layer
+  private currentFeature: number[] = [];               // which feature we are currently on  
+  private currentFeatureIndex: number;
+  public featureSubject = new Subject<number>(); 
+
   /* Reset Subjects */
   public resetLayersSubject = new Subject<any>();
 
@@ -81,6 +87,16 @@ export class PlanService {
 
     this.selectedLayer = this.layers[0];  // This is the layer that can currently be added/removed.
     this.selectedLayerSubject.next(this.selectedLayer); // Publish current selected layer
+
+
+    
+    for (var i = 0; i < this.layers.length;i++){
+        this.currentFeature.push(0);
+    }
+    this.currentFeatureIndex = 0 
+    this.layerFeatures = this.selectedLayer.totalFeatures; //current amount of features in the starting layer
+    this.featureSubject.next(this.layerFeatures); // updating 
+
 
     // Publish data for each layer.
     this.scenarioSubject.subscribe(scenario => {
@@ -349,6 +365,32 @@ export class PlanService {
     this.scenarioSubject.next(this.currentScenario);
     this.soundsService.tick();
   }
+  
+  public incrementFeature():void {
+       const layer = this.selectedLayer;
+          if (layer.active){
+                 this.currentFeature[this.currentFeatureIndex] = this.currentFeature[this.currentFeatureIndex]+1;
+                  if (this.currentFeature[this.currentFeatureIndex] > this.layerFeatures){
+                          this.currentFeature[this.currentFeatureIndex] =0;
+                  }
+                 this.updateLayerSubject.next(layer);
+                  
+          }
+  }
+
+  public decrementFeature():void {
+        const layer = this.selectedLayer;
+           if (layer.active){
+                  this.currentFeature[this.currentFeatureIndex] = this.currentFeature[this.currentFeatureIndex]-1; 
+                   if ( this.currentFeature[this.currentFeatureIndex] < 0){
+                           this.currentFeature[this.currentFeatureIndex] = this.layerFeatures;
+                   }
+                  this.updateLayerSubject.next(layer);
+                
+           }
+
+
+  }
 
   /** Cycles backwards through layers */
   public decrementNextLayer() {
@@ -358,6 +400,13 @@ export class PlanService {
     }
     this.selectedLayer = this.layers[(index) % this.layers.length];
     this.selectedLayerSubject.next(this.selectedLayer);
+
+    this.layerFeatures = this.selectedLayer.totalFeatures; 
+    this.currentFeatureIndex = this.currentFeatureIndex -1;
+    if (this.currentFeatureIndex == -1){
+            this.currentFeatureIndex = this.currentFeature.length -1;
+    }
+    this.featureSubject.next(this.layerFeatures);
     this.layerChangeSubject.next('decrement');
     this.soundsService.tick(); 
         const layer = this.selectedLayer;
@@ -374,6 +423,12 @@ export class PlanService {
     const index = this.layers.indexOf(this.selectedLayer) + 1;
     this.selectedLayer = this.layers[(index) % this.layers.length];
     this.selectedLayerSubject.next(this.selectedLayer);
+    this.layerFeatures = this.selectedLayer.totalFeatures;
+    this.currentFeatureIndex = this.currentFeatureIndex + 1;
+    if (this.currentFeatureIndex == this.currentFeature.length){
+            this.currentFeatureIndex = 0;
+    }
+    this.featureSubject.next(this.layerFeatures);
     this.layerChangeSubject.next('increment');
     this.soundsService.tick();
     const layer = this.selectedLayer;
@@ -406,6 +461,8 @@ export class PlanService {
    */
   public addLayer(): boolean {
     const layer = this.selectedLayer;
+
+    this.currentFeature[this.currentFeatureIndex] =0;
     if (!layer.active) {
       this.setLegendImagePath();
       layer.active = true;
@@ -422,6 +479,9 @@ export class PlanService {
    */
   public removeLayer(): boolean {
     const layer = this.selectedLayer;
+
+
+    this.currentFeature[this.currentFeatureIndex] =0;
     if (layer.active) {
       layer.active = false;
       this.toggleLayerSubject.next(layer);
@@ -566,9 +626,18 @@ export class PlanService {
         this.ImagePathSubject.next(this.legendImagePath);
         }
 
+
    public getLegendImagePath(): string{ 
            
           
            return this.legendImagePath;
   }
+
+   public getLegendImagePath(): string{  
+           return this.legendImagePath;
+  }
+
+ public getCurrentFeature(): number{
+         return this.currentFeature[this.currentFeatureIndex];
+ }
 }
