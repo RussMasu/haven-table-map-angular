@@ -40,7 +40,8 @@ export class PlanService {
   public legendSubject = new Subject<string>(); // Legend Publisher
 
   private layerFeatures: number;                // number of different features on a layer
-  private currentFeature: number;               // which feature we are currently on  
+  private currentFeature: number[] = [];               // which feature we are currently on  
+  private currentFeatureIndex: number;
   public featureSubject = new Subject<number>(); 
 
   /* Reset Subjects */
@@ -86,9 +87,12 @@ export class PlanService {
     this.selectedLayer = this.layers[0];  // This is the layer that can currently be added/removed.
     this.selectedLayerSubject.next(this.selectedLayer); // Publish current selected layer
     
-    this.currentFeature = 0;
+    for (var i = 0; i < this.layers.length;i++){
+        this.currentFeature.push(0);
+    }
+    this.currentFeatureIndex = 0 
     this.layerFeatures = this.selectedLayer.totalFeatures; //current amount of features in the starting layer
-    this.featureSubject.next(this.currentFeature); // updating 
+    this.featureSubject.next(this.layerFeatures); // updating 
 
     // Publish data for each layer.
     this.scenarioSubject.subscribe(scenario => {
@@ -367,9 +371,9 @@ export class PlanService {
   public incrementFeature():void {
        const layer = this.selectedLayer;
           if (layer.active){
-                 this.currentFeature = this.currentFeature+1;
-                  if (this.currentFeature > this.layerFeatures){
-                          this.currentFeature =0;
+                 this.currentFeature[this.currentFeatureIndex] = this.currentFeature[this.currentFeatureIndex]+1;
+                  if (this.currentFeature[this.currentFeatureIndex] > this.layerFeatures){
+                          this.currentFeature[this.currentFeatureIndex] =0;
                   }
                  this.updateLayerSubject.next(layer);
                   
@@ -379,9 +383,9 @@ export class PlanService {
   public decrementFeature():void {
         const layer = this.selectedLayer;
            if (layer.active){
-                  this.currentFeature = this.currentFeature-1; 
-                   if ( this.currentFeature < 0){
-                           this.currentFeature = this.layerFeatures;
+                  this.currentFeature[this.currentFeatureIndex] = this.currentFeature[this.currentFeatureIndex]-1; 
+                   if ( this.currentFeature[this.currentFeatureIndex] < 0){
+                           this.currentFeature[this.currentFeatureIndex] = this.layerFeatures;
                    }
                   this.updateLayerSubject.next(layer);
                 
@@ -398,8 +402,11 @@ export class PlanService {
     }
     this.selectedLayer = this.layers[(index) % this.layers.length];
     this.selectedLayerSubject.next(this.selectedLayer);
-    this.layerFeatures = this.selectedLayer.totalFeatures;
-    this.currentFeature =0;
+    this.layerFeatures = this.selectedLayer.totalFeatures; 
+    this.currentFeatureIndex = this.currentFeatureIndex -1;
+    if (this.currentFeatureIndex == -1){
+            this.currentFeatureIndex = this.currentFeature.length -1;
+    }
     this.featureSubject.next(this.layerFeatures);
     this.layerChangeSubject.next('decrement');
     this.soundsService.tick(); 
@@ -418,7 +425,10 @@ export class PlanService {
     this.selectedLayer = this.layers[(index) % this.layers.length];
     this.selectedLayerSubject.next(this.selectedLayer);
     this.layerFeatures = this.selectedLayer.totalFeatures;
-    this.currentFeature =0;
+    this.currentFeatureIndex = this.currentFeatureIndex + 1;
+    if (this.currentFeatureIndex == this.currentFeature.length){
+            this.currentFeatureIndex = 0;
+    }
     this.featureSubject.next(this.layerFeatures);
     this.layerChangeSubject.next('increment');
     this.soundsService.tick();
@@ -452,7 +462,7 @@ export class PlanService {
    */
   public addLayer(): boolean {
     const layer = this.selectedLayer;
-    this.currentFeature =0;
+    this.currentFeature[this.currentFeatureIndex] =0;
     if (!layer.active) {
       this.setLegendImagePath();
       layer.active = true;
@@ -469,7 +479,7 @@ export class PlanService {
    */
   public removeLayer(): boolean {
     const layer = this.selectedLayer;
-    this.currentFeature =0;
+    this.currentFeature[this.currentFeatureIndex] =0;
     if (layer.active) {
       layer.active = false;
       this.toggleLayerSubject.next(layer);
@@ -619,6 +629,6 @@ export class PlanService {
   }
 
  public getCurrentFeature(): number{
-         return this.currentFeature;
+         return this.currentFeature[this.currentFeatureIndex];
  }
 }
