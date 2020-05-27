@@ -32,7 +32,6 @@ export const BigIslandPlan: Plan = {
   },
   css: {
     map: {
-<<<<<<< HEAD
       left: '23vw',//22
       top: '9vh'
     },
@@ -249,11 +248,7 @@ export const BigIslandPlan: Plan = {
         {
           d3.select(parcel.path)
           .style('fill', 'transparent')
-<<<<<<< HEAD
-          .style('opacity', this.active ? 0.8 : 0.0)
-=======
           .style('opacity', (this.active && (feature == 3 || feature ==0)) ? 0.8 : 0.0)
->>>>>>> e1ce0493fb6b4f68bdc1b693daea30ac99abec89
           .style('stroke', Rainfallcolors["medium"])
           .style('stroke-width', (this.borderWidth-2) + 'px');
         }
@@ -726,10 +721,8 @@ export const BigIslandPlan: Plan = {
       legendImagePath: 'assets/plans/bigisland/images/legends/VegLegend.png',
       secondScreenImagePath: 'assets/plans/bigisland/images/second-screen-images/backgrounds/Vegetation-Screen.png',
       secondScreenText: 'Slide the Layer Puck to add or remove this layer.',
-<<<<<<< HEAD
-=======
       totalFeatures: 3,
->>>>>>> e1ce0493fb6b4f68bdc1b693daea30ac99abec89
+
       fillColor: '#ff0066',
       borderColor: '#ffffff',
       borderWidth: 0.2,

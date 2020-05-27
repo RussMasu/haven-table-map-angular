@@ -204,8 +204,7 @@ export class ArService {
     this.xOffset = defaultTrackingPoints.offsets.xOffset-150;
     this.yOffset = defaultTrackingPoints.offsets.yOffset+0;
     this.xOffset2 = defaultTrackingPoints.offsets.xOffset2+80;
-    this.yOffset2 = defaultTrackingPoints.offsets.yOffset2-150;
->>>>>>> e1ce0493fb6b4f68bdc1b693daea30ac99abec89  }
+    this.yOffset2 = defaultTrackingPoints.offsets.yOffset2-150;  }
 
   /** Finishes the calibration process
    * @param createFile If true, it means that a manual calibration of the table was done and all data needs to be stored

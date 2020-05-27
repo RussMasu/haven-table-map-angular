@@ -3,19 +3,18 @@ import { PlanService } from '../../app/services/plan.service'
 
 export const markers: Marker[] = [{
   markerId: 1,
-  //markerId: 1,
   secondId: 3,
   job: 'scenario',
   delay: 30, 
   minRotation: 15,
-
   rotateLeft(planService: PlanService) {
    planService.decrementCurrentYear();
   },
   rotateRight(planService: PlanService) {
     planService.incrementCurrentYear();
   }
-}, {
+}, 
+{
   markerId: 11,
   secondId: 6,
   job: 'layer',
@@ -27,7 +26,8 @@ export const markers: Marker[] = [{
    rotateRight(planService: PlanService) {
     planService.incrementNextLayer();
    }
-}, {
+}, 
+{
   markerId: 5,
   secondId: 9,
   job: 'year',
@@ -49,6 +49,7 @@ export const markers: Marker[] = [{
     planService.toggleLayer();
    },
    rotateRight(planService: PlanService) {
-    planService.toggleLayer();
+   planService.toggleLayer();
+   }
 }];
 
