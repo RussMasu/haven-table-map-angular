@@ -30,9 +30,9 @@ export const markers: Marker[] = [{
 {
   markerId: 5,
   secondId: 9,
-  job: 'year',20
+  job: 'year',
   delay: 400, 
-  minRotation: ,
+  minRotation: 20,
   rotateLeft(planService: PlanService) {
     this.planService.decrementFeature();
    },
