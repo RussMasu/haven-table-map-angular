@@ -384,13 +384,9 @@ export const BigIslandPlan: Plan = {
                 'zone2': '#900C3F',
                 'zone1': '#581845',
               }
+		       let feature = planService.getCurrentFeature();	  
               this.parcels.forEach(parcel => {
                 let vhzone = parcel.properties.vhzones_id;//divide based on layer attribute 
-
-                let feature = planService.getCurrentFeature();
-
-                this.parcels.forEach(parcel => {
-                    let vhzone = parcel.properties.vhzones_id;//divide based on layer attribute 
 
                     if(vhzone == 1){
                       d3.select(parcel.path)
@@ -520,8 +516,9 @@ export const BigIslandPlan: Plan = {
                     }
               });
             },
+			
     },//end volcano layer 
-		{//start Flood Hazard layer turn off bigislandborder
+	{//start Flood Hazard layer turn off bigislandborder
       name: 'Flood Hazard', //display name
       displayName: 'Flood Hazard',//display name
       active: false,
