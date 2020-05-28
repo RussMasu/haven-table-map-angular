@@ -633,10 +633,6 @@ export class PlanService {
            return this.legendImagePath;
   }
 
-   public getLegendImagePath(): string{  
-           return this.legendImagePath;
-  }
-
  public getCurrentFeature(): number{
          return this.currentFeature[this.currentFeatureIndex];
  }
