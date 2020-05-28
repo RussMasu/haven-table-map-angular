@@ -38,7 +38,7 @@ export class YearPuckComponent implements OnInit {
     */
     this.currentFeature = this.planService.getCurrentFeature();
     this.numberofFeatures = this.planService.getLayerFeatures(); // ended here  finish this at home  
-    this.Features.push("All");
+    this.Features.push("None");
     for(let i = 0; i < this.numberofFeatures;i++){
             this.Features.push(i+1);
     }
@@ -67,6 +67,9 @@ export class YearPuckComponent implements OnInit {
         for(let i = 0; i < this.numberofFeatures;i++){
                 this.Features.push(i+1);
         }
+		if (this.numberofFeatures == 0){
+		this.Featuers[0]=="None";
+		}
 		//this.yearBoxElements = this.yearBoxes.first.nativeElement.children;
 		//this.positionElements(this.yearBoxElements);
 		this.puckdisplay = this.Features[this.currentFeature];
