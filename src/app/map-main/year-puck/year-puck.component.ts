@@ -68,7 +68,7 @@ export class YearPuckComponent implements OnInit {
                 this.Features.push(i+1);
         }
 		if (this.numberofFeatures == 0){
-		this.Featuers[0]=="None";
+		this.Features[0]="None";
 		}
 		//this.yearBoxElements = this.yearBoxes.first.nativeElement.children;
 		//this.positionElements(this.yearBoxElements);
