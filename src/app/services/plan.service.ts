@@ -373,6 +373,7 @@ export class PlanService {
                   if (this.currentFeature[this.currentFeatureIndex] > this.layerFeatures){
                           this.currentFeature[this.currentFeatureIndex] =0;
                   }
+				 this.soundsService.tick();
                  this.updateLayerSubject.next(layer);
                   
           }
@@ -385,6 +386,7 @@ export class PlanService {
                    if ( this.currentFeature[this.currentFeatureIndex] < 0){
                            this.currentFeature[this.currentFeatureIndex] = this.layerFeatures;
                    }
+				   this.soundsService.tick();
                   this.updateLayerSubject.next(layer);
                 
            }
