@@ -19,6 +19,13 @@ export class YearPuckComponent implements AfterViewInit {
   private currentPosition: number;
   private YEAR_PUCK_COLOR: string = 'rgba(147, 93, 201)';
 
+  private numberofFeatures: number;
+  private Features:{features: number, filled: boolean}[] = [];
+  private currentFeature: number;
+
+
+
+ 
   constructor(private planService: PlanService) {
     this.currentPosition = 0;
     this.currentYear = this.planService.getMinimumYear();
@@ -26,6 +33,8 @@ export class YearPuckComponent implements AfterViewInit {
     for (let i = 0; i < this.numberOfYears; i++) {
       this.years.push({year: i + this.planService.getMinimumYear(), filled: false});
     }
+    this.currentFeature = this.planService.getCurrentFeature();
+    this.numberofFeatures = this.planService.getLayerFeatures(); // ended here  finish this at home 
    }
 
   ngAfterViewInit() {
