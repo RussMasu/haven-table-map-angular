@@ -636,4 +636,7 @@ export class PlanService {
  public getCurrentFeature(): number{
          return this.currentFeature[this.currentFeatureIndex];
  }
+ public getLayerFeatures(): number{
+         return this.layerFeatures;
+ }
 }

@@ -19,6 +19,13 @@ export class YearPuckComponent implements AfterViewInit {
   private currentPosition: number;
   private YEAR_PUCK_COLOR: string = 'rgba(147, 93, 201)';
 
+  private numberofFeatures: number;
+  private Features: any[] = [];
+  private currentFeature: number;
+
+
+
+ 
   constructor(private planService: PlanService) {
     this.currentPosition = 0;
     this.currentYear = this.planService.getMinimumYear();
@@ -26,6 +33,14 @@ export class YearPuckComponent implements AfterViewInit {
     for (let i = 0; i < this.numberOfYears; i++) {
       this.years.push({year: i + this.planService.getMinimumYear(), filled: false});
     }
+    
+    this.currentFeature = this.planService.getCurrentFeature();
+    this.numberofFeatures = this.planService.getLayerFeatures(); // ended here  finish this at home  
+    this.Features.push("All");
+    for(let i = 0; i < this.numberofFeatures;i++){
+            this.Features.push(i+1);
+    }
+
    }
 
   ngAfterViewInit() {
@@ -37,8 +52,35 @@ export class YearPuckComponent implements AfterViewInit {
       this.currentYear = year;
       this.colorNodes();
     })
-  }
 
+
+    // hijacking for features instead of years
+    this.planService.featureSubject.subscribe(layerFeatures => {
+        this.currentFeature = this.planService.getCurrentFeature();
+        this.numberofFeatures = layerFeatures;
+        this.Features = [];
+        this.Features.push("All");
+        for(let i = 0; i < this.numberofFeatures;i++){
+                this.Features.push(i+1);
+        }
+        this.colornewNodes();
+        })
+
+    this.planService.updateLayerSubject.subscribe(layer => {
+            this.currentFeature = this.planService.getCurrentFeature();
+            this.colornewNodes();
+        })
+  }
+        // hijacking for features instead of years
+        private colornewNodes() {
+          for (let index = 0; index < this.numberofFeatures+1; index++) {
+            if (index == this.currentFeature) {
+              this.yearBoxElements[index].style.backgroundColor = this.YEAR_PUCK_COLOR;
+            } else {
+              this.yearBoxElements[index].style.backgroundColor = 'transparent';
+            }
+          }
+        }
 
   /** Colors each of the year nodes.
    * 
