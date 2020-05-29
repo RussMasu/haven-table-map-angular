@@ -19,14 +19,15 @@
 
 .current-year {
     position: absolute;
-    width: 100%;
+    width: 50%;
     font-size: 18px;
     text-align: center;
-    top: calc(50% - 5px);
+    top: 30%;
     font-weight: bolder;
     color: rgb(147, 93, 201);
-    left: 3px;
-    padding-top: 3px;
+    left: 24px;
+    padding-top: -3px;
+	background-color: black;
 }
 
 .title {
@@ -34,8 +35,22 @@
     font-size: 16px;
     width: 100%;
     text-align: center;
-    top: -26px;
-    left: 4px;
+    top: -60px;
+    left: 24px;
     font-weight: bold;
     position: absolute;
+	background-color: black;
+}
+.center-container {
+  color: rgb(255,255,255);
+  z-index: 3;
+  width: 100%;
+  height: 70%;
+  text-align: center;
+  position: relative;
+  left: 26%;
+  top: 80%;
+  border-radius: 50%;
+  background-color: transparent;
+
 }
