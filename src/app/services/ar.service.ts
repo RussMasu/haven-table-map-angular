@@ -197,11 +197,14 @@ export class ArService {
     });
 
     // The offsets are the x and y adjustments to the tracking that allow for more precise tracking.
+    this.xOffset = defaultTrackingPoints.offsets.xOffset-150;//125
+    this.yOffset = defaultTrackingPoints.offsets.yOffset+0;//24
+    this.xOffset2 = defaultTrackingPoints.offsets.xOffset2+80;//69
+    this.yOffset2 = defaultTrackingPoints.offsets.yOffset2-150;//-130
     this.xOffset = defaultTrackingPoints.offsets.xOffset-150;
     this.yOffset = defaultTrackingPoints.offsets.yOffset+0;
     this.xOffset2 = defaultTrackingPoints.offsets.xOffset2+80;
-    this.yOffset2 = defaultTrackingPoints.offsets.yOffset2-150;
-  }
+    this.yOffset2 = defaultTrackingPoints.offsets.yOffset2-150;  }
 
   /** Finishes the calibration process
    * @param createFile If true, it means that a manual calibration of the table was done and all data needs to be stored

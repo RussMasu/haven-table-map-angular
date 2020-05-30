@@ -10,6 +10,7 @@ export interface MapLayer {
   secondScreenText: string;
   active: boolean;
   included: boolean;
+  totalFeatures: number;
   fillColor: string;
   borderColor: string;
   borderWidth: number;
